@@ -5,8 +5,8 @@ import java.sql.Timestamp;
 
 import org.junit.Test;
 
-import com.ai.yc.user.api.userservice.param.InsertYCUserRequest;
-import com.ai.yc.user.dao.mapper.bo.UsrUser;
+import com.ai.yc.translator.api.userservice.param.InsertYCUserRequest;
+import com.ai.yc.translator.dao.mapper.bo.UsrUser;
 
 /** 
  * @author  作者 “WTF” E-mail: 1031248990@qq.com

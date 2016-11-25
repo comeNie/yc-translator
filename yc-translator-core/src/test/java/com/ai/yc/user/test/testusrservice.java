@@ -8,18 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ai.yc.user.api.userservice.interfaces.IYCUserServiceSV;
-import com.ai.yc.user.api.userservice.param.InsertYCUserRequest;
-import com.ai.yc.user.api.userservice.param.SearchYCTranslatorRequest;
-import com.ai.yc.user.api.userservice.param.SearchYCTranslatorSkillListRequest;
-import com.ai.yc.user.api.userservice.param.SearchYCUserRequest;
-import com.ai.yc.user.api.userservice.param.UpdateYCUserRequest;
-import com.ai.yc.user.api.userservice.param.YCInsertUserResponse;
-import com.ai.yc.user.api.userservice.param.YCLSPInfoReponse;
-import com.ai.yc.user.api.userservice.param.YCTranslatorInfoResponse;
-import com.ai.yc.user.api.userservice.param.YCTranslatorSkillListResponse;
-import com.ai.yc.user.api.userservice.param.YCUserInfoResponse;
-import com.ai.yc.user.api.userservice.param.searchYCLSPInfoRequest;
+import com.ai.yc.translator.api.userservice.interfaces.IYCUserServiceSV;
+import com.ai.yc.translator.api.userservice.param.InsertYCUserRequest;
+import com.ai.yc.translator.api.userservice.param.SearchYCTranslatorRequest;
+import com.ai.yc.translator.api.userservice.param.SearchYCTranslatorSkillListRequest;
+import com.ai.yc.translator.api.userservice.param.SearchYCUserRequest;
+import com.ai.yc.translator.api.userservice.param.UpdateYCUserRequest;
+import com.ai.yc.translator.api.userservice.param.YCInsertUserResponse;
+import com.ai.yc.translator.api.userservice.param.YCLSPInfoReponse;
+import com.ai.yc.translator.api.userservice.param.YCTranslatorInfoResponse;
+import com.ai.yc.translator.api.userservice.param.YCTranslatorSkillListResponse;
+import com.ai.yc.translator.api.userservice.param.YCUserInfoResponse;
+import com.ai.yc.translator.api.userservice.param.searchYCLSPInfoRequest;
 import com.alibaba.fastjson.JSON;
 
 /** 

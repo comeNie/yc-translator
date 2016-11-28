@@ -95,6 +95,15 @@ public class UpdateYCUserRequest implements Serializable{
      * 个人头像id
      */
     private String portraitId;
+    
+    /**
+     * 昵称是否改变
+     */
+    private String isChange;
+    /**
+     * 是否译员
+     */
+    private Integer isTranslator;
 
 	public UpdateYCUserRequest() {
 		super();
@@ -237,6 +246,22 @@ public class UpdateYCUserRequest implements Serializable{
 
 	public void setPortraitId(String portraitId) {
 		this.portraitId = portraitId;
+	}
+
+	public String getIsChange() {
+		return isChange;
+	}
+
+	public void setIsChange(String isChange) {
+		this.isChange = isChange;
+	}
+
+	public Integer getIsTranslator() {
+		return isTranslator;
+	}
+
+	public void setIsTranslator(Integer isTranslator) {
+		this.isTranslator = isTranslator;
 	}
     
 

@@ -1,9 +1,10 @@
 package com.ai.yc.translator.dao.mapper.interfaces;
 
-import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
-import com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
+import com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria;
 
 public interface UsrLspMapper {
     int countByExample(UsrLspCriteria example);

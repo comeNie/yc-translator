@@ -1,10 +1,14 @@
 package com.ai.yc.translator.service.business.interfaces;
 
 
+import java.util.List;
+
 import com.ai.opt.base.exception.BusinessException;
+import com.ai.yc.translator.api.userservice.param.InsertYCContactRequest;
 import com.ai.yc.translator.api.userservice.param.InsertYCUserRequest;
 import com.ai.yc.translator.api.userservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.userservice.param.UpdateYCUserRequest;
+import com.ai.yc.translator.api.userservice.param.YCInsertContactResponse;
 import com.ai.yc.translator.api.userservice.param.YCInsertUserResponse;
 import com.ai.yc.translator.api.userservice.param.YCLSPInfoReponse;
 import com.ai.yc.translator.api.userservice.param.YCTranslatorSkillListResponse;
@@ -24,11 +28,13 @@ public interface IYCUserServiceBusiSV {
 
 	public UsrTranslator searchYCUsrTranslatorInfo(SearchYCTranslatorRequest searchReq) throws BusinessException;
 
-	public UsrContact searchUsrContactInfo(String userId) throws BusinessException;
+	public List<UsrContact> searchUsrContactInfo(String userId) throws BusinessException;
 	
 	public UsrUser searchuserInfoByNickName(String userId) throws BusinessException;
 
 	public YCTranslatorSkillListResponse getTranslatorSkillList(String userId) throws BusinessException;
 
-	public YCLSPInfoReponse searchLSPInfoBussiness(searchYCLSPInfoRequest searchLSPParams);
+	public YCLSPInfoReponse searchLSPInfoBussiness(searchYCLSPInfoRequest searchLSPParams) throws BusinessException;
+
+	public YCInsertContactResponse insertContactInfo(InsertYCContactRequest creq) throws BusinessException;
 }

@@ -73,9 +73,13 @@ public class InsertYCUserRequest implements Serializable{
 	 * 必填
 	 */
 	private String nickname; 
-	
+	/**
+	 * 名
+	 */
     private String lastname;
-
+	/**
+	 * 姓
+	 */
     private String firstname;
     /**
      * 性别 0、女， 1、男

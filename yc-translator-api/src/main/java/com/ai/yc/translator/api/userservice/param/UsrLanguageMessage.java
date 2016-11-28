@@ -1,13 +1,15 @@
 package com.ai.yc.translator.api.userservice.param;
 
 public class UsrLanguageMessage {
-    private String translatorId;
+	private String translatorId;
 
     private String extendId;
 
-    private String userType;
+    private String translationType;
 
     private Integer referencePrice;
+
+    private String state;
 
     public String getTranslatorId() {
         return translatorId;
@@ -25,14 +27,6 @@ public class UsrLanguageMessage {
         this.extendId = extendId == null ? null : extendId.trim();
     }
 
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType == null ? null : userType.trim();
-    }
-
     public Integer getReferencePrice() {
         return referencePrice;
     }
@@ -40,4 +34,20 @@ public class UsrLanguageMessage {
     public void setReferencePrice(Integer referencePrice) {
         this.referencePrice = referencePrice;
     }
+
+	public String getTranslationType() {
+		return translationType;
+	}
+
+	public void setTranslationType(String translationType) {
+		this.translationType = translationType;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
 }

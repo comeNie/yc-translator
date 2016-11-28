@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.ai.opt.sdk.util.CollectionUtil;
 import com.ai.yc.translator.dao.mapper.bo.UsrContact;
+import com.ai.yc.translator.dao.mapper.bo.UsrContactCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrLanguage;
 import com.ai.yc.translator.dao.mapper.bo.UsrLanguageCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
@@ -61,19 +62,35 @@ public class YCUserServiceAtomSVImpl implements IYCUserServiceAtomSV {
 		UsrTranslatorCriteria example = new UsrTranslatorCriteria();
 		UsrTranslatorCriteria.Criteria criteria = example.createCriteria();
 		criteria.andUserIdEqualTo(userId);
-		return uTranslatorMapper.selectByExample(example).get(0);
+		List<UsrTranslator> list = uTranslatorMapper.selectByExample(example);
+		if(list.size() > 0)
+		{
+			return list.get(0);
+		} else {
+			return null;
+		}
 	}
 	@Override
 	public UsrTranslator getUsrTranslatorInfoByTranslatorId(String translatorId) {
 		UsrTranslatorCriteria example = new UsrTranslatorCriteria();
 		UsrTranslatorCriteria.Criteria criteria = example.createCriteria();
 		criteria.andTranslatorIdEqualTo(translatorId);
-		return uTranslatorMapper.selectByExample(example).get(0);
+		List<UsrTranslator> list = uTranslatorMapper.selectByExample(example);
+		if(list.size() > 0)
+		{
+			return list.get(0);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
-	public UsrContact getUsrContactInfo(String userId) {
-		return uContactMapper.selectByPrimaryKey(userId);
+	public List<UsrContact> getUsrContactInfo(String userId) {
+		UsrContactCriteria example = new UsrContactCriteria();
+		UsrContactCriteria.Criteria criteria = example.createCriteria();
+		criteria.andUserIdEqualTo(userId);
+		return uContactMapper.selectByExample(example);
+//		return uContactMapper.selectByPrimaryKey(userId);
 	}
 
 	@Override
@@ -81,8 +98,10 @@ public class YCUserServiceAtomSVImpl implements IYCUserServiceAtomSV {
 		List<UsrUser> list = tUserMapper.selectByExample(example);
 		if(!CollectionUtil.isEmpty(list)){
 			return list.get(0);
+		} else {
+			return null;
 		}
-		return list.get(0);
+		
 	}
 
 	@Override
@@ -98,6 +117,16 @@ public class YCUserServiceAtomSVImpl implements IYCUserServiceAtomSV {
 	@Override
 	public List<UsrLsp> searchLspByName(UsrLspCriteria example) {
 		return uLspMapper.selectByExample(example);
+	}
+
+	@Override
+	public int insertContactInfo(UsrContact usrContact) {
+		return uContactMapper.insertSelective(usrContact);
+	}
+
+	@Override
+	public int deleteContactInfo(String contactId) {
+		return uContactMapper.deleteByPrimaryKey(contactId);
 	}
 
 	

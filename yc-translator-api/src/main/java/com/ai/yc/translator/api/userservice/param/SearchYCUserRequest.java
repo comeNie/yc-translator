@@ -26,6 +26,9 @@ public class SearchYCUserRequest  implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 4314651793756447401L;
+	/**
+	 * 用户uid／userid
+	 */
 	private String userId;
 
 	public String getUserId() {

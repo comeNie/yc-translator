@@ -195,6 +195,66 @@ public class UsrContactCriteria {
             return (Criteria) this;
         }
 
+        public Criteria andGnCountryIdIsNull() {
+            addCriterion("gn_country_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGnCountryIdIsNotNull() {
+            addCriterion("gn_country_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGnCountryIdEqualTo(Integer value) {
+            addCriterion("gn_country_id =", value, "gnCountryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGnCountryIdNotEqualTo(Integer value) {
+            addCriterion("gn_country_id <>", value, "gnCountryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGnCountryIdGreaterThan(Integer value) {
+            addCriterion("gn_country_id >", value, "gnCountryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGnCountryIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("gn_country_id >=", value, "gnCountryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGnCountryIdLessThan(Integer value) {
+            addCriterion("gn_country_id <", value, "gnCountryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGnCountryIdLessThanOrEqualTo(Integer value) {
+            addCriterion("gn_country_id <=", value, "gnCountryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGnCountryIdIn(List<Integer> values) {
+            addCriterion("gn_country_id in", values, "gnCountryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGnCountryIdNotIn(List<Integer> values) {
+            addCriterion("gn_country_id not in", values, "gnCountryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGnCountryIdBetween(Integer value1, Integer value2) {
+            addCriterion("gn_country_id between", value1, value2, "gnCountryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGnCountryIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("gn_country_id not between", value1, value2, "gnCountryId");
+            return (Criteria) this;
+        }
+
         public Criteria andUserIdIsNull() {
             addCriterion("user_id is null");
             return (Criteria) this;

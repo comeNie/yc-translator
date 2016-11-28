@@ -1,9 +1,10 @@
 package com.ai.yc.translator.dao.mapper.interfaces;
 
-import com.ai.yc.translator.dao.mapper.bo.UsrCustFileExt;
-import com.ai.yc.translator.dao.mapper.bo.UsrCustFileExtCriteria;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import com.ai.yc.translator.dao.mapper.bo.UsrCustFileExt;
+import com.ai.yc.translator.dao.mapper.bo.UsrCustFileExtCriteria;
 
 public interface UsrCustFileExtMapper {
     int countByExample(UsrCustFileExtCriteria example);

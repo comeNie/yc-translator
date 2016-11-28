@@ -1,23 +1,81 @@
 package com.ai.yc.translator.api.userservice.param;
 
+import java.sql.Timestamp;
+
 public class UsrLspMessage {
-    private String lspId;
+	private String lspId;
 
     private String lspName;
 
     private String contact;
 
-    private String phoneNum;
-
     private String companyAddress;
 
     private String companyIntroduction;
 
-    private String companyLogoPath;
+    private String companyLogoId;
 
     private String email;
 
-    public String getLspId() {
+    private Integer billingCycle;
+
+    private Timestamp statementDate;
+
+    private Timestamp createTime;
+
+    private String telephone;
+
+    private String mobilePhone;
+
+    public String getCompanyLogoId() {
+		return companyLogoId;
+	}
+
+	public void setCompanyLogoId(String companyLogoId) {
+		this.companyLogoId = companyLogoId;
+	}
+
+	public Integer getBillingCycle() {
+		return billingCycle;
+	}
+
+	public void setBillingCycle(Integer billingCycle) {
+		this.billingCycle = billingCycle;
+	}
+
+	public Timestamp getStatementDate() {
+		return statementDate;
+	}
+
+	public void setStatementDate(Timestamp statementDate) {
+		this.statementDate = statementDate;
+	}
+
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
+	}
+
+	public String getLspId() {
         return lspId;
     }
 
@@ -41,14 +99,6 @@ public class UsrLspMessage {
         this.contact = contact == null ? null : contact.trim();
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum == null ? null : phoneNum.trim();
-    }
-
     public String getCompanyAddress() {
         return companyAddress;
     }
@@ -63,14 +113,6 @@ public class UsrLspMessage {
 
     public void setCompanyIntroduction(String companyIntroduction) {
         this.companyIntroduction = companyIntroduction == null ? null : companyIntroduction.trim();
-    }
-
-    public String getCompanyLogoPath() {
-        return companyLogoPath;
-    }
-
-    public void setCompanyLogoPath(String companyLogoPath) {
-        this.companyLogoPath = companyLogoPath == null ? null : companyLogoPath.trim();
     }
 
     public String getEmail() {

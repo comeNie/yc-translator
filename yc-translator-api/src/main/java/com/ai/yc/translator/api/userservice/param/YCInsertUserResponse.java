@@ -14,7 +14,9 @@ public class YCInsertUserResponse extends BaseResponse {
 	 */
 	private static final long serialVersionUID = 1664750013408382459L;
 
-	
+	/**
+	 * 用户uid／userid
+	 */
 	private String userId;
 	
 	private String operationcode;

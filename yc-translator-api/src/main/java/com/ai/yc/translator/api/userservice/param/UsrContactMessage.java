@@ -1,11 +1,9 @@
-package com.ai.yc.translator.dao.mapper.bo;
+package com.ai.yc.translator.api.userservice.param;
 
 import java.sql.Timestamp;
 
-import com.ai.yc.common.api.country.param.CountryVo;
-
-public class UsrContact {
-    private String contactId;
+public class UsrContactMessage {
+	private String contactId;
 
     private Integer gnCountryId;
 
@@ -134,5 +132,4 @@ public class UsrContact {
 	public void setCountryVo(CountryVo countryVo) {
 		this.countryVo = countryVo;
 	}
-
 }

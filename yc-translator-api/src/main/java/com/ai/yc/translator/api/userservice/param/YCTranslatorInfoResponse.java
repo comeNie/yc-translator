@@ -1,7 +1,6 @@
 package com.ai.yc.translator.api.userservice.param;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 
 import com.ai.opt.base.vo.BaseResponse;
 
@@ -16,17 +15,33 @@ public class YCTranslatorInfoResponse extends BaseResponse {
 	 * 
 	 */
 	private static final long serialVersionUID = -9068009364796285584L;
-	
+	/**
+	 * 用户id
+	 */
 	private String userId;
-
+	/**
+	 * LSP id
+	 */
     private String lspId;
-
+    /**
+     * 昵称
+     */
+    private String nickname;
+	/**
+	 * lsp角色
+	 */
     private String lspRole;
-
+	/**
+	 * 工作年限
+	 */
     private Integer workingLife;
-
+	/**
+	 * 母语
+	 */
     private String motherTongue;
-
+	/**
+	 * 翻译类型
+	 */
     private String translationType;
 
     private BigDecimal interpretPrice;
@@ -139,6 +154,14 @@ public class YCTranslatorInfoResponse extends BaseResponse {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	
 }

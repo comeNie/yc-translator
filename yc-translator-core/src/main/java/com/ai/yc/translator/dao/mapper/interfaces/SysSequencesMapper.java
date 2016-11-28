@@ -1,9 +1,10 @@
 package com.ai.yc.translator.dao.mapper.interfaces;
 
-import com.ai.yc.translator.dao.mapper.bo.SysSequences;
-import com.ai.yc.translator.dao.mapper.bo.SysSequencesCriteria;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import com.ai.yc.translator.dao.mapper.bo.SysSequences;
+import com.ai.yc.translator.dao.mapper.bo.SysSequencesCriteria;
 
 public interface SysSequencesMapper {
     int countByExample(SysSequencesCriteria example);

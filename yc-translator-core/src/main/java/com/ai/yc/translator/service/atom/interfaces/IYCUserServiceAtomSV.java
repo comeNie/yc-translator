@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.ai.yc.translator.api.userservice.param.YCLSPInfoReponse;
 import com.ai.yc.translator.dao.mapper.bo.UsrContact;
 import com.ai.yc.translator.dao.mapper.bo.UsrLanguage;
 import com.ai.yc.translator.dao.mapper.bo.UsrLanguageCriteria;
@@ -26,7 +25,7 @@ public interface IYCUserServiceAtomSV {
 
 	public UsrTranslator getUsrTranslatorInfo(String userId);
 
-	public UsrContact getUsrContactInfo(String userId);
+	public List<UsrContact> getUsrContactInfo(String userId);
 	
 	public UsrUser getUserInfoByNickName(UsrUserCriteria example);
 
@@ -37,5 +36,9 @@ public interface IYCUserServiceAtomSV {
 	public List<UsrLsp> searchLspByName(UsrLspCriteria example) ;
 
 	public UsrTranslator getUsrTranslatorInfoByTranslatorId(String translatorId);
+
+	public int insertContactInfo(UsrContact usrContact);
+
+	public int deleteContactInfo(String contactId);
 
 }

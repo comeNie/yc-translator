@@ -68,6 +68,10 @@ public class YCUserInfoResponse extends BaseResponse {
      */
     private String country;
     /**
+     * 昵称是否改变
+     */
+    private String isChange;
+    /**
      * 是否译员
      */
     private Integer isTranslator;
@@ -245,6 +249,14 @@ public class YCUserInfoResponse extends BaseResponse {
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
+	}
+
+	public String getIsChange() {
+		return isChange;
+	}
+
+	public void setIsChange(String isChange) {
+		this.isChange = isChange;
 	}
 	
 }

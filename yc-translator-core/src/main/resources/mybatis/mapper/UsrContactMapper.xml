@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ai.yc.user.dao.mapper.interfaces.UsrContactMapper" >
-  <resultMap id="BaseResultMap" type="com.ai.yc.user.dao.mapper.bo.UsrContact" >
+<mapper namespace="com.ai.yc.translator.dao.mapper.interfaces.UsrContactMapper" >
+  <resultMap id="BaseResultMap" type="com.ai.yc.translator.dao.mapper.bo.UsrContact" >
     <id column="contact_id" property="contactId" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
@@ -76,7 +76,7 @@
     contact_id, user_id, user_name, phone, mobile_phone, email, qq, address, zip_code, 
     is_default, create_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.yc.user.dao.mapper.bo.UsrContactCriteria" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrContactCriteria" >
     select
     <if test="distinct" >
       distinct
@@ -104,13 +104,13 @@
     delete from usr_contact
     where contact_id = #{contactId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.ai.yc.user.dao.mapper.bo.UsrContactCriteria" >
+  <delete id="deleteByExample" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrContactCriteria" >
     delete from usr_contact
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.ai.yc.user.dao.mapper.bo.UsrContact" >
+  <insert id="insert" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrContact" >
     insert into usr_contact (contact_id, user_id, user_name, 
       phone, mobile_phone, email, 
       qq, address, zip_code, 
@@ -120,7 +120,7 @@
       #{qq,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{zipCode,jdbcType=VARCHAR}, 
       #{isDefault,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.ai.yc.user.dao.mapper.bo.UsrContact" >
+  <insert id="insertSelective" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrContact" >
     insert into usr_contact
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="contactId != null" >
@@ -193,7 +193,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.ai.yc.user.dao.mapper.bo.UsrContactCriteria" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrContactCriteria" resultType="java.lang.Integer" >
     select count(*) from usr_contact
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -257,7 +257,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ai.yc.user.dao.mapper.bo.UsrContact" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrContact" >
     update usr_contact
     <set >
       <if test="userId != null" >
@@ -293,7 +293,7 @@
     </set>
     where contact_id = #{contactId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ai.yc.user.dao.mapper.bo.UsrContact" >
+  <update id="updateByPrimaryKey" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrContact" >
     update usr_contact
     set user_id = #{userId,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},

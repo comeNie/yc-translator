@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ai.yc.user.dao.mapper.interfaces.SysSequencesMapper" >
-  <resultMap id="BaseResultMap" type="com.ai.yc.user.dao.mapper.bo.SysSequences" >
+<mapper namespace="com.ai.yc.translator.dao.mapper.interfaces.SysSequencesMapper" >
+  <resultMap id="BaseResultMap" type="com.ai.yc.translator.dao.mapper.bo.SysSequences" >
     <id column="Sequence_name" property="sequenceName" jdbcType="VARCHAR" />
     <result column="jvm_step_by" property="jvmStepBy" jdbcType="INTEGER" />
     <result column="increment_by" property="incrementBy" jdbcType="INTEGER" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List" >
     Sequence_name, jvm_step_by, increment_by, start_by, last_number
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.yc.user.dao.mapper.bo.SysSequencesCriteria" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.yc.translator.dao.mapper.bo.SysSequencesCriteria" >
     select
     <if test="distinct" >
       distinct
@@ -97,19 +97,19 @@
     delete from sys_sequences
     where Sequence_name = #{sequenceName,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.ai.yc.user.dao.mapper.bo.SysSequencesCriteria" >
+  <delete id="deleteByExample" parameterType="com.ai.yc.translator.dao.mapper.bo.SysSequencesCriteria" >
     delete from sys_sequences
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.ai.yc.user.dao.mapper.bo.SysSequences" >
+  <insert id="insert" parameterType="com.ai.yc.translator.dao.mapper.bo.SysSequences" >
     insert into sys_sequences (Sequence_name, jvm_step_by, increment_by, 
       start_by, last_number)
     values (#{sequenceName,jdbcType=VARCHAR}, #{jvmStepBy,jdbcType=INTEGER}, #{incrementBy,jdbcType=INTEGER}, 
       #{startBy,jdbcType=INTEGER}, #{lastNumber,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.ai.yc.user.dao.mapper.bo.SysSequences" >
+  <insert id="insertSelective" parameterType="com.ai.yc.translator.dao.mapper.bo.SysSequences" >
     insert into sys_sequences
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="sequenceName != null" >
@@ -146,7 +146,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.ai.yc.user.dao.mapper.bo.SysSequencesCriteria" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.ai.yc.translator.dao.mapper.bo.SysSequencesCriteria" resultType="java.lang.Integer" >
     select count(*) from sys_sequences
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -186,7 +186,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ai.yc.user.dao.mapper.bo.SysSequences" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.ai.yc.translator.dao.mapper.bo.SysSequences" >
     update sys_sequences
     <set >
       <if test="jvmStepBy != null" >
@@ -204,7 +204,7 @@
     </set>
     where Sequence_name = #{sequenceName,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ai.yc.user.dao.mapper.bo.SysSequences" >
+  <update id="updateByPrimaryKey" parameterType="com.ai.yc.translator.dao.mapper.bo.SysSequences" >
     update sys_sequences
     set jvm_step_by = #{jvmStepBy,jdbcType=INTEGER},
       increment_by = #{incrementBy,jdbcType=INTEGER},

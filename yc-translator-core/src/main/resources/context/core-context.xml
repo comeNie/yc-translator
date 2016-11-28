@@ -43,7 +43,7 @@
     </bean>
     
     <!-- 扫描Mapper,需要添加mybatis前缀绑定 -->
-	<mybatis:scan base-package="com.ai.yc.user.dao.mapper" />    
+	<mybatis:scan base-package="com.ai.yc.translator.dao.mapper" />    
     
     <!-- 配置SqlSessionTemplate -->
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">

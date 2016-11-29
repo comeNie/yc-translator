@@ -1,4 +1,4 @@
-package com.ai.yc.translator.api.userservice.impl;
+package com.ai.yc.translator.api.translatorservice.impl;
 
 
 import org.slf4j.Logger;

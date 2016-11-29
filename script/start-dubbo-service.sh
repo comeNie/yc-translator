@@ -4,12 +4,12 @@
 APP_HOME=/dubbo-service
 #APP_NAME为各中心的名字，如订单中心记为changhong.order,
 
-APP_NAME="yc.user"
-APP_PARM="aiopt.user.name=${APP_NAME}"
+APP_NAME="yc.translator"
+APP_PARM="aiopt.product.name=${APP_NAME}"
 
 #此处的端口要与dubbo.properties中的端口对应，
 #如，商品中心的为：slp.product.dubbo.port
-PROCESS_PARM="yc.user.dubbo.port=${REST_PORT}"
+PROCESS_PARM="yc.translator.dubbo.port=${REST_PORT}"
 
 for file in ${APP_HOME}/libs/**/*.jar;
 do CP=${CP}:$file;
@@ -32,6 +32,11 @@ echo ${CLASSPATH}
 echo ${DUBBO_PORT}
 echo ${START_CMD}
 
+sed -i "s%paas.auth.url=.*%paas.auth.url=${PAAS_AUTH_URL}%g" ./paas/paas-conf.properties
+sed -i "s%paas.auth.pid=.*%paas.auth.pid=${PAAS_AUTH_PID}%g" ./paas/paas-conf.properties
+sed -i "s%paas.ccs.serviceid=.*%paas.ccs.serviceid=${PAAS_CCS_ID}%g" ./paas/paas-conf.properties
+sed -i "s%paas.ccs.servicepassword=.*%paas.ccs.servicepassword=${PAAS_CCS_PWD}%g" ./paas/paas-conf.properties
+
 sed -i "s/paas.sdk.mode=.*/paas.sdk.mode=${SDK_MODE}/g" ${APP_HOME}/config/paas/paas-conf.properties
 sed -i "s/ccs.appname=.*/ccs.appname=${CCS_NAME}/g" ${APP_HOME}/config/paas/paas-conf.properties
 sed -i "s/ccs.zk_address=.*/ccs.zk_address=${ZK_ADDR}/g" ${APP_HOME}/config/paas/paas-conf.properties
@@ -43,7 +48,7 @@ sed -i "s/dubbo.registry.address=.*/dubbo.registry.address=${REST_REGISTRY_ADDR}
 
 #此处的端口要与dubbo.properties中的端口对应，
 #如，商品中心的为：slp.product.dubbo.port
-sed -i "s/yc.user.dubbo.port=.*/yc.user.dubbo.port=${REST_PORT}/g" ${APP_HOME}/config/dubbo/dubbo.properties
+sed -i "s/yc.translator.dubbo.port=.*/yc.translator.dubbo.port=${REST_PORT}/g" ${APP_HOME}/config/dubbo/dubbo.properties
 
 #此处的信息要与dubbo.properties中对应
 sed -i "s/dubbo.protocol.contextpath=.*/dubbo.protocol.contextpath=${CONTEXT_PATH}/g" ${APP_HOME}/config/dubbo/dubbo.properties

@@ -5,7 +5,7 @@ APP_HOME=/dubbo-service
 #APP_NAME为各中心的名字，如订单中心记为changhong.order,
 
 APP_NAME="yc.translator"
-APP_PARM="aiopt.product.name=${APP_NAME}"
+APP_PARM="aiopt.translator.name=${APP_NAME}"
 
 #此处的端口要与dubbo.properties中的端口对应，
 #如，商品中心的为：slp.product.dubbo.port
@@ -38,8 +38,6 @@ sed -i "s%paas.ccs.serviceid=.*%paas.ccs.serviceid=${PAAS_CCS_ID}%g" ./paas/paas
 sed -i "s%paas.ccs.servicepassword=.*%paas.ccs.servicepassword=${PAAS_CCS_PWD}%g" ./paas/paas-conf.properties
 
 sed -i "s/paas.sdk.mode=.*/paas.sdk.mode=${SDK_MODE}/g" ${APP_HOME}/config/paas/paas-conf.properties
-sed -i "s/ccs.appname=.*/ccs.appname=${CCS_NAME}/g" ${APP_HOME}/config/paas/paas-conf.properties
-sed -i "s/ccs.zk_address=.*/ccs.zk_address=${ZK_ADDR}/g" ${APP_HOME}/config/paas/paas-conf.properties
 
 #====通过环境变量，替换配置文件中的信息 开始====
 

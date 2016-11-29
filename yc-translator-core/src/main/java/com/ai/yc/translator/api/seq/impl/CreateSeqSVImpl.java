@@ -11,7 +11,7 @@ import com.ai.yc.translator.constants.ExceptCodeConstants;
 import com.ai.yc.translator.util.SequenceUtil;
 import com.alibaba.dubbo.config.annotation.Service;
 
-@Service
+@Service(validation = "true")
 @Component
 public class CreateSeqSVImpl implements ICreateSeqSV {
 

@@ -34,7 +34,7 @@
 
 	<dubbo:monitor protocol="registry" />
 
-	<dubbo:annotation package="com.ai.yc.user.api" />
+	<dubbo:annotation package="com.ai.yc.translator.api" />
 
 	<import resource="../../context/core-context.xml" />
 </beans>

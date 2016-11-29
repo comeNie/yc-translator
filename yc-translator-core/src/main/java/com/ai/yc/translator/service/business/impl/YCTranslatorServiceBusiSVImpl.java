@@ -26,20 +26,20 @@ import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
 import com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 import com.ai.yc.translator.dao.mapper.bo.UsrUser;
-import com.ai.yc.translator.service.atom.interfaces.IYCUserServiceAtomSV;
-import com.ai.yc.translator.service.business.interfaces.IYCUserServiceBusiSV;
+import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
+import com.ai.yc.translator.service.business.interfaces.IYCTranslatorServiceBusiSV;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 @Service
 @Transactional
-public class YCUserServiceBusiSVImpl implements IYCUserServiceBusiSV {
+public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV {
 
 	@SuppressWarnings("unused")
-	private static final Log LOG = LogFactory.getLog(YCUserServiceBusiSVImpl.class);
+	private static final Log LOG = LogFactory.getLog(YCTranslatorServiceBusiSVImpl.class);
 
 	@Autowired
-	public IYCUserServiceAtomSV ycUSAtomSV;
+	public IYCTranslatorServiceAtomSV ycUSAtomSV;
 
 
 	@Override

@@ -16,11 +16,11 @@ import com.ai.yc.translator.dao.mapper.interfaces.UsrLanguageMapper;
 import com.ai.yc.translator.dao.mapper.interfaces.UsrLspMapper;
 import com.ai.yc.translator.dao.mapper.interfaces.UsrTranslatorMapper;
 import com.ai.yc.translator.dao.mapper.interfaces.UsrUserMapper;
-import com.ai.yc.translator.service.atom.interfaces.IYCUserServiceAtomSV;
+import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
 
 
 @Component
-public class YCUserServiceAtomSVImpl implements IYCUserServiceAtomSV {
+public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV {
 
 
 	@Autowired

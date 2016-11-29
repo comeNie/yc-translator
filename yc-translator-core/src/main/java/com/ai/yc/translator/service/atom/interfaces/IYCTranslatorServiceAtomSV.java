@@ -10,7 +10,7 @@ import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 import com.ai.yc.translator.dao.mapper.bo.UsrUser;
 
 
-public interface IYCUserServiceAtomSV {
+public interface IYCTranslatorServiceAtomSV {
 	
 	public List<UsrLanguage> getUsrLanguageList(UsrLanguageCriteria userIdCri);
 

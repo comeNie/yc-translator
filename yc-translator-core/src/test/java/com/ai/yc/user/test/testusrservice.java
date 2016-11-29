@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ai.yc.translator.api.userservice.interfaces.IYCUserServiceSV;
+import com.ai.yc.translator.api.userservice.interfaces.IYCTranslatorServiceSV;
 import com.ai.yc.translator.api.userservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.userservice.param.SearchYCTranslatorSkillListRequest;
 import com.ai.yc.translator.api.userservice.param.YCLSPInfoReponse;
@@ -26,7 +26,7 @@ import com.alibaba.fastjson.JSON;
 public class testusrservice {
 
 	@Autowired
-	private IYCUserServiceSV usSV;
+	private IYCTranslatorServiceSV usSV;
 	
 	
 	@Test

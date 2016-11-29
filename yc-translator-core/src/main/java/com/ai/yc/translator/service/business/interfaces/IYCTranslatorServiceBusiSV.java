@@ -8,7 +8,7 @@ import com.ai.yc.translator.api.userservice.param.YCTranslatorSkillListResponse;
 import com.ai.yc.translator.api.userservice.param.searchYCLSPInfoRequest;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 
-public interface IYCUserServiceBusiSV {
+public interface IYCTranslatorServiceBusiSV {
     
 
 	public UsrTranslator searchYCUsrTranslatorInfo(SearchYCTranslatorRequest searchReq) throws BusinessException;

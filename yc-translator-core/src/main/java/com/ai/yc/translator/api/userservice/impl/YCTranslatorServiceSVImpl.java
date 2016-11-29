@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.base.vo.ResponseHeader;
 import com.ai.opt.sdk.util.BeanUtils;
-import com.ai.yc.translator.api.userservice.interfaces.IYCUserServiceSV;
+import com.ai.yc.translator.api.userservice.interfaces.IYCTranslatorServiceSV;
 import com.ai.yc.translator.api.userservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.userservice.param.SearchYCTranslatorSkillListRequest;
 import com.ai.yc.translator.api.userservice.param.YCLSPInfoReponse;
@@ -18,16 +18,16 @@ import com.ai.yc.translator.api.userservice.param.YCTranslatorSkillListResponse;
 import com.ai.yc.translator.api.userservice.param.searchYCLSPInfoRequest;
 import com.ai.yc.translator.constants.ExceptCodeConstants;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
-import com.ai.yc.translator.service.business.interfaces.IYCUserServiceBusiSV;
+import com.ai.yc.translator.service.business.interfaces.IYCTranslatorServiceBusiSV;
 import com.alibaba.dubbo.config.annotation.Service;
 
 @Service(validation = "true")
 @Component
-public class YCUserServiceSVImpl implements IYCUserServiceSV {
+public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(YCUserServiceSVImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(YCTranslatorServiceSVImpl.class);
     @Autowired
-    public IYCUserServiceBusiSV ycUsrServiceBusiSv;
+    public IYCTranslatorServiceBusiSV ycUsrServiceBusiSv;
 
 	
 	

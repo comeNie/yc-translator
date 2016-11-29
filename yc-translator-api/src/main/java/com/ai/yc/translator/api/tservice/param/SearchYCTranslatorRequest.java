@@ -1,4 +1,5 @@
-package com.ai.yc.translator.api.userservice.param;
+package com.ai.yc.translator.api.tservice.param;
+
 
 import java.io.Serializable;
 
@@ -6,11 +7,11 @@ import com.ai.opt.base.vo.BaseInfo;
 
 /** 
  * @author  作者 “WTF” E-mail: 1031248990@qq.com
- * @date 创建时间：2016年11月8日 上午11:33:09 
+ * @date 创建时间：2016年11月3日 下午7:05:20 
  * @version 
  * @since  
  */
-public class SearchYCTranslatorSkillListRequest  implements Serializable{
+public class SearchYCTranslatorRequest  implements Serializable{
 	/**
 	 * 租户Id，必填
 	 */
@@ -25,9 +26,9 @@ public class SearchYCTranslatorSkillListRequest  implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8529021939899100513L;
-
+	private static final long serialVersionUID = -1445662539360692130L;
 	private String userId;
+	private String translatorId;
 
 	public String getUserId() {
 		return userId;
@@ -35,5 +36,13 @@ public class SearchYCTranslatorSkillListRequest  implements Serializable{
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public String getTranslatorId() {
+		return translatorId;
+	}
+
+	public void setTranslatorId(String translatorId) {
+		this.translatorId = translatorId;
 	}
 }

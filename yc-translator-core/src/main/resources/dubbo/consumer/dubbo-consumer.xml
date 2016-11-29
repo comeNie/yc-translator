@@ -23,5 +23,7 @@
 	<dubbo:monitor protocol="registry" />
 
 	<!-- <dubbo:consumer timeout="${dubbo.consoumer.timeout}" /> -->
-
+	<dubbo:reference id="iYCUserServiceSV"
+		interface="com.ai.yc.user.api.userservice.interfaces.IYCUserServiceSV"/>
+	
 </beans>

@@ -1,4 +1,4 @@
-package com.ai.yc.translator.api.userservice.interfaces;
+package com.ai.yc.translator.api.tservice.interfaces;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -6,15 +6,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.ai.yc.translator.api.userservice.param.SearchYCTranslatorRequest;
-import com.ai.yc.translator.api.userservice.param.SearchYCTranslatorSkillListRequest;
-import com.ai.yc.translator.api.userservice.param.YCLSPInfoReponse;
-import com.ai.yc.translator.api.userservice.param.YCTranslatorInfoResponse;
-import com.ai.yc.translator.api.userservice.param.YCTranslatorSkillListResponse;
-import com.ai.yc.translator.api.userservice.param.searchYCLSPInfoRequest;
+import com.ai.yc.translator.api.tservice.param.SearchYCTranslatorRequest;
+import com.ai.yc.translator.api.tservice.param.SearchYCTranslatorSkillListRequest;
+import com.ai.yc.translator.api.tservice.param.YCLSPInfoReponse;
+import com.ai.yc.translator.api.tservice.param.YCTranslatorInfoResponse;
+import com.ai.yc.translator.api.tservice.param.YCTranslatorSkillListResponse;
+import com.ai.yc.translator.api.tservice.param.searchYCLSPInfoRequest;
 
 
-@Path("/ycuserservice")
+@Path("/yctranslatorservice")
 @Consumes({ MediaType.APPLICATION_JSON })
 @Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_XML })
 public interface IYCTranslatorServiceSV {
@@ -24,8 +24,8 @@ public interface IYCTranslatorServiceSV {
 	 * 不可同时传入
 	 * @param 
 	 * @return
-	 * @ApiCode USR_0004
-     * @RestRelativeURL ycuserservice/searchYCTranslatorInfo
+	 * @ApiCode TRANSLATOR_0001
+     * @RestRelativeURL yctranslatorservice/searchYCTranslatorInfo
 	 */
 	@POST
 	@Path("/searchYCTranslatorInfo")
@@ -36,8 +36,8 @@ public interface IYCTranslatorServiceSV {
 	 * 查询译员语言技能列表
 	 * @param 
 	 * @return
-	 * @ApiCode USR_0009
-     * @RestRelativeURL ycuserservice/SearchTranslatorSkillList
+	 * @ApiCode TRANSLATOR_0002
+     * @RestRelativeURL yctranslatorservice/SearchTranslatorSkillList
 	 */
 	@POST
 	@Path("/SearchTranslatorSkillList")
@@ -47,8 +47,8 @@ public interface IYCTranslatorServiceSV {
 	 * 查询LSP信息
 	 * @param 
 	 * @return
-	 * @ApiCode USR_0010
-     * @RestRelativeURL ycuserservice/searchLSPInfo
+	 * @ApiCode TRANSLATOR_0003
+     * @RestRelativeURL yctranslatorservice/searchLSPInfo
 	 */
 	@POST
 	@Path("/searchLSPInfo")

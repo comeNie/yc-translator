@@ -1,4 +1,4 @@
-package com.ai.yc.translator.api.userservice.param;
+package com.ai.yc.translator.api.tservice.param;
 
 import java.math.BigDecimal;
 

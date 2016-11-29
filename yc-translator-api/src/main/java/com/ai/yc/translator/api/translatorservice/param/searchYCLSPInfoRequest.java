@@ -1,4 +1,4 @@
-package com.ai.yc.translator.api.tservice.param;
+package com.ai.yc.translator.api.translatorservice.param;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.ai.yc.translator.api.tservice.interfaces;
+package com.ai.yc.translator.api.translatorservice.interfaces;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -6,12 +6,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.ai.yc.translator.api.tservice.param.SearchYCTranslatorRequest;
-import com.ai.yc.translator.api.tservice.param.SearchYCTranslatorSkillListRequest;
-import com.ai.yc.translator.api.tservice.param.YCLSPInfoReponse;
-import com.ai.yc.translator.api.tservice.param.YCTranslatorInfoResponse;
-import com.ai.yc.translator.api.tservice.param.YCTranslatorSkillListResponse;
-import com.ai.yc.translator.api.tservice.param.searchYCLSPInfoRequest;
+import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
+import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
+import com.ai.yc.translator.api.translatorservice.param.YCTranslatorInfoResponse;
+import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
+import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
 
 
 @Path("/yctranslatorservice")

@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ai.yc.translator.api.userservice.interfaces.IYCTranslatorServiceSV;
-import com.ai.yc.translator.api.userservice.param.SearchYCTranslatorRequest;
-import com.ai.yc.translator.api.userservice.param.SearchYCTranslatorSkillListRequest;
-import com.ai.yc.translator.api.userservice.param.YCLSPInfoReponse;
-import com.ai.yc.translator.api.userservice.param.YCTranslatorInfoResponse;
-import com.ai.yc.translator.api.userservice.param.YCTranslatorSkillListResponse;
-import com.ai.yc.translator.api.userservice.param.searchYCLSPInfoRequest;
+import com.ai.yc.translator.api.translatorservice.interfaces.IYCTranslatorServiceSV;
+import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
+import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
+import com.ai.yc.translator.api.translatorservice.param.YCTranslatorInfoResponse;
+import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
+import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
 import com.alibaba.fastjson.JSON;
 
 /** 

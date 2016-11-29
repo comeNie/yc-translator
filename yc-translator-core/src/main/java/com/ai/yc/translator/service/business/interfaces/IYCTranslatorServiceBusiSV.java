@@ -2,10 +2,10 @@ package com.ai.yc.translator.service.business.interfaces;
 
 
 import com.ai.opt.base.exception.BusinessException;
-import com.ai.yc.translator.api.tservice.param.SearchYCTranslatorRequest;
-import com.ai.yc.translator.api.tservice.param.YCLSPInfoReponse;
-import com.ai.yc.translator.api.tservice.param.YCTranslatorSkillListResponse;
-import com.ai.yc.translator.api.tservice.param.searchYCLSPInfoRequest;
+import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
+import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
+import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 
 public interface IYCTranslatorServiceBusiSV {

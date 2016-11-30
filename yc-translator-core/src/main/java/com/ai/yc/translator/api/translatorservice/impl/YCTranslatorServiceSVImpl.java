@@ -31,11 +31,9 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
     @Autowired
     public IYCTranslatorServiceBusiSV ycUsrServiceBusiSv;
 
-	
-	
-
 	@Override
 	public YCTranslatorInfoResponse searchYCTranslatorInfo(SearchYCTranslatorRequest tUsrId) {
+		LOGGER.debug("searchYCTranslatorInfo input params:", tUsrId);
 		ResponseHeader responseHeader = null;
 		UsrTranslator usrTranslator = null;
 		YCTranslatorInfoResponse result = new YCTranslatorInfoResponse();
@@ -59,13 +57,14 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 
 	@Override
 	public YCTranslatorSkillListResponse getTranslatorSkillList(SearchYCTranslatorSkillListRequest getSkillList) {
+		LOGGER.debug("getTranslatorSkillList input params:", getSkillList);
 		ResponseHeader responseHeader = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "更新成功");
 		YCTranslatorSkillListResponse result = new YCTranslatorSkillListResponse();
 		try{
 			result = ycUsrServiceBusiSv.getTranslatorSkillList(getSkillList.getUserId());
 			responseHeader = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "查询成功");
-		}catch(Exception e){
-			responseHeader = new ResponseHeader(false, ExceptCodeConstants.SUCCESS, e.getMessage());
+		}catch(BusinessException e){
+			responseHeader = new ResponseHeader(false, ExceptCodeConstants.FAILD, e.getErrorMessage());
 		}
 		result.setResponseHeader(responseHeader);
 		return result;
@@ -73,13 +72,14 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 
 	@Override
 	public YCLSPInfoReponse searchLSPInfo(searchYCLSPInfoRequest searchLSPParams) {
+		LOGGER.debug("searchLSPInfo input params:", searchLSPParams);
 		ResponseHeader responseHeader = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "更新成功");
 		YCLSPInfoReponse result = new YCLSPInfoReponse();
 		try{
 			result = ycUsrServiceBusiSv.searchLSPInfoBussiness(searchLSPParams);
 			responseHeader = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "查询成功");
-		}catch(Exception e){
-			responseHeader = new ResponseHeader(false, ExceptCodeConstants.SUCCESS, e.getMessage());
+		}catch(BusinessException e){
+			responseHeader = new ResponseHeader(false, ExceptCodeConstants.FAILD, e.getErrorMessage());
 		}
 		result.setResponseHeader(responseHeader);
 		return result;

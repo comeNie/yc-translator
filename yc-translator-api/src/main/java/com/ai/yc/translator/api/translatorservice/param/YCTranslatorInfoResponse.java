@@ -16,6 +16,10 @@ public class YCTranslatorInfoResponse extends BaseResponse {
 	 */
 	private static final long serialVersionUID = -9068009364796285584L;
 	/**
+	 * 译员id
+	 */
+	private String translatorId;
+	/**
 	 * 用户id
 	 */
 	private String userId;
@@ -43,15 +47,25 @@ public class YCTranslatorInfoResponse extends BaseResponse {
 	 * 翻译类型
 	 */
     private String translationType;
-
+    /**
+     * 口译价格
+     */
     private BigDecimal interpretPrice;
-
+    /**
+     * 介绍
+     */
     private String introduction;
-
+    /**
+     * 是否是LSP用户
+     */
     private Integer isLsp;
-
+    /**
+     * vip等级
+     */
     private String vipLevel;
-
+    /**
+     * 合法证书号
+     */
     private String legalCertNum;
 	
 	private String responseCode;
@@ -162,6 +176,14 @@ public class YCTranslatorInfoResponse extends BaseResponse {
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+
+	public String getTranslatorId() {
+		return translatorId;
+	}
+
+	public void setTranslatorId(String translatorId) {
+		this.translatorId = translatorId;
 	}
 	
 }

@@ -56,6 +56,10 @@ public class YCTranslatorInfoResponse extends BaseResponse {
 	
 	private String responseCode;
 
+	private String approveState;
+	
+	
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -163,5 +167,15 @@ public class YCTranslatorInfoResponse extends BaseResponse {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
+	public String getApproveState() {
+		return approveState;
+	}
+
+	public void setApproveState(String approveState) {
+		this.approveState = approveState;
+	}
+
+	
 	
 }

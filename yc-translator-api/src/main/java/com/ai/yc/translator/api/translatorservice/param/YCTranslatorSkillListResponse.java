@@ -22,11 +22,17 @@ public class YCTranslatorSkillListResponse extends BaseResponse {
     private String lspId; // lsp ID
 
     private String lspRole; // lsp 角色 
-    
+    /**
+     * 译员级别
+     */
     private String vipLevel;
     
     private List<UsrLanguageMessage> usrLanguageList;
-
+    /**
+     * 0代表审核不通过 1代表审核通过
+     */
+    private String approveState;
+    
 	public String getUserId() {
 		return userId;
 	}
@@ -65,6 +71,14 @@ public class YCTranslatorSkillListResponse extends BaseResponse {
 
 	public void setUsrLanguageList(List<UsrLanguageMessage> usrLanguageList) {
 		this.usrLanguageList = usrLanguageList;
+	}
+
+	public String getApproveState() {
+		return approveState;
+	}
+
+	public void setApproveState(String approveState) {
+		this.approveState = approveState;
 	}
 
 

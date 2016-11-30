@@ -70,6 +70,13 @@ public class YCTranslatorInfoResponse extends BaseResponse {
 	
 	private String responseCode;
 
+	/**
+	 * 审核状态
+	 */
+	private String approveState;
+	
+	
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -185,5 +192,14 @@ public class YCTranslatorInfoResponse extends BaseResponse {
 	public void setTranslatorId(String translatorId) {
 		this.translatorId = translatorId;
 	}
+	public String getApproveState() {
+		return approveState;
+	}
+
+	public void setApproveState(String approveState) {
+		this.approveState = approveState;
+	}
+
+	
 	
 }

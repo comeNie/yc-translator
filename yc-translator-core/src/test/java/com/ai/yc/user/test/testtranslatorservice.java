@@ -25,7 +25,7 @@ import com.alibaba.fastjson.JSON;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "/context/core-context.xml" })
-public class testusrservice {
+public class testtranslatorservice {
 
 	@Autowired
 	private IYCTranslatorServiceSV usSV;

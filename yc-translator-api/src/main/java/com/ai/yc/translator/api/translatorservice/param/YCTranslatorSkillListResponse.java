@@ -27,6 +27,8 @@ public class YCTranslatorSkillListResponse extends BaseResponse {
     
     private List<UsrLanguageMessage> usrLanguageList;
 
+    private String approveState;
+    
 	public String getUserId() {
 		return userId;
 	}
@@ -65,6 +67,14 @@ public class YCTranslatorSkillListResponse extends BaseResponse {
 
 	public void setUsrLanguageList(List<UsrLanguageMessage> usrLanguageList) {
 		this.usrLanguageList = usrLanguageList;
+	}
+
+	public String getApproveState() {
+		return approveState;
+	}
+
+	public void setApproveState(String approveState) {
+		this.approveState = approveState;
 	}
 
 

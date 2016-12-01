@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.sdk.constants.ExceptCodeConstants;
+import com.ai.opt.sdk.dubbo.util.DubboConsumerFactory;
 import com.ai.opt.sdk.util.BeanUtils;
 import com.ai.opt.sdk.util.StringUtil;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
@@ -28,6 +29,9 @@ import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 import com.ai.yc.translator.dao.mapper.bo.UsrUser;
 import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
 import com.ai.yc.translator.service.business.interfaces.IYCTranslatorServiceBusiSV;
+import com.ai.yc.user.api.userservice.interfaces.IYCUserServiceSV;
+import com.ai.yc.user.api.userservice.param.SearchYCUserRequest;
+import com.ai.yc.user.api.userservice.param.YCUserInfoResponse;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -71,13 +75,18 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 		}
 		YCTranslatorSkillListResponse translatorSkillList = new YCTranslatorSkillListResponse();
 		// UsrUser验证译员信息
-		UsrUser userinfo = ycUSAtomSV.getUserInfo(userId);
+		IYCUserServiceSV iYCUserServiceSV = DubboConsumerFactory.getService(IYCUserServiceSV.class);
+		SearchYCUserRequest userReq = new SearchYCUserRequest();
+		userReq.setUserId(userId);
+		userReq.setTenantId("yeecloud");
+		YCUserInfoResponse userinfo = iYCUserServiceSV.searchYCUserInfo(userReq);
 		if(null == userinfo.getIsTranslator()){
 			return translatorSkillList;
 		}
 		if (userinfo.getIsTranslator() != 1) {
 			return translatorSkillList;
 		}
+		
 		// 获取译员信息
 		UsrTranslator utr = ycUSAtomSV.getUsrTranslatorInfo(userId);
 		if (null == utr) {

@@ -11,21 +11,15 @@ import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
 import com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslatorCriteria;
-import com.ai.yc.translator.dao.mapper.bo.UsrUser;
 import com.ai.yc.translator.dao.mapper.interfaces.UsrLanguageMapper;
 import com.ai.yc.translator.dao.mapper.interfaces.UsrLspMapper;
 import com.ai.yc.translator.dao.mapper.interfaces.UsrTranslatorMapper;
-import com.ai.yc.translator.dao.mapper.interfaces.UsrUserMapper;
 import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
 
 
 @Component
 public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV {
 
-
-	@Autowired
-	private transient UsrUserMapper tUserMapper;
-	
 	@Autowired
 	private transient UsrTranslatorMapper uTranslatorMapper;
 
@@ -36,11 +30,6 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 	@Autowired
 	private transient UsrLspMapper uLspMapper;
 	
-	@Override
-	public UsrUser getUserInfo(String userId) {
-		return tUserMapper.selectByPrimaryKey(userId);
-	}
-
 	@Override
 	public UsrTranslator getUsrTranslatorInfo(String userId) {
 		UsrTranslatorCriteria example = new UsrTranslatorCriteria();

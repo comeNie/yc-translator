@@ -26,7 +26,6 @@ import com.ai.yc.translator.dao.mapper.bo.UsrLanguageCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
 import com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
-import com.ai.yc.translator.dao.mapper.bo.UsrUser;
 import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
 import com.ai.yc.translator.service.business.interfaces.IYCTranslatorServiceBusiSV;
 import com.ai.yc.user.api.userservice.interfaces.IYCUserServiceSV;

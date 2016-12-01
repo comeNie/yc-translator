@@ -7,7 +7,6 @@ import com.ai.yc.translator.dao.mapper.bo.UsrLanguageCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
 import com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
-import com.ai.yc.translator.dao.mapper.bo.UsrUser;
 
 
 public interface IYCTranslatorServiceAtomSV {
@@ -21,7 +20,5 @@ public interface IYCTranslatorServiceAtomSV {
 	public UsrTranslator getUsrTranslatorInfo(String userId);
 	
 	public UsrTranslator getUsrTranslatorInfoByTranslatorId(String translatorId);
-
-	public UsrUser getUserInfo(String userId);
 
 }

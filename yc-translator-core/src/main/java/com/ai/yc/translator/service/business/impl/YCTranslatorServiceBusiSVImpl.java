@@ -73,18 +73,6 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "用户ID不能为空");
 		}
 		YCTranslatorSkillListResponse translatorSkillList = new YCTranslatorSkillListResponse();
-		// UsrUser验证译员信息
-		IYCUserServiceSV iYCUserServiceSV = DubboConsumerFactory.getService(IYCUserServiceSV.class);
-		SearchYCUserRequest userReq = new SearchYCUserRequest();
-		userReq.setUserId(userId);
-		userReq.setTenantId("yeecloud");
-		YCUserInfoResponse userinfo = iYCUserServiceSV.searchYCUserInfo(userReq);
-		if(null == userinfo.getIsTranslator()){
-			return translatorSkillList;
-		}
-		if (userinfo.getIsTranslator() != 1) {
-			return translatorSkillList;
-		}
 		
 		// 获取译员信息
 		UsrTranslator utr = ycUSAtomSV.getUsrTranslatorInfo(userId);

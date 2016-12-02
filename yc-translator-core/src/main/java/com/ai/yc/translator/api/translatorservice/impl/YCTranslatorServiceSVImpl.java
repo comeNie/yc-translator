@@ -23,7 +23,7 @@ import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 import com.ai.yc.translator.service.business.interfaces.IYCTranslatorServiceBusiSV;
 import com.alibaba.dubbo.config.annotation.Service;
 
-@Service(validation = "true")
+@Service
 @Component
 public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 

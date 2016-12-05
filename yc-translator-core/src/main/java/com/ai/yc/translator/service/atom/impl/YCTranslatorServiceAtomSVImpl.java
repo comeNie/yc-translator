@@ -72,6 +72,10 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 	public List<UsrLsp> searchLspByName(UsrLspCriteria example) {
 		return uLspMapper.selectByExample(example);
 	}
+	@Override
+	public int insertTranslatorInc(UsrTranslator newTranslator) {
+		return uTranslatorMapper.insert(newTranslator);
+	}
 
 
 	

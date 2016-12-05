@@ -6,6 +6,8 @@ import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorReques
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
 import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
+import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorResponse;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 
 public interface IYCTranslatorServiceBusiSV {
@@ -16,5 +18,7 @@ public interface IYCTranslatorServiceBusiSV {
 	public YCTranslatorSkillListResponse getTranslatorSkillList(String userId) throws BusinessException;
 
 	public YCLSPInfoReponse searchLSPInfoBussiness(searchYCLSPInfoRequest searchLSPParams) throws BusinessException;
+
+	public YCInsertTranslatorResponse insertTranslatorBusiness(InsertYCTranslatorRequest insertYCTranslatorParams) throws BusinessException;
 
 }

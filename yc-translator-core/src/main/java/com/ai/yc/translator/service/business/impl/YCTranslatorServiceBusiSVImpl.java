@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.sdk.components.sequence.util.SeqUtil;
 import com.ai.opt.sdk.constants.ExceptCodeConstants;
 import com.ai.opt.sdk.dubbo.util.DubboConsumerFactory;
 import com.ai.opt.sdk.util.BeanUtils;
@@ -21,6 +22,8 @@ import com.ai.yc.translator.api.translatorservice.param.UsrLspMessage;
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
 import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
+import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorResponse;
 import com.ai.yc.translator.dao.mapper.bo.UsrLanguage;
 import com.ai.yc.translator.dao.mapper.bo.UsrLanguageCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
@@ -139,6 +142,35 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 		Gson g = new Gson();
 		Type type = new TypeToken<List<UsrLspMessage>>(){}.getType();
 		return g.fromJson(g.toJson(usrLspList), type);
+	}
+
+
+	@Override
+	public YCInsertTranslatorResponse insertTranslatorBusiness(InsertYCTranslatorRequest insertYCTranslatorParams)
+			throws BusinessException {
+		if (StringUtil.isBlank(insertYCTranslatorParams.getUserId()) 
+				&& StringUtil.isBlank(insertYCTranslatorParams.getUsername())
+				&& StringUtil.isBlank(insertYCTranslatorParams.getNickname())
+				&& StringUtil.isBlank(insertYCTranslatorParams.getMobilePhone())
+				&& StringUtil.isBlank(insertYCTranslatorParams.getEmail())
+				&& StringUtil.isBlank(insertYCTranslatorParams.getLegalCertNum())
+				&& StringUtil.isBlank(insertYCTranslatorParams.getMotherTongue())
+				&& insertYCTranslatorParams.getWorkingLife() > 0
+				&& StringUtil.isBlank(insertYCTranslatorParams.getAreaOfExperise())
+				&& StringUtil.isBlank(insertYCTranslatorParams.getAreaOfUse())
+				) {
+			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "必填字段不能为空");
+		}
+		YCInsertTranslatorResponse itr = new YCInsertTranslatorResponse();
+		
+		UsrTranslator newTranslator = new UsrTranslator();
+		BeanUtils.copyProperties(newTranslator, insertYCTranslatorParams);
+		String translatorId = SeqUtil.getNewId("YC_TRANSLATOR_ID$SEQ", 10);
+		newTranslator.setTranslatorId(translatorId);
+		ycUSAtomSV.insertTranslatorInc(newTranslator);
+		
+	    BeanUtils.copyProperties(itr, newTranslator);
+		return itr;
 	}
 
 

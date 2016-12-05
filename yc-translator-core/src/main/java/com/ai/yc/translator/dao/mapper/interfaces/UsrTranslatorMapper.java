@@ -1,10 +1,9 @@
 package com.ai.yc.translator.dao.mapper.interfaces;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslatorCriteria;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UsrTranslatorMapper {
     int countByExample(UsrTranslatorCriteria example);

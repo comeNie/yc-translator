@@ -21,4 +21,6 @@ public interface IYCTranslatorServiceAtomSV {
 	
 	public UsrTranslator getUsrTranslatorInfoByTranslatorId(String translatorId);
 
+	public int insertTranslatorInc(UsrTranslator newTranslator);
+
 }

@@ -149,8 +149,16 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	@Override
 	public HBBaseResponse<YCUpdateTranslatorResponse> updateTranslator(
 			UpdateYCTranslatorRequest UpdateYCTranslatorParams) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.debug("insertTranslator input params:", UpdateYCTranslatorParams);
+		HBBaseResponse<YCUpdateTranslatorResponse> updateTranslatorResp = null;
+		YCUpdateTranslatorResponse result = null;
+		try{
+			result = ycUsrServiceBusiSv.updateTranslatorBusiness(UpdateYCTranslatorParams);
+			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(true,ExceptCodeConstants.SUCCESS,result);
+		}catch(BusinessException e){
+			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(true,ExceptCodeConstants.SUCCESS,e.getErrorMessage());
+		}
+		return updateTranslatorResp;
 	}
 
 

@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.sdk.components.sequence.util.SeqUtil;
 import com.ai.opt.sdk.constants.ExceptCodeConstants;
-import com.ai.opt.sdk.dubbo.util.DubboConsumerFactory;
 import com.ai.opt.sdk.util.BeanUtils;
 import com.ai.opt.sdk.util.StringUtil;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
@@ -23,7 +22,9 @@ import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
 import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorResponse;
+import com.ai.yc.translator.api.translatorservice.param.newparam.YCUpdateTranslatorResponse;
 import com.ai.yc.translator.dao.mapper.bo.UsrLanguage;
 import com.ai.yc.translator.dao.mapper.bo.UsrLanguageCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
@@ -31,9 +32,6 @@ import com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
 import com.ai.yc.translator.service.business.interfaces.IYCTranslatorServiceBusiSV;
-import com.ai.yc.user.api.userservice.interfaces.IYCUserServiceSV;
-import com.ai.yc.user.api.userservice.param.SearchYCUserRequest;
-import com.ai.yc.user.api.userservice.param.YCUserInfoResponse;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -171,6 +169,26 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 		
 	    BeanUtils.copyProperties(itr, newTranslator);
 		return itr;
+	}
+
+
+	@Override
+	public YCUpdateTranslatorResponse updateTranslatorBusiness(UpdateYCTranslatorRequest updateYCTranslatorParams)
+			throws BusinessException {
+//		if (StringUtil.isBlank(insertYCTranslatorParams.getUserId()) 
+//				&& StringUtil.isBlank(insertYCTranslatorParams.getUsername())
+//				&& StringUtil.isBlank(insertYCTranslatorParams.getNickname())
+//				&& StringUtil.isBlank(insertYCTranslatorParams.getMobilePhone())
+//				&& StringUtil.isBlank(insertYCTranslatorParams.getEmail())
+//				&& StringUtil.isBlank(insertYCTranslatorParams.getLegalCertNum())
+//				&& StringUtil.isBlank(insertYCTranslatorParams.getMotherTongue())
+//				&& insertYCTranslatorParams.getWorkingLife() > 0
+//				&& StringUtil.isBlank(insertYCTranslatorParams.getAreaOfExperise())
+//				&& StringUtil.isBlank(insertYCTranslatorParams.getAreaOfUse())
+//				) {
+//			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "必填字段不能为空");
+//		}
+		return null;
 	}
 
 

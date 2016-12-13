@@ -6,12 +6,13 @@ import com.ai.yc.translator.dao.mapper.bo.UsrLanguage;
 import com.ai.yc.translator.dao.mapper.bo.UsrLanguageCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
 import com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria;
+import com.ai.yc.translator.dao.mapper.bo.UsrLspRelation;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 
 
 public interface IYCTranslatorServiceAtomSV {
 	
-	public List<UsrLanguage> getUsrLanguageList(UsrLanguageCriteria userIdCri);
+	public List<UsrLanguage> getUsrLanguageList(String translatorId);
 
 	public UsrLsp searchLspById(String lspId) ;
 
@@ -23,4 +24,6 @@ public interface IYCTranslatorServiceAtomSV {
 
 	public int insertTranslatorInc(UsrTranslator newTranslator);
 
+	public UsrLspRelation getUsrLspRelationByTranslatorId(String translatorId);
+	
 }

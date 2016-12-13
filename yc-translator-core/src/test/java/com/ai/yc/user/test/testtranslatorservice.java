@@ -43,7 +43,8 @@ public class testtranslatorservice {
 	@Test
 	public void testSearchSkill() {
 		SearchYCTranslatorSkillListRequest a = new SearchYCTranslatorSkillListRequest();
-		a.setUserId("4444314");
+//		a.setUserId("4444314");
+		a.setUserId("525954");
 		YCTranslatorSkillListResponse response = usSV.getTranslatorSkillList(a);
 		System.out.println(JSON.toJSONString(response));
 	}

@@ -934,6 +934,146 @@ public class UsrLspCriteria {
             addCriterion("mobile_phone not between", value1, value2, "mobilePhone");
             return (Criteria) this;
         }
+
+        public Criteria andLspRoleIsNull() {
+            addCriterion("lsp_role is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleIsNotNull() {
+            addCriterion("lsp_role is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleEqualTo(String value) {
+            addCriterion("lsp_role =", value, "lspRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleNotEqualTo(String value) {
+            addCriterion("lsp_role <>", value, "lspRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleGreaterThan(String value) {
+            addCriterion("lsp_role >", value, "lspRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleGreaterThanOrEqualTo(String value) {
+            addCriterion("lsp_role >=", value, "lspRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleLessThan(String value) {
+            addCriterion("lsp_role <", value, "lspRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleLessThanOrEqualTo(String value) {
+            addCriterion("lsp_role <=", value, "lspRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleLike(String value) {
+            addCriterion("lsp_role like", value, "lspRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleNotLike(String value) {
+            addCriterion("lsp_role not like", value, "lspRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleIn(List<String> values) {
+            addCriterion("lsp_role in", values, "lspRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleNotIn(List<String> values) {
+            addCriterion("lsp_role not in", values, "lspRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleBetween(String value1, String value2) {
+            addCriterion("lsp_role between", value1, value2, "lspRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLspRoleNotBetween(String value1, String value2) {
+            addCriterion("lsp_role not between", value1, value2, "lspRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdIsNull() {
+            addCriterion("translator_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdIsNotNull() {
+            addCriterion("translator_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdEqualTo(String value) {
+            addCriterion("translator_id =", value, "translatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdNotEqualTo(String value) {
+            addCriterion("translator_id <>", value, "translatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdGreaterThan(String value) {
+            addCriterion("translator_id >", value, "translatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdGreaterThanOrEqualTo(String value) {
+            addCriterion("translator_id >=", value, "translatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdLessThan(String value) {
+            addCriterion("translator_id <", value, "translatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdLessThanOrEqualTo(String value) {
+            addCriterion("translator_id <=", value, "translatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdLike(String value) {
+            addCriterion("translator_id like", value, "translatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdNotLike(String value) {
+            addCriterion("translator_id not like", value, "translatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdIn(List<String> values) {
+            addCriterion("translator_id in", values, "translatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdNotIn(List<String> values) {
+            addCriterion("translator_id not in", values, "translatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdBetween(String value1, String value2) {
+            addCriterion("translator_id between", value1, value2, "translatorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTranslatorIdNotBetween(String value1, String value2) {
+            addCriterion("translator_id not between", value1, value2, "translatorId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

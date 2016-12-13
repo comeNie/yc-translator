@@ -27,6 +27,10 @@ public class UsrLsp {
 
     private String mobilePhone;
 
+    private String lspRole;
+
+    private String translatorId;
+
     public String getLspId() {
         return lspId;
     }
@@ -121,5 +125,21 @@ public class UsrLsp {
 
     public void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone == null ? null : mobilePhone.trim();
+    }
+
+    public String getLspRole() {
+        return lspRole;
+    }
+
+    public void setLspRole(String lspRole) {
+        this.lspRole = lspRole == null ? null : lspRole.trim();
+    }
+
+    public String getTranslatorId() {
+        return translatorId;
+    }
+
+    public void setTranslatorId(String translatorId) {
+        this.translatorId = translatorId == null ? null : translatorId.trim();
     }
 }

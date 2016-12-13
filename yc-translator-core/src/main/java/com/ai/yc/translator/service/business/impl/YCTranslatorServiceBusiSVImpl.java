@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.vo.ResponseHeader;
 import com.ai.opt.sdk.components.sequence.util.SeqUtil;
 import com.ai.opt.sdk.constants.ExceptCodeConstants;
 import com.ai.opt.sdk.util.BeanUtils;
@@ -29,6 +30,7 @@ import com.ai.yc.translator.dao.mapper.bo.UsrLanguage;
 import com.ai.yc.translator.dao.mapper.bo.UsrLanguageCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
 import com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria;
+import com.ai.yc.translator.dao.mapper.bo.UsrLspRelation;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
 import com.ai.yc.translator.service.business.interfaces.IYCTranslatorServiceBusiSV;
@@ -80,14 +82,21 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 		if (null == utr) {
 			return translatorSkillList;
 		}
+		// 获取LSP信息
+		UsrLspRelation ulr = ycUSAtomSV.getUsrLspRelationByTranslatorId(utr.getTranslatorId());
+		if(null == ulr){
+			translatorSkillList.setLspId("0");
+			translatorSkillList.setLspRole("0");
+		}else{
+			translatorSkillList.setLspId(ulr.getLspId());
+			translatorSkillList.setLspRole(ulr.getTranslatorRole());
+		}
 		
 		BeanUtils.copyProperties(translatorSkillList, utr);
 		// 获取技能列表
-		UsrLanguageCriteria example = new UsrLanguageCriteria();
-		UsrLanguageCriteria.Criteria criteria = example.createCriteria();
-		criteria.andTranslatorIdEqualTo(utr.getTranslatorId());
-		List<UsrLanguage> usrLanguageList = ycUSAtomSV.getUsrLanguageList(example);
+		List<UsrLanguage> usrLanguageList = ycUSAtomSV.getUsrLanguageList(utr.getTranslatorId());
 		translatorSkillList.setUsrLanguageList(changUsrLanguageToUsrLanguageMessage(usrLanguageList));
+		
 		return translatorSkillList;
 	}
 

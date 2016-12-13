@@ -9,10 +9,13 @@ import com.ai.yc.translator.dao.mapper.bo.UsrLanguage;
 import com.ai.yc.translator.dao.mapper.bo.UsrLanguageCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
 import com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria;
+import com.ai.yc.translator.dao.mapper.bo.UsrLspRelation;
+import com.ai.yc.translator.dao.mapper.bo.UsrLspRelationCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslatorCriteria;
 import com.ai.yc.translator.dao.mapper.interfaces.UsrLanguageMapper;
 import com.ai.yc.translator.dao.mapper.interfaces.UsrLspMapper;
+import com.ai.yc.translator.dao.mapper.interfaces.UsrLspRelationMapper;
 import com.ai.yc.translator.dao.mapper.interfaces.UsrTranslatorMapper;
 import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
 
@@ -29,6 +32,9 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 	
 	@Autowired
 	private transient UsrLspMapper uLspMapper;
+	
+	@Autowired
+	private transient UsrLspRelationMapper uLspRelationMapper;
 	
 	@Override
 	public UsrTranslator getUsrTranslatorInfo(String userId) {
@@ -59,8 +65,11 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 
 
 	@Override
-	public List<UsrLanguage> getUsrLanguageList(UsrLanguageCriteria userIdCri) {
-		return uLanguageMapper.selectByExample(userIdCri);
+	public List<UsrLanguage> getUsrLanguageList(String translator) {
+		UsrLanguageCriteria example = new UsrLanguageCriteria();
+		UsrLanguageCriteria.Criteria criteria = example.createCriteria();
+		criteria.andTranslatorIdEqualTo(translator);
+		return uLanguageMapper.selectByExample(example);
 	}
 
 	@Override
@@ -71,6 +80,23 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 	@Override
 	public List<UsrLsp> searchLspByName(UsrLspCriteria example) {
 		return uLspMapper.selectByExample(example);
+	}
+	@Override
+	public int insertTranslatorInc(UsrTranslator newTranslator) {
+		return uTranslatorMapper.insert(newTranslator);
+	}
+	@Override
+	public UsrLspRelation getUsrLspRelationByTranslatorId(String translatorId) {
+		UsrLspRelationCriteria example = new UsrLspRelationCriteria();
+		UsrLspRelationCriteria.Criteria criteria = example.createCriteria();
+		criteria.andTranslatorIdEqualTo(translatorId);
+		List<UsrLspRelation> list = uLspRelationMapper.selectByExample(example);
+		if(list.size() > 0)
+		{
+			return list.get(0);
+		} else {
+			return null;
+		}
 	}
 
 

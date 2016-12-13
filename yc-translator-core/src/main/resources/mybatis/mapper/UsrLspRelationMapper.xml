@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ai.yc.translator.dao.mapper.interfaces.UsrLspRelationMapper" >
+  <resultMap id="BaseResultMap" type="com.ai.yc.translator.dao.mapper.bo.UsrLspRelation" >
+    <id column="lsp_translator_id" property="lspTranslatorId" jdbcType="VARCHAR" />
+    <result column="lsp_id" property="lspId" jdbcType="VARCHAR" />
+    <result column="translator_id" property="translatorId" jdbcType="VARCHAR" />
+    <result column="translator_role" property="translatorRole" jdbcType="VARCHAR" />
+    <result column="join_time" property="joinTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lsp_translator_id, lsp_id, translator_id, translator_role, join_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLspRelationCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from usr_lsp_relation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from usr_lsp_relation
+    where lsp_translator_id = #{lspTranslatorId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from usr_lsp_relation
+    where lsp_translator_id = #{lspTranslatorId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLspRelationCriteria" >
+    delete from usr_lsp_relation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLspRelation" >
+    insert into usr_lsp_relation (lsp_translator_id, lsp_id, translator_id, 
+      translator_role, join_time)
+    values (#{lspTranslatorId,jdbcType=VARCHAR}, #{lspId,jdbcType=VARCHAR}, #{translatorId,jdbcType=VARCHAR}, 
+      #{translatorRole,jdbcType=VARCHAR}, #{joinTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLspRelation" >
+    insert into usr_lsp_relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lspTranslatorId != null" >
+        lsp_translator_id,
+      </if>
+      <if test="lspId != null" >
+        lsp_id,
+      </if>
+      <if test="translatorId != null" >
+        translator_id,
+      </if>
+      <if test="translatorRole != null" >
+        translator_role,
+      </if>
+      <if test="joinTime != null" >
+        join_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lspTranslatorId != null" >
+        #{lspTranslatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="lspId != null" >
+        #{lspId,jdbcType=VARCHAR},
+      </if>
+      <if test="translatorId != null" >
+        #{translatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="translatorRole != null" >
+        #{translatorRole,jdbcType=VARCHAR},
+      </if>
+      <if test="joinTime != null" >
+        #{joinTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLspRelationCriteria" resultType="java.lang.Integer" >
+    select count(*) from usr_lsp_relation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update usr_lsp_relation
+    <set >
+      <if test="record.lspTranslatorId != null" >
+        lsp_translator_id = #{record.lspTranslatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lspId != null" >
+        lsp_id = #{record.lspId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.translatorId != null" >
+        translator_id = #{record.translatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.translatorRole != null" >
+        translator_role = #{record.translatorRole,jdbcType=VARCHAR},
+      </if>
+      <if test="record.joinTime != null" >
+        join_time = #{record.joinTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update usr_lsp_relation
+    set lsp_translator_id = #{record.lspTranslatorId,jdbcType=VARCHAR},
+      lsp_id = #{record.lspId,jdbcType=VARCHAR},
+      translator_id = #{record.translatorId,jdbcType=VARCHAR},
+      translator_role = #{record.translatorRole,jdbcType=VARCHAR},
+      join_time = #{record.joinTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLspRelation" >
+    update usr_lsp_relation
+    <set >
+      <if test="lspId != null" >
+        lsp_id = #{lspId,jdbcType=VARCHAR},
+      </if>
+      <if test="translatorId != null" >
+        translator_id = #{translatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="translatorRole != null" >
+        translator_role = #{translatorRole,jdbcType=VARCHAR},
+      </if>
+      <if test="joinTime != null" >
+        join_time = #{joinTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where lsp_translator_id = #{lspTranslatorId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLspRelation" >
+    update usr_lsp_relation
+    set lsp_id = #{lspId,jdbcType=VARCHAR},
+      translator_id = #{translatorId,jdbcType=VARCHAR},
+      translator_role = #{translatorRole,jdbcType=VARCHAR},
+      join_time = #{joinTime,jdbcType=TIMESTAMP}
+    where lsp_translator_id = #{lspTranslatorId,jdbcType=VARCHAR}
+  </update>
+</mapper>

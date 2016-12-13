@@ -26,7 +26,7 @@ public class UsrLspMessage {
     private String telephone;
 
     private String mobilePhone;
-
+    
     public String getCompanyLogoId() {
 		return companyLogoId;
 	}
@@ -122,4 +122,5 @@ public class UsrLspMessage {
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
     }
+
 }

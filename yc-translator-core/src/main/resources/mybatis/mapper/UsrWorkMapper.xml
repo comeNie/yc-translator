@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ai.yc.translator.dao.mapper.interfaces.UsrWorkMapper" >
+  <resultMap id="BaseResultMap" type="com.ai.yc.translator.dao.mapper.bo.UsrWork" >
+    <id column="work_id" property="workId" jdbcType="BIGINT" />
+    <result column="translator_id" property="translatorId" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="work_start_time" property="workStartTime" jdbcType="VARCHAR" />
+    <result column="work_end_time" property="workEndTime" jdbcType="VARCHAR" />
+    <result column="work_summaize" property="workSummaize" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    work_id, translator_id, company, position, work_start_time, work_end_time, work_summaize, 
+    create_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrWorkCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from usr_work
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from usr_work
+    where work_id = #{workId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Long" >
+    delete from usr_work
+    where work_id = #{workId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrWorkCriteria" >
+    delete from usr_work
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrWork" >
+    insert into usr_work (work_id, translator_id, company, 
+      position, work_start_time, work_end_time, 
+      work_summaize, create_time)
+    values (#{workId,jdbcType=BIGINT}, #{translatorId,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{workStartTime,jdbcType=VARCHAR}, #{workEndTime,jdbcType=VARCHAR}, 
+      #{workSummaize,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrWork" >
+    insert into usr_work
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workId != null" >
+        work_id,
+      </if>
+      <if test="translatorId != null" >
+        translator_id,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="workStartTime != null" >
+        work_start_time,
+      </if>
+      <if test="workEndTime != null" >
+        work_end_time,
+      </if>
+      <if test="workSummaize != null" >
+        work_summaize,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workId != null" >
+        #{workId,jdbcType=BIGINT},
+      </if>
+      <if test="translatorId != null" >
+        #{translatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="workStartTime != null" >
+        #{workStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="workEndTime != null" >
+        #{workEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="workSummaize != null" >
+        #{workSummaize,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrWorkCriteria" resultType="java.lang.Integer" >
+    select count(*) from usr_work
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update usr_work
+    <set >
+      <if test="record.workId != null" >
+        work_id = #{record.workId,jdbcType=BIGINT},
+      </if>
+      <if test="record.translatorId != null" >
+        translator_id = #{record.translatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.company != null" >
+        company = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.position != null" >
+        position = #{record.position,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workStartTime != null" >
+        work_start_time = #{record.workStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workEndTime != null" >
+        work_end_time = #{record.workEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workSummaize != null" >
+        work_summaize = #{record.workSummaize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update usr_work
+    set work_id = #{record.workId,jdbcType=BIGINT},
+      translator_id = #{record.translatorId,jdbcType=VARCHAR},
+      company = #{record.company,jdbcType=VARCHAR},
+      position = #{record.position,jdbcType=VARCHAR},
+      work_start_time = #{record.workStartTime,jdbcType=VARCHAR},
+      work_end_time = #{record.workEndTime,jdbcType=VARCHAR},
+      work_summaize = #{record.workSummaize,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrWork" >
+    update usr_work
+    <set >
+      <if test="translatorId != null" >
+        translator_id = #{translatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="workStartTime != null" >
+        work_start_time = #{workStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="workEndTime != null" >
+        work_end_time = #{workEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="workSummaize != null" >
+        work_summaize = #{workSummaize,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where work_id = #{workId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrWork" >
+    update usr_work
+    set translator_id = #{translatorId,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      work_start_time = #{workStartTime,jdbcType=VARCHAR},
+      work_end_time = #{workEndTime,jdbcType=VARCHAR},
+      work_summaize = #{workSummaize,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where work_id = #{workId,jdbcType=BIGINT}
+  </update>
+</mapper>

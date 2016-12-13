@@ -13,6 +13,7 @@
     <result column="mobile_phone" property="mobilePhone" jdbcType="VARCHAR" />
     <result column="fix_phone" property="fixPhone" jdbcType="VARCHAR" />
     <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="cn_city" property="cnCity" jdbcType="VARCHAR" />
     <result column="province" property="province" jdbcType="VARCHAR" />
     <result column="country" property="country" jdbcType="VARCHAR" />
@@ -91,9 +92,9 @@
   </sql>
   <sql id="Base_Column_List" >
     translator_id, user_id, nickname, lastname, firstname, sex, birthday, telephone, 
-    mobile_phone, fix_phone, qq, cn_city, province, country, t_zone, working_life, legal_cert_num, 
-    mother_tongue, last_modify_time, introduction, vip_level, state, create_time, billing_cycle, 
-    statement_date, info_state, approve_state, single_lock
+    mobile_phone, fix_phone, qq, address, cn_city, province, country, t_zone, working_life, 
+    legal_cert_num, mother_tongue, last_modify_time, introduction, vip_level, state, 
+    create_time, billing_cycle, statement_date, info_state, approve_state, single_lock
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrTranslatorCriteria" >
     select
@@ -133,23 +134,23 @@
     insert into usr_translator (translator_id, user_id, nickname, 
       lastname, firstname, sex, 
       birthday, telephone, mobile_phone, 
-      fix_phone, qq, cn_city, 
-      province, country, t_zone, 
-      working_life, legal_cert_num, mother_tongue, 
-      last_modify_time, introduction, vip_level, 
-      state, create_time, billing_cycle, 
-      statement_date, info_state, approve_state, 
-      single_lock)
+      fix_phone, qq, address, 
+      cn_city, province, country, 
+      t_zone, working_life, legal_cert_num, 
+      mother_tongue, last_modify_time, introduction, 
+      vip_level, state, create_time, 
+      billing_cycle, statement_date, info_state, 
+      approve_state, single_lock)
     values (#{translatorId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
       #{lastname,jdbcType=VARCHAR}, #{firstname,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
       #{birthday,jdbcType=TIMESTAMP}, #{telephone,jdbcType=VARCHAR}, #{mobilePhone,jdbcType=VARCHAR}, 
-      #{fixPhone,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{cnCity,jdbcType=VARCHAR}, 
-      #{province,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{tZone,jdbcType=VARCHAR}, 
-      #{workingLife,jdbcType=INTEGER}, #{legalCertNum,jdbcType=VARCHAR}, #{motherTongue,jdbcType=VARCHAR}, 
-      #{lastModifyTime,jdbcType=TIMESTAMP}, #{introduction,jdbcType=VARCHAR}, #{vipLevel,jdbcType=VARCHAR}, 
-      #{state,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{billingCycle,jdbcType=INTEGER}, 
-      #{statementDate,jdbcType=DATE}, #{infoState,jdbcType=VARCHAR}, #{approveState,jdbcType=VARCHAR}, 
-      #{singleLock,jdbcType=VARCHAR})
+      #{fixPhone,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{cnCity,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, 
+      #{tZone,jdbcType=VARCHAR}, #{workingLife,jdbcType=INTEGER}, #{legalCertNum,jdbcType=VARCHAR}, 
+      #{motherTongue,jdbcType=VARCHAR}, #{lastModifyTime,jdbcType=TIMESTAMP}, #{introduction,jdbcType=VARCHAR}, 
+      #{vipLevel,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{billingCycle,jdbcType=INTEGER}, #{statementDate,jdbcType=DATE}, #{infoState,jdbcType=VARCHAR}, 
+      #{approveState,jdbcType=VARCHAR}, #{singleLock,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrTranslator" >
     insert into usr_translator
@@ -186,6 +187,9 @@
       </if>
       <if test="qq != null" >
         qq,
+      </if>
+      <if test="address != null" >
+        address,
       </if>
       <if test="cnCity != null" >
         cn_city,
@@ -272,6 +276,9 @@
       </if>
       <if test="qq != null" >
         #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
       </if>
       <if test="cnCity != null" >
         #{cnCity,jdbcType=VARCHAR},
@@ -368,6 +375,9 @@
       <if test="record.qq != null" >
         qq = #{record.qq,jdbcType=VARCHAR},
       </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
       <if test="record.cnCity != null" >
         cn_city = #{record.cnCity,jdbcType=VARCHAR},
       </if>
@@ -437,6 +447,7 @@
       mobile_phone = #{record.mobilePhone,jdbcType=VARCHAR},
       fix_phone = #{record.fixPhone,jdbcType=VARCHAR},
       qq = #{record.qq,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
       cn_city = #{record.cnCity,jdbcType=VARCHAR},
       province = #{record.province,jdbcType=VARCHAR},
       country = #{record.country,jdbcType=VARCHAR},
@@ -490,6 +501,9 @@
       </if>
       <if test="qq != null" >
         qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
       </if>
       <if test="cnCity != null" >
         cn_city = #{cnCity,jdbcType=VARCHAR},
@@ -557,6 +571,7 @@
       mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
       fix_phone = #{fixPhone,jdbcType=VARCHAR},
       qq = #{qq,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
       cn_city = #{cnCity,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
       country = #{country,jdbcType=VARCHAR},

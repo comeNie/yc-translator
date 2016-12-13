@@ -25,6 +25,8 @@ public class UsrTranslator {
 
     private String qq;
 
+    private String address;
+
     private String cnCity;
 
     private String province;
@@ -145,6 +147,14 @@ public class UsrTranslator {
 
     public void setQq(String qq) {
         this.qq = qq == null ? null : qq.trim();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 
     public String getCnCity() {

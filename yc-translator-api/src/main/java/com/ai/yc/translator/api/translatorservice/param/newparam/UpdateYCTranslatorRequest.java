@@ -14,6 +14,10 @@ import org.hibernate.validator.constraints.NotBlank;
 public class UpdateYCTranslatorRequest implements Serializable {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6961488699850826575L;
+	/**
 	 * 译员ID
 	 * 必填
 	 */

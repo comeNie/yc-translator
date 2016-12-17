@@ -22,4 +22,12 @@ public class SearchYCLanguageSkillRequest implements Serializable {
 	 */
 	@NotBlank(message = "译员id不能为空")
 	private String translatorId;
+	public String getTranslatorId() {
+		return translatorId;
+	}
+	public void setTranslatorId(String translatorId) {
+		this.translatorId = translatorId;
+	}
+	
+	
 }

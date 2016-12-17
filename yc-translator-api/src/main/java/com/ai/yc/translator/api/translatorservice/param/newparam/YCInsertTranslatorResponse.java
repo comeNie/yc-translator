@@ -18,4 +18,20 @@ public class YCInsertTranslatorResponse implements Serializable {
 	private String translatorId;
 
     private String userId;
+
+	public String getTranslatorId() {
+		return translatorId;
+	}
+
+	public void setTranslatorId(String translatorId) {
+		this.translatorId = translatorId;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 }

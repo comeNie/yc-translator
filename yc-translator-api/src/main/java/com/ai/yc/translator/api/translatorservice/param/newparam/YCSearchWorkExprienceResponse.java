@@ -11,6 +11,10 @@ import java.util.List;
  */
 public class YCSearchWorkExprienceResponse implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2477952277037237190L;
 	private String translatorId;
 	private List<UsrWorkMessage> workList;
 

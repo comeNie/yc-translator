@@ -112,7 +112,7 @@ public interface IYCTranslatorServiceSV {
 	HBBaseResponse<YCInsertLanguageSkillResponse> insertLanguageSkill(InsertYCLanguageSkillRequest insertParams);
 	
 	/**
-	 * 
+	 * 修改译员教育信息
 	 * @param 
 	 * @return
 	 * @ApiCode TRANSLATOR_0010
@@ -122,7 +122,7 @@ public interface IYCTranslatorServiceSV {
 	@Path("insertEduHistory")
 	HBBaseResponse<YCInsertEduHistoryResponse> insertEduHistory(InsertYCEduHistoryRequest insertParams);
 	/**
-	 * 
+	 * 查询译员教育信息
 	 * @param 
 	 * @return
 	 * @ApiCode TRANSLATOR_0012
@@ -133,7 +133,7 @@ public interface IYCTranslatorServiceSV {
 	HBBaseResponse<YCSearchEduHistoryResponse> searchEduHistory(SearchYCEduHistoryRequest searchParams);
 	
 	/**
-	 * 
+	 * 修改译员工作经历
 	 * @param 
 	 * @return
 	 * @ApiCode TRANSLATOR_0014
@@ -143,7 +143,7 @@ public interface IYCTranslatorServiceSV {
 	@Path("insertWorkExprience")
 	HBBaseResponse<YCInsertWorkExprienceResponse> insertWorkExprience(InsertYCWorkExprienceRequest insertParams);
 	/**
-	 * 
+	 * 查询译员工作经历
 	 * @param 
 	 * @return
 	 * @ApiCode TRANSLATOR_0016
@@ -154,7 +154,7 @@ public interface IYCTranslatorServiceSV {
 	HBBaseResponse<YCSearchWorkExprienceResponse> searchWorkExprience(SearchYCWorkExprienceRequest searchParams);
 	
 	/**
-	 * 
+	 * 修改译员证书信息
 	 * @param 
 	 * @return
 	 * @ApiCode TRANSLATOR_0018
@@ -164,7 +164,7 @@ public interface IYCTranslatorServiceSV {
 	@Path("insertCertifications")
 	HBBaseResponse<YCInsertCertificationsResponse> insertCertifications(InsertYCCertificationsRequest insertParams);
 	/**
-	 * 
+	 * 查询译员证书信息
 	 * @param 
 	 * @return
 	 * @ApiCode TRANSLATOR_0020
@@ -174,7 +174,7 @@ public interface IYCTranslatorServiceSV {
 	@Path("searchCertifications")
 	HBBaseResponse<YCSearchCertificationsResponse> searchCertifications(SearchYCCertificationsRequest searchParams);
 	/**
-	 * 
+	 * 修改译员扩展信息
 	 * @param 
 	 * @return
 	 * @ApiCode TRANSLATOR_0022
@@ -184,7 +184,7 @@ public interface IYCTranslatorServiceSV {
 	@Path("insertTranslatorExtendsList")
 	HBBaseResponse<YCInsertTranslatorExtendsListResponse> insertTranslatorExtendsList(InsertYCTranslatorExtendsListRequest insertParams);
 	/**
-	 * 
+	 * 查询译员扩展信息
 	 * @param 
 	 * @return
 	 * @ApiCode TRANSLATOR_0024

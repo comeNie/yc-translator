@@ -12,7 +12,11 @@ import java.util.List;
 public class YCSearchEduHistoryResponse implements Serializable {
 
 
-    private String translatorId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -92201909614710869L;
+	private String translatorId;
 	private List<UsrEducationMessage> translatorEduList;
 	public String getTranslatorId() {
 		return translatorId;

@@ -10,4 +10,18 @@ import java.io.Serializable;
  */
 public class SearchYCWorkExprienceRequest implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2066524922716212958L;
+
+    private String translatorId;
+
+	public String getTranslatorId() {
+		return translatorId;
+	}
+
+	public void setTranslatorId(String translatorId) {
+		this.translatorId = translatorId;
+	}
 }

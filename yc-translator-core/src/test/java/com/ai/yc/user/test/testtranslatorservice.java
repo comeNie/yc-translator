@@ -44,7 +44,7 @@ public class testtranslatorservice {
 	public void testSearchSkill() {
 		SearchYCTranslatorSkillListRequest a = new SearchYCTranslatorSkillListRequest();
 //		a.setUserId("4444314");
-		a.setUserId("525954");
+		a.setUserId("4444361");
 		YCTranslatorSkillListResponse response = usSV.getTranslatorSkillList(a);
 		System.out.println(JSON.toJSONString(response));
 	}

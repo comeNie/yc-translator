@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.base.vo.ResponseHeader;
 import com.ai.opt.sdk.util.BeanUtils;
-
 import com.ai.yc.translator.api.translatorservice.interfaces.IYCTranslatorServiceSV;
 import com.ai.yc.translator.api.translatorservice.param.HBBaseResponse;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
@@ -18,11 +17,6 @@ import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorInfoResponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
 import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.DeleteYCCertificationsRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.DeleteYCEduHistoryRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.DeleteYCLanguageSkillRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.DeleteYCTranslatorExtendsListRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.DeleteYCWorkExprienceRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCCertificationsRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCEduHistoryRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCLanguageSkillRequest;
@@ -31,20 +25,9 @@ import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCTransla
 import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCWorkExprienceRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCCertificationsRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCEduHistoryRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCLanguageSkillRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCTranslatorExtendsListRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCWorkExprienceRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCCertificationsRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCEduHistoryRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCLanguageSkillRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCTranslatorExtendsListRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCTranslatorRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCWorkExprienceRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCDeleteCertificationsResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCDeleteEduHistoryResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCDeleteLanguageSkillResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCDeleteTranslatorExtendsListResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCDeleteWorkExprienceResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertCertificationsResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertEduHistoryResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertLanguageSkillResponse;
@@ -53,15 +36,9 @@ import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTransla
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertWorkExprienceResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchCertificationsResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchEduHistoryResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchLanguageSkillResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchTranslatorExtendsListResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchWorkExprienceResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCUpdateCertificationsResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCUpdateEduHistoryResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCUpdateLanguageSkillResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCUpdateTranslatorExtendsListResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCUpdateTranslatorResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCUpdateWorkExprienceResponse;
 import com.ai.yc.translator.constants.ExceptCodeConstants;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 import com.ai.yc.translator.service.business.interfaces.IYCTranslatorServiceBusiSV;
@@ -140,7 +117,7 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			result = ycUsrServiceBusiSv.insertTranslatorBusiness(insertYCTranslatorParams);
 			insertTranslatorResp = new HBBaseResponse<YCInsertTranslatorResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			insertTranslatorResp = new HBBaseResponse<YCInsertTranslatorResponse>(true,ExceptCodeConstants.SUCCESS,e.getErrorMessage());
+			insertTranslatorResp = new HBBaseResponse<YCInsertTranslatorResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return insertTranslatorResp;
 	}
@@ -148,15 +125,15 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 
 	@Override
 	public HBBaseResponse<YCUpdateTranslatorResponse> updateTranslator(
-			UpdateYCTranslatorRequest UpdateYCTranslatorParams) {
-		LOGGER.debug("insertTranslator input params:", UpdateYCTranslatorParams);
+			UpdateYCTranslatorRequest updateYCTranslatorParams) {
+		LOGGER.debug("updateTranslator input params:", updateYCTranslatorParams);
 		HBBaseResponse<YCUpdateTranslatorResponse> updateTranslatorResp = null;
 		YCUpdateTranslatorResponse result = null;
 		try{
-			result = ycUsrServiceBusiSv.updateTranslatorBusiness(UpdateYCTranslatorParams);
+			result = ycUsrServiceBusiSv.updateTranslatorBusiness(updateYCTranslatorParams);
 			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(true,ExceptCodeConstants.SUCCESS,e.getErrorMessage());
+			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return updateTranslatorResp;
 	}
@@ -165,157 +142,134 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	@Override
 	public HBBaseResponse<YCInsertLanguageSkillResponse> insertLanguageSkill(
 			InsertYCLanguageSkillRequest insertParams) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.debug("insertLanguageSkill input params:", insertParams);
+		HBBaseResponse<YCInsertLanguageSkillResponse> insertLanguageSkillResp = null;
+		YCInsertLanguageSkillResponse result = null;
+		try{
+			result = ycUsrServiceBusiSv.insertLanguageSkillBusiness(insertParams);
+			insertLanguageSkillResp = new HBBaseResponse<YCInsertLanguageSkillResponse>(true,ExceptCodeConstants.SUCCESS,result);
+		}catch(BusinessException e){
+			insertLanguageSkillResp = new HBBaseResponse<YCInsertLanguageSkillResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+		}
+		return insertLanguageSkillResp;
 	}
-
-
-	@Override
-	public HBBaseResponse<YCUpdateLanguageSkillResponse> updateLanguageSkill(
-			UpdateYCLanguageSkillRequest updateParams) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public HBBaseResponse<YCSearchLanguageSkillResponse> searchLanguageSkill(
-			SearchYCLanguageSkillRequest searchParams) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public HBBaseResponse<YCDeleteLanguageSkillResponse> deleteLanguageSkill(
-			DeleteYCLanguageSkillRequest deleteParams) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 	@Override
 	public HBBaseResponse<YCInsertEduHistoryResponse> insertEduHistory(InsertYCEduHistoryRequest insertParams) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.debug("insertEduHistory input params:", insertParams);
+		HBBaseResponse<YCInsertEduHistoryResponse> insertEduHistoryResponse = null;
+		YCInsertEduHistoryResponse result = null;
+		try{
+			result = ycUsrServiceBusiSv.insertEduHistoryBusiness(insertParams);
+			insertEduHistoryResponse = new HBBaseResponse<YCInsertEduHistoryResponse>(true,ExceptCodeConstants.SUCCESS,result);
+		}catch(BusinessException e){
+			insertEduHistoryResponse = new HBBaseResponse<YCInsertEduHistoryResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+		}
+		return insertEduHistoryResponse;
 	}
-
-
-	@Override
-	public HBBaseResponse<YCUpdateEduHistoryResponse> updateEduHistory(UpdateYCEduHistoryRequest updateParams) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 	@Override
 	public HBBaseResponse<YCSearchEduHistoryResponse> searchEduHistory(SearchYCEduHistoryRequest searchParams) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.debug("searchEduHistory input params:", searchParams);
+		HBBaseResponse<YCSearchEduHistoryResponse> searchEduHistoryResp = null;
+		YCSearchEduHistoryResponse result = null;
+		try{
+			result = ycUsrServiceBusiSv.searchEduHistoryBusiness(searchParams);
+			searchEduHistoryResp = new HBBaseResponse<YCSearchEduHistoryResponse>(true,ExceptCodeConstants.SUCCESS,result);
+		}catch(BusinessException e){
+			searchEduHistoryResp = new HBBaseResponse<YCSearchEduHistoryResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+		}
+		return searchEduHistoryResp;
 	}
-
-
-	@Override
-	public HBBaseResponse<YCDeleteEduHistoryResponse> deleteEduHistory(DeleteYCEduHistoryRequest deleteParams) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 	@Override
 	public HBBaseResponse<YCInsertWorkExprienceResponse> insertWorkExprience(
 			InsertYCWorkExprienceRequest insertParams) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.debug("insertWorkExprience input params:", insertParams);
+		HBBaseResponse<YCInsertWorkExprienceResponse> insertWorkExprienceResponse = null;
+		YCInsertWorkExprienceResponse result = null;
+		try{
+			result = ycUsrServiceBusiSv.insertWorkExprienceBusiness(insertParams);
+			insertWorkExprienceResponse = new HBBaseResponse<YCInsertWorkExprienceResponse>(true,ExceptCodeConstants.SUCCESS,result);
+		}catch(BusinessException e){
+			insertWorkExprienceResponse = new HBBaseResponse<YCInsertWorkExprienceResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+		}
+		return insertWorkExprienceResponse;
 	}
-
-
-	@Override
-	public HBBaseResponse<YCUpdateWorkExprienceResponse> updateWorkExprience(
-			UpdateYCWorkExprienceRequest updateParams) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 	@Override
 	public HBBaseResponse<YCSearchWorkExprienceResponse> searchWorkExprience(
 			SearchYCWorkExprienceRequest searchParams) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.debug("searchWorkExprience input params:", searchParams);
+		HBBaseResponse<YCSearchWorkExprienceResponse> searchEduHistoryResp = null;
+		YCSearchWorkExprienceResponse result = null;
+		try{
+			result = ycUsrServiceBusiSv.searchWorkExperenceBusiness(searchParams);
+			searchEduHistoryResp = new HBBaseResponse<YCSearchWorkExprienceResponse>(true,ExceptCodeConstants.SUCCESS,result);
+		}catch(BusinessException e){
+			searchEduHistoryResp = new HBBaseResponse<YCSearchWorkExprienceResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+		}
+		return searchEduHistoryResp;
 	}
-
-
-	@Override
-	public HBBaseResponse<YCDeleteWorkExprienceResponse> deleteWorkExprience(
-			DeleteYCWorkExprienceRequest deleteParams) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 	@Override
 	public HBBaseResponse<YCInsertCertificationsResponse> insertCertifications(
 			InsertYCCertificationsRequest insertParams) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.debug("insertCertifications input params:", insertParams);
+		HBBaseResponse<YCInsertCertificationsResponse> insertCertificateResponse = null;
+		YCInsertCertificationsResponse result = null;
+		try{
+			result = ycUsrServiceBusiSv.insertCertificateBusiness(insertParams);
+			insertCertificateResponse = new HBBaseResponse<YCInsertCertificationsResponse>(true,ExceptCodeConstants.SUCCESS,result);
+		}catch(BusinessException e){
+			insertCertificateResponse = new HBBaseResponse<YCInsertCertificationsResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+		}
+		return insertCertificateResponse;
 	}
-
-
-	@Override
-	public HBBaseResponse<YCUpdateCertificationsResponse> updateCertifications(
-			UpdateYCCertificationsRequest updateParams) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 	@Override
 	public HBBaseResponse<YCSearchCertificationsResponse> searchCertifications(
 			SearchYCCertificationsRequest searchParams) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.debug("searchCertifications input params:", searchParams);
+		HBBaseResponse<YCSearchCertificationsResponse> searchCertificateResp = null;
+		YCSearchCertificationsResponse result = null;
+		try{
+			result = ycUsrServiceBusiSv.searchCertificateBusiness(searchParams);
+			searchCertificateResp = new HBBaseResponse<YCSearchCertificationsResponse>(true,ExceptCodeConstants.SUCCESS,result);
+		}catch(BusinessException e){
+			searchCertificateResp = new HBBaseResponse<YCSearchCertificationsResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+		}
+		return searchCertificateResp;
 	}
-
-
-	@Override
-	public HBBaseResponse<YCDeleteCertificationsResponse> deleteCertifications(
-			DeleteYCCertificationsRequest deleteParams) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 	@Override
 	public HBBaseResponse<YCInsertTranslatorExtendsListResponse> insertTranslatorExtendsList(
 			InsertYCTranslatorExtendsListRequest insertParams) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public HBBaseResponse<YCUpdateTranslatorExtendsListResponse> updateTranslatorExtendsList(
-			UpdateYCTranslatorExtendsListRequest updateParams) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.debug("insertTranslatorExtendsList input params:", insertParams);
+		HBBaseResponse<YCInsertTranslatorExtendsListResponse> insertExtendResponse = null;
+		YCInsertTranslatorExtendsListResponse result = null;
+		try{
+			result = ycUsrServiceBusiSv.insertExtendResponseBusiness(insertParams);
+			insertExtendResponse = new HBBaseResponse<YCInsertTranslatorExtendsListResponse>(true,ExceptCodeConstants.SUCCESS,result);
+		}catch(BusinessException e){
+			insertExtendResponse = new HBBaseResponse<YCInsertTranslatorExtendsListResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+		}
+		return insertExtendResponse;
 	}
 
 
 	@Override
 	public HBBaseResponse<YCSearchTranslatorExtendsListResponse> searchTranslatorExtendsList(
 			SearchYCTranslatorExtendsListRequest searchParams) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.debug("searchTranslatorExtendsList input params:", searchParams);
+		HBBaseResponse<YCSearchTranslatorExtendsListResponse> searchExtendResp = null;
+		YCSearchTranslatorExtendsListResponse result = null;
+		try{
+			result = ycUsrServiceBusiSv.searchExtendBusiness(searchParams);
+			searchExtendResp = new HBBaseResponse<YCSearchTranslatorExtendsListResponse>(true,ExceptCodeConstants.SUCCESS,result);
+		}catch(BusinessException e){
+			searchExtendResp = new HBBaseResponse<YCSearchTranslatorExtendsListResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+		}
+		return searchExtendResp;
 	}
-
-
-	@Override
-	public HBBaseResponse<YCDeleteTranslatorExtendsListResponse> deleteTranslatorExtendsList(
-			DeleteYCTranslatorExtendsListRequest deleteParams) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 }

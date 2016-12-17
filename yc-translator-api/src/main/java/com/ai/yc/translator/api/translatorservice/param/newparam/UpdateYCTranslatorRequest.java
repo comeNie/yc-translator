@@ -3,6 +3,8 @@ package com.ai.yc.translator.api.translatorservice.param.newparam;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /** 
  * @author  作者 “WTF” E-mail: 1031248990@qq.com
  * @date 创建时间：2016年12月2日 下午3:50:50 
@@ -13,7 +15,9 @@ public class UpdateYCTranslatorRequest implements Serializable {
 
 	/**
 	 * 译员ID
+	 * 必填
 	 */
+	@NotBlank(message = "译员id不能为空")
 	private String translatorId;
 	/**
 	 * uid／userid
@@ -33,11 +37,11 @@ public class UpdateYCTranslatorRequest implements Serializable {
     private Timestamp birthday;
 
     /**
-     * 必填
+     * 
      */
     private String mobilePhone;
     /**
-     * 必填
+     * 
      */
     private String Email;
     /**
@@ -46,26 +50,22 @@ public class UpdateYCTranslatorRequest implements Serializable {
     private String legalCertNum;
     /**
      * 母语
-     * 必填
      */
     private String motherTongue;
     /**
      * 翻译年限
-     * 必填
      */
     private Integer workingLife;
     /**
      * 擅长领域
      * 用逗号分割
      * 1,4,6,8,9
-     * 必填
      */
     private String areaOfExperise;
     /**
      * 擅长用途
      * 用逗号分割
      * 1,4,6,8,9
-     * 必填
      */
     private String areaOfUse;
     /**
@@ -82,7 +82,9 @@ public class UpdateYCTranslatorRequest implements Serializable {
     private String province;
 
     private String country;
-    
+    /**
+     * 个人简介
+     */
     private String introduction;
 
 	public String getTranslatorId() {

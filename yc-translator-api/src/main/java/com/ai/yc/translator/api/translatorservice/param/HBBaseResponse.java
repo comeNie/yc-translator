@@ -47,7 +47,7 @@ public class HBBaseResponse<T extends Object> extends BaseResponse {
 	public String getResult() {
 		return result;
 	}
-	public void setResult(String result) {
+	private final void setResult(String result) {
 		this.result = result;
 		if(result.equals(APIConstants.RESULTSUCCESS)){
 			this.getResponseHeader().setIsSuccess(true);
@@ -61,14 +61,14 @@ public class HBBaseResponse<T extends Object> extends BaseResponse {
 	public String getMessage() {
 		return message;
 	}
-	public void setMessage(String message) {
+	private final void setMessage(String message) {
 		this.message = message;
 		this.getResponseHeader().setResultMessage(message);
 	}
 	public T getData() {
 		return data;
 	}
-	public void setData(T data) {
+	private final void setData(T data) {
 		this.data = data;
 	}
 
@@ -76,7 +76,7 @@ public class HBBaseResponse<T extends Object> extends BaseResponse {
 		return exceptionMessage;
 	}
 
-	public void setExceptionMessage(String exceptionMessage) {
+	private final void setExceptionMessage(String exceptionMessage) {
 		this.exceptionMessage = exceptionMessage;
 	}
 	

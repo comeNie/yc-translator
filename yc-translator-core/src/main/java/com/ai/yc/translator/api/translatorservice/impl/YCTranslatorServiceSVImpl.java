@@ -50,7 +50,7 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(YCTranslatorServiceSVImpl.class);
     @Autowired
-    public IYCTranslatorServiceBusiSV ycUsrServiceBusiSv;
+    private IYCTranslatorServiceBusiSV ycUsrServiceBusiSv;
 
 	@Override
 	public YCTranslatorInfoResponse searchYCTranslatorInfo(SearchYCTranslatorRequest tUsrId) {
@@ -67,7 +67,7 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			}
 			result.setResponseCode(ExceptCodeConstants.SUCCESS);
 		}catch(BusinessException e){
-			LOGGER.error("修改失败",e);
+			LOGGER.error("查询失败",e);
 			responseHeader = new ResponseHeader(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		
@@ -79,12 +79,13 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	@Override
 	public YCTranslatorSkillListResponse getTranslatorSkillList(SearchYCTranslatorSkillListRequest getSkillList) {
 		LOGGER.debug("getTranslatorSkillList input params:", getSkillList);
-		ResponseHeader responseHeader = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "更新成功");
+		ResponseHeader responseHeader;
 		YCTranslatorSkillListResponse result = new YCTranslatorSkillListResponse();
 		try{
 			result = ycUsrServiceBusiSv.getTranslatorSkillList(getSkillList.getUserId());
 			responseHeader = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "查询成功");
 		}catch(BusinessException e){
+			LOGGER.error("查询失败",e);
 			responseHeader = new ResponseHeader(false, ExceptCodeConstants.FAILD, e.getErrorMessage());
 		}
 		result.setResponseHeader(responseHeader);
@@ -94,12 +95,13 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	@Override
 	public YCLSPInfoReponse searchLSPInfo(searchYCLSPInfoRequest searchLSPParams) {
 		LOGGER.debug("searchLSPInfo input params:", searchLSPParams);
-		ResponseHeader responseHeader = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "更新成功");
+		ResponseHeader responseHeader;
 		YCLSPInfoReponse result = new YCLSPInfoReponse();
 		try{
 			result = ycUsrServiceBusiSv.searchLSPInfoBussiness(searchLSPParams);
 			responseHeader = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "查询成功");
 		}catch(BusinessException e){
+			LOGGER.error("查询失败",e);
 			responseHeader = new ResponseHeader(false, ExceptCodeConstants.FAILD, e.getErrorMessage());
 		}
 		result.setResponseHeader(responseHeader);
@@ -117,7 +119,8 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			result = ycUsrServiceBusiSv.insertTranslatorBusiness(insertYCTranslatorParams);
 			insertTranslatorResp = new HBBaseResponse<YCInsertTranslatorResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			insertTranslatorResp = new HBBaseResponse<YCInsertTranslatorResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			LOGGER.error("查询失败",e);
+			insertTranslatorResp = new HBBaseResponse<YCInsertTranslatorResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return insertTranslatorResp;
 	}
@@ -133,7 +136,8 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			result = ycUsrServiceBusiSv.updateTranslatorBusiness(updateYCTranslatorParams);
 			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			LOGGER.error("查询失败",e);
+			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return updateTranslatorResp;
 	}
@@ -149,7 +153,8 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			result = ycUsrServiceBusiSv.insertLanguageSkillBusiness(insertParams);
 			insertLanguageSkillResp = new HBBaseResponse<YCInsertLanguageSkillResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			insertLanguageSkillResp = new HBBaseResponse<YCInsertLanguageSkillResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			LOGGER.error("查询失败",e);
+			insertLanguageSkillResp = new HBBaseResponse<YCInsertLanguageSkillResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return insertLanguageSkillResp;
 	}
@@ -161,9 +166,10 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 		YCInsertEduHistoryResponse result = null;
 		try{
 			result = ycUsrServiceBusiSv.insertEduHistoryBusiness(insertParams);
-			insertEduHistoryResponse = new HBBaseResponse<YCInsertEduHistoryResponse>(true,ExceptCodeConstants.SUCCESS,result);
+			insertEduHistoryResponse = new HBBaseResponse<YCInsertEduHistoryResponse>(false,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			insertEduHistoryResponse = new HBBaseResponse<YCInsertEduHistoryResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			LOGGER.error("查询失败",e);
+			insertEduHistoryResponse = new HBBaseResponse<YCInsertEduHistoryResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return insertEduHistoryResponse;
 	}
@@ -177,7 +183,8 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			result = ycUsrServiceBusiSv.searchEduHistoryBusiness(searchParams);
 			searchEduHistoryResp = new HBBaseResponse<YCSearchEduHistoryResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			searchEduHistoryResp = new HBBaseResponse<YCSearchEduHistoryResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			LOGGER.error("查询失败",e);
+			searchEduHistoryResp = new HBBaseResponse<YCSearchEduHistoryResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return searchEduHistoryResp;
 	}
@@ -192,7 +199,8 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			result = ycUsrServiceBusiSv.insertWorkExprienceBusiness(insertParams);
 			insertWorkExprienceResponse = new HBBaseResponse<YCInsertWorkExprienceResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			insertWorkExprienceResponse = new HBBaseResponse<YCInsertWorkExprienceResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			LOGGER.error("查询失败",e);
+			insertWorkExprienceResponse = new HBBaseResponse<YCInsertWorkExprienceResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return insertWorkExprienceResponse;
 	}
@@ -207,7 +215,8 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			result = ycUsrServiceBusiSv.searchWorkExperenceBusiness(searchParams);
 			searchEduHistoryResp = new HBBaseResponse<YCSearchWorkExprienceResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			searchEduHistoryResp = new HBBaseResponse<YCSearchWorkExprienceResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			LOGGER.error("查询失败",e);
+			searchEduHistoryResp = new HBBaseResponse<YCSearchWorkExprienceResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return searchEduHistoryResp;
 	}
@@ -222,7 +231,8 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			result = ycUsrServiceBusiSv.insertCertificateBusiness(insertParams);
 			insertCertificateResponse = new HBBaseResponse<YCInsertCertificationsResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			insertCertificateResponse = new HBBaseResponse<YCInsertCertificationsResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			LOGGER.error("查询失败",e);
+			insertCertificateResponse = new HBBaseResponse<YCInsertCertificationsResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return insertCertificateResponse;
 	}
@@ -237,7 +247,8 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			result = ycUsrServiceBusiSv.searchCertificateBusiness(searchParams);
 			searchCertificateResp = new HBBaseResponse<YCSearchCertificationsResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			searchCertificateResp = new HBBaseResponse<YCSearchCertificationsResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			LOGGER.error("查询失败",e);
+			searchCertificateResp = new HBBaseResponse<YCSearchCertificationsResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return searchCertificateResp;
 	}
@@ -252,7 +263,8 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			result = ycUsrServiceBusiSv.insertExtendResponseBusiness(insertParams);
 			insertExtendResponse = new HBBaseResponse<YCInsertTranslatorExtendsListResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			insertExtendResponse = new HBBaseResponse<YCInsertTranslatorExtendsListResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			LOGGER.error("查询失败",e);
+			insertExtendResponse = new HBBaseResponse<YCInsertTranslatorExtendsListResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return insertExtendResponse;
 	}
@@ -268,7 +280,8 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			result = ycUsrServiceBusiSv.searchExtendBusiness(searchParams);
 			searchExtendResp = new HBBaseResponse<YCSearchTranslatorExtendsListResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
-			searchExtendResp = new HBBaseResponse<YCSearchTranslatorExtendsListResponse>(true,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			LOGGER.error("查询失败",e);
+			searchExtendResp = new HBBaseResponse<YCSearchTranslatorExtendsListResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return searchExtendResp;
 	}

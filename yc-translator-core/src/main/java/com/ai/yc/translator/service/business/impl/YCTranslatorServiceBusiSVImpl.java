@@ -73,7 +73,7 @@ public class YCTranslatorServiceBusiSVImpl extends YcBaseService implements IYCT
 	private GsonSingleton g;
 
 	@Autowired
-	public IYCTranslatorServiceAtomSV ycUSAtomSV;
+	private IYCTranslatorServiceAtomSV ycUSAtomSV;
 
 	@Override
 	public UsrTranslator searchYCUsrTranslatorInfo(SearchYCTranslatorRequest searchReq) throws BusinessException {

@@ -59,12 +59,11 @@ import com.ai.yc.translator.dao.mapper.bo.UsrWork;
 import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
 import com.ai.yc.translator.service.business.interfaces.IYCTranslatorServiceBusiSV;
 import com.ai.yc.translator.util.GsonSingleton;
-import com.ai.yc.translator.util.YcBaseService;
 import com.google.gson.reflect.TypeToken;
 
 @Service
 @Transactional
-public class YCTranslatorServiceBusiSVImpl extends YcBaseService implements IYCTranslatorServiceBusiSV {
+public class YCTranslatorServiceBusiSVImpl  implements IYCTranslatorServiceBusiSV {
 
 	@SuppressWarnings("unused")
 	private static final Log LOG = LogFactory.getLog(YCTranslatorServiceBusiSVImpl.class);
@@ -194,10 +193,10 @@ public class YCTranslatorServiceBusiSVImpl extends YcBaseService implements IYCT
 	public YCUpdateTranslatorResponse updateTranslatorBusiness(UpdateYCTranslatorRequest updateYCTranslatorParams)
 			throws BusinessException {
 		YCUpdateTranslatorResponse response = new YCUpdateTranslatorResponse();
-		List<String> listValidator = beanValidator(updateYCTranslatorParams);
-		if (listValidator != null && !listValidator.isEmpty()) {
-			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
-		}
+//		List<String> listValidator = beanValidator(updateYCTranslatorParams);
+//		if (listValidator != null && !listValidator.isEmpty()) {
+//			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
+//		}
 		UsrTranslator newTranslator = new UsrTranslator();
 		BeanUtils.copyProperties(newTranslator, updateYCTranslatorParams);
 		ycUSAtomSV.updateTranslatorInc(newTranslator);
@@ -208,10 +207,10 @@ public class YCTranslatorServiceBusiSVImpl extends YcBaseService implements IYCT
 	@Override
 	public YCInsertLanguageSkillResponse insertLanguageSkillBusiness(InsertYCLanguageSkillRequest insertParams) {
 		YCInsertLanguageSkillResponse response = new YCInsertLanguageSkillResponse();
-		List<String> listValidator = beanValidator(insertParams);
-		if (listValidator != null && !listValidator.isEmpty()) {
-			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
-		}
+//		List<String> listValidator = beanValidator(insertParams);
+//		if (listValidator != null && !listValidator.isEmpty()) {
+//			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
+//		}
 		// delete all translator
 		ycUSAtomSV.deleteLanguageSkillByTranslator(insertParams.getTranslatorId());
 		for (UsrLanguageMessage ulm : insertParams.getTranslatorLanguageSkill()) {
@@ -224,10 +223,10 @@ public class YCTranslatorServiceBusiSVImpl extends YcBaseService implements IYCT
 	@Override
 	public YCInsertEduHistoryResponse insertEduHistoryBusiness(InsertYCEduHistoryRequest insertParams) {
 		YCInsertEduHistoryResponse response = new YCInsertEduHistoryResponse();
-		List<String> listValidator = beanValidator(insertParams);
-		if (listValidator != null && !listValidator.isEmpty()) {
-			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
-		}
+//		List<String> listValidator = beanValidator(insertParams);
+//		if (listValidator != null && !listValidator.isEmpty()) {
+//			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
+//		}
 		// delete all translator
 		ycUSAtomSV.deleteEducationByTranslatorId(insertParams.getTranslatorId());
 		for (UsrEducationMessage ulm : insertParams.getEducationList()) {
@@ -240,10 +239,10 @@ public class YCTranslatorServiceBusiSVImpl extends YcBaseService implements IYCT
 	@Override
 	public YCSearchEduHistoryResponse searchEduHistoryBusiness(SearchYCEduHistoryRequest searchParams) {
 		YCSearchEduHistoryResponse response = new YCSearchEduHistoryResponse();
-		List<String> listValidator = beanValidator(searchParams);
-		if (listValidator != null && !listValidator.isEmpty()) {
-			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
-		}
+//		List<String> listValidator = beanValidator(searchParams);
+//		if (listValidator != null && !listValidator.isEmpty()) {
+//			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
+//		}
 		List<UsrEducation> eduList = ycUSAtomSV.searchEduByTranslatorId(searchParams.getTranslatorId());
 
 		response.setTranslatorId(searchParams.getTranslatorId());
@@ -254,10 +253,10 @@ public class YCTranslatorServiceBusiSVImpl extends YcBaseService implements IYCT
 	@Override
 	public YCInsertWorkExprienceResponse insertWorkExprienceBusiness(InsertYCWorkExprienceRequest insertParams) {
 		YCInsertWorkExprienceResponse response = new YCInsertWorkExprienceResponse();
-		List<String> listValidator = beanValidator(insertParams);
-		if (listValidator != null && !listValidator.isEmpty()) {
-			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
-		}
+//		List<String> listValidator = beanValidator(insertParams);
+//		if (listValidator != null && !listValidator.isEmpty()) {
+//			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
+//		}
 		// delete all translator
 		ycUSAtomSV.deleteWorkExprienceByTranslatorId(insertParams.getTranslatorId());
 		for (UsrWorkMessage ulm : insertParams.getTranslatorWork()) {
@@ -270,10 +269,10 @@ public class YCTranslatorServiceBusiSVImpl extends YcBaseService implements IYCT
 	@Override
 	public YCSearchWorkExprienceResponse searchWorkExperenceBusiness(SearchYCWorkExprienceRequest searchParams) {
 		YCSearchWorkExprienceResponse response = new YCSearchWorkExprienceResponse();
-		List<String> listValidator = beanValidator(searchParams);
-		if (listValidator != null && !listValidator.isEmpty()) {
-			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
-		}
+//		List<String> listValidator = beanValidator(searchParams);
+//		if (listValidator != null && !listValidator.isEmpty()) {
+//			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
+//		}
 		List<UsrWork> workList = ycUSAtomSV.searchWorkByTranslatorId(searchParams.getTranslatorId());
 
 		response.setTranslatorId(searchParams.getTranslatorId());
@@ -284,10 +283,10 @@ public class YCTranslatorServiceBusiSVImpl extends YcBaseService implements IYCT
 	@Override
 	public YCInsertCertificationsResponse insertCertificateBusiness(InsertYCCertificationsRequest insertParams) {
 		YCInsertCertificationsResponse response = new YCInsertCertificationsResponse();
-		List<String> listValidator = beanValidator(insertParams);
-		if (listValidator != null && !listValidator.isEmpty()) {
-			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
-		}
+//		List<String> listValidator = beanValidator(insertParams);
+//		if (listValidator != null && !listValidator.isEmpty()) {
+//			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
+//		}
 		// delete all translator
 		ycUSAtomSV.deleteCertificateByTranslatorId(insertParams.getTranslatorId());
 		for (UsrCertificateMessage ulm : insertParams.getCertificateList()) {
@@ -301,10 +300,10 @@ public class YCTranslatorServiceBusiSVImpl extends YcBaseService implements IYCT
 	public YCInsertTranslatorExtendsListResponse insertExtendResponseBusiness(
 			InsertYCTranslatorExtendsListRequest insertParams) {
 		YCInsertTranslatorExtendsListResponse response = new YCInsertTranslatorExtendsListResponse();
-		List<String> listValidator = beanValidator(insertParams);
-		if (listValidator != null && !listValidator.isEmpty()) {
-			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
-		}
+//		List<String> listValidator = beanValidator(insertParams);
+//		if (listValidator != null && !listValidator.isEmpty()) {
+//			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
+//		}
 		// delete all translator
 		ycUSAtomSV.deleteExtendByTranslatorId(insertParams.getTranslatorId());
 		for (UsrExtendMessage ulm : insertParams.getExtendList()) {
@@ -317,10 +316,10 @@ public class YCTranslatorServiceBusiSVImpl extends YcBaseService implements IYCT
 	@Override
 	public YCSearchCertificationsResponse searchCertificateBusiness(SearchYCCertificationsRequest searchParams) {
 		YCSearchCertificationsResponse response = new YCSearchCertificationsResponse();
-		List<String> listValidator = beanValidator(searchParams);
-		if (listValidator != null && !listValidator.isEmpty()) {
-			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
-		}
+//		List<String> listValidator = beanValidator(searchParams);
+//		if (listValidator != null && !listValidator.isEmpty()) {
+//			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
+//		}
 		List<UsrCertificate> usrCertificateList = ycUSAtomSV.searchCertificateByTranslatorId(searchParams.getTranslatorId());
 
 		response.setTranslatorId(searchParams.getTranslatorId());
@@ -332,10 +331,10 @@ public class YCTranslatorServiceBusiSVImpl extends YcBaseService implements IYCT
 	public YCSearchTranslatorExtendsListResponse searchExtendBusiness(
 			SearchYCTranslatorExtendsListRequest searchParams) {
 		YCSearchTranslatorExtendsListResponse response = new YCSearchTranslatorExtendsListResponse();
-		List<String> listValidator = beanValidator(searchParams);
-		if (listValidator != null && !listValidator.isEmpty()) {
-			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
-		}
+//		List<String> listValidator = beanValidator(searchParams);
+//		if (listValidator != null && !listValidator.isEmpty()) {
+//			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, listValidator + "");
+//		}
 		List<UsrExtend> usrExtendList = ycUSAtomSV.searchExtendByTranslatorId(searchParams.getTranslatorId());
 
 		response.setTranslatorId(searchParams.getTranslatorId());

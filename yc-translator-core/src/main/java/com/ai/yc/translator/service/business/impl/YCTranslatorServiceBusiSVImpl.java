@@ -109,10 +109,7 @@ public class YCTranslatorServiceBusiSVImpl  implements IYCTranslatorServiceBusiS
 		}
 		// 获取LSP信息
 		UsrLspRelation ulr = ycUSAtomSV.getUsrLspRelationByTranslatorId(utr.getTranslatorId());
-		if (null == ulr) {
-			translatorSkillList.setLspId("0");
-			translatorSkillList.setLspRole("0");
-		} else {
+		if (null != ulr) {
 			translatorSkillList.setLspId(ulr.getLspId());
 			translatorSkillList.setLspRole(ulr.getTranslatorRole());
 		}

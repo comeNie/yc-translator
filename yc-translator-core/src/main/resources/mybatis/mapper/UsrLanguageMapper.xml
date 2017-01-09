@@ -2,10 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ai.yc.translator.dao.mapper.interfaces.UsrLanguageMapper" >
   <resultMap id="BaseResultMap" type="com.ai.yc.translator.dao.mapper.bo.UsrLanguage" >
+    <id column="language_id" property="languageId" jdbcType="VARCHAR" />
     <result column="translator_id" property="translatorId" jdbcType="VARCHAR" />
-    <result column="extend_id" property="extendId" jdbcType="VARCHAR" />
+    <result column="duad_id" property="duadId" jdbcType="VARCHAR" />
     <result column="translation_type" property="translationType" jdbcType="VARCHAR" />
-    <result column="reference_price" property="referencePrice" jdbcType="INTEGER" />
+    <result column="reference_price" property="referencePrice" jdbcType="DECIMAL" />
     <result column="state" property="state" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    translator_id, extend_id, translation_type, reference_price, state
+    language_id, translator_id, duad_id, translation_type, reference_price, state
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLanguageCriteria" >
     select
@@ -87,6 +88,16 @@
       limit #{limitStart} , #{limitEnd}
     </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from usr_language
+    where language_id = #{languageId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from usr_language
+    where language_id = #{languageId,jdbcType=VARCHAR}
+  </delete>
   <delete id="deleteByExample" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLanguageCriteria" >
     delete from usr_language
     <if test="_parameter != null" >
@@ -94,19 +105,24 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLanguage" >
-    insert into usr_language (translator_id, extend_id, translation_type, 
-      reference_price, state)
-    values (#{translatorId,jdbcType=VARCHAR}, #{extendId,jdbcType=VARCHAR}, #{translationType,jdbcType=VARCHAR}, 
-      #{referencePrice,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR})
+    insert into usr_language (language_id, translator_id, duad_id, 
+      translation_type, reference_price, state
+      )
+    values (#{languageId,jdbcType=VARCHAR}, #{translatorId,jdbcType=VARCHAR}, #{duadId,jdbcType=VARCHAR}, 
+      #{translationType,jdbcType=VARCHAR}, #{referencePrice,jdbcType=DECIMAL}, #{state,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLanguage" >
     insert into usr_language
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="languageId != null" >
+        language_id,
+      </if>
       <if test="translatorId != null" >
         translator_id,
       </if>
-      <if test="extendId != null" >
-        extend_id,
+      <if test="duadId != null" >
+        duad_id,
       </if>
       <if test="translationType != null" >
         translation_type,
@@ -119,17 +135,20 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="languageId != null" >
+        #{languageId,jdbcType=VARCHAR},
+      </if>
       <if test="translatorId != null" >
         #{translatorId,jdbcType=VARCHAR},
       </if>
-      <if test="extendId != null" >
-        #{extendId,jdbcType=VARCHAR},
+      <if test="duadId != null" >
+        #{duadId,jdbcType=VARCHAR},
       </if>
       <if test="translationType != null" >
         #{translationType,jdbcType=VARCHAR},
       </if>
       <if test="referencePrice != null" >
-        #{referencePrice,jdbcType=INTEGER},
+        #{referencePrice,jdbcType=DECIMAL},
       </if>
       <if test="state != null" >
         #{state,jdbcType=VARCHAR},
@@ -145,17 +164,20 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update usr_language
     <set >
+      <if test="record.languageId != null" >
+        language_id = #{record.languageId,jdbcType=VARCHAR},
+      </if>
       <if test="record.translatorId != null" >
         translator_id = #{record.translatorId,jdbcType=VARCHAR},
       </if>
-      <if test="record.extendId != null" >
-        extend_id = #{record.extendId,jdbcType=VARCHAR},
+      <if test="record.duadId != null" >
+        duad_id = #{record.duadId,jdbcType=VARCHAR},
       </if>
       <if test="record.translationType != null" >
         translation_type = #{record.translationType,jdbcType=VARCHAR},
       </if>
       <if test="record.referencePrice != null" >
-        reference_price = #{record.referencePrice,jdbcType=INTEGER},
+        reference_price = #{record.referencePrice,jdbcType=DECIMAL},
       </if>
       <if test="record.state != null" >
         state = #{record.state,jdbcType=VARCHAR},
@@ -167,13 +189,44 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update usr_language
-    set translator_id = #{record.translatorId,jdbcType=VARCHAR},
-      extend_id = #{record.extendId,jdbcType=VARCHAR},
+    set language_id = #{record.languageId,jdbcType=VARCHAR},
+      translator_id = #{record.translatorId,jdbcType=VARCHAR},
+      duad_id = #{record.duadId,jdbcType=VARCHAR},
       translation_type = #{record.translationType,jdbcType=VARCHAR},
-      reference_price = #{record.referencePrice,jdbcType=INTEGER},
+      reference_price = #{record.referencePrice,jdbcType=DECIMAL},
       state = #{record.state,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLanguage" >
+    update usr_language
+    <set >
+      <if test="translatorId != null" >
+        translator_id = #{translatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="duadId != null" >
+        duad_id = #{duadId,jdbcType=VARCHAR},
+      </if>
+      <if test="translationType != null" >
+        translation_type = #{translationType,jdbcType=VARCHAR},
+      </if>
+      <if test="referencePrice != null" >
+        reference_price = #{referencePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where language_id = #{languageId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLanguage" >
+    update usr_language
+    set translator_id = #{translatorId,jdbcType=VARCHAR},
+      duad_id = #{duadId,jdbcType=VARCHAR},
+      translation_type = #{translationType,jdbcType=VARCHAR},
+      reference_price = #{referencePrice,jdbcType=DECIMAL},
+      state = #{state,jdbcType=VARCHAR}
+    where language_id = #{languageId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -1,15 +1,27 @@
 package com.ai.yc.translator.dao.mapper.bo;
 
+import java.math.BigDecimal;
+
 public class UsrLanguage {
+    private String languageId;
+
     private String translatorId;
 
-    private String extendId;
+    private String duadId;
 
     private String translationType;
 
-    private Integer referencePrice;
+    private BigDecimal referencePrice;
 
     private String state;
+
+    public String getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(String languageId) {
+        this.languageId = languageId == null ? null : languageId.trim();
+    }
 
     public String getTranslatorId() {
         return translatorId;
@@ -19,12 +31,12 @@ public class UsrLanguage {
         this.translatorId = translatorId == null ? null : translatorId.trim();
     }
 
-    public String getExtendId() {
-        return extendId;
+    public String getDuadId() {
+        return duadId;
     }
 
-    public void setExtendId(String extendId) {
-        this.extendId = extendId == null ? null : extendId.trim();
+    public void setDuadId(String duadId) {
+        this.duadId = duadId == null ? null : duadId.trim();
     }
 
     public String getTranslationType() {
@@ -35,11 +47,11 @@ public class UsrLanguage {
         this.translationType = translationType == null ? null : translationType.trim();
     }
 
-    public Integer getReferencePrice() {
+    public BigDecimal getReferencePrice() {
         return referencePrice;
     }
 
-    public void setReferencePrice(Integer referencePrice) {
+    public void setReferencePrice(BigDecimal referencePrice) {
         this.referencePrice = referencePrice;
     }
 

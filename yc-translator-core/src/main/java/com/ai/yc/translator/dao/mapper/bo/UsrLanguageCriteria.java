@@ -1,5 +1,6 @@
 package com.ai.yc.translator.dao.mapper.bo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,6 +125,76 @@ public class UsrLanguageCriteria {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andLanguageIdIsNull() {
+            addCriterion("language_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdIsNotNull() {
+            addCriterion("language_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdEqualTo(String value) {
+            addCriterion("language_id =", value, "languageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdNotEqualTo(String value) {
+            addCriterion("language_id <>", value, "languageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdGreaterThan(String value) {
+            addCriterion("language_id >", value, "languageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdGreaterThanOrEqualTo(String value) {
+            addCriterion("language_id >=", value, "languageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdLessThan(String value) {
+            addCriterion("language_id <", value, "languageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdLessThanOrEqualTo(String value) {
+            addCriterion("language_id <=", value, "languageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdLike(String value) {
+            addCriterion("language_id like", value, "languageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdNotLike(String value) {
+            addCriterion("language_id not like", value, "languageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdIn(List<String> values) {
+            addCriterion("language_id in", values, "languageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdNotIn(List<String> values) {
+            addCriterion("language_id not in", values, "languageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdBetween(String value1, String value2) {
+            addCriterion("language_id between", value1, value2, "languageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLanguageIdNotBetween(String value1, String value2) {
+            addCriterion("language_id not between", value1, value2, "languageId");
+            return (Criteria) this;
+        }
+
         public Criteria andTranslatorIdIsNull() {
             addCriterion("translator_id is null");
             return (Criteria) this;
@@ -194,73 +265,73 @@ public class UsrLanguageCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdIsNull() {
-            addCriterion("extend_id is null");
+        public Criteria andDuadIdIsNull() {
+            addCriterion("duad_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdIsNotNull() {
-            addCriterion("extend_id is not null");
+        public Criteria andDuadIdIsNotNull() {
+            addCriterion("duad_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdEqualTo(String value) {
-            addCriterion("extend_id =", value, "extendId");
+        public Criteria andDuadIdEqualTo(String value) {
+            addCriterion("duad_id =", value, "duadId");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdNotEqualTo(String value) {
-            addCriterion("extend_id <>", value, "extendId");
+        public Criteria andDuadIdNotEqualTo(String value) {
+            addCriterion("duad_id <>", value, "duadId");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdGreaterThan(String value) {
-            addCriterion("extend_id >", value, "extendId");
+        public Criteria andDuadIdGreaterThan(String value) {
+            addCriterion("duad_id >", value, "duadId");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdGreaterThanOrEqualTo(String value) {
-            addCriterion("extend_id >=", value, "extendId");
+        public Criteria andDuadIdGreaterThanOrEqualTo(String value) {
+            addCriterion("duad_id >=", value, "duadId");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdLessThan(String value) {
-            addCriterion("extend_id <", value, "extendId");
+        public Criteria andDuadIdLessThan(String value) {
+            addCriterion("duad_id <", value, "duadId");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdLessThanOrEqualTo(String value) {
-            addCriterion("extend_id <=", value, "extendId");
+        public Criteria andDuadIdLessThanOrEqualTo(String value) {
+            addCriterion("duad_id <=", value, "duadId");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdLike(String value) {
-            addCriterion("extend_id like", value, "extendId");
+        public Criteria andDuadIdLike(String value) {
+            addCriterion("duad_id like", value, "duadId");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdNotLike(String value) {
-            addCriterion("extend_id not like", value, "extendId");
+        public Criteria andDuadIdNotLike(String value) {
+            addCriterion("duad_id not like", value, "duadId");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdIn(List<String> values) {
-            addCriterion("extend_id in", values, "extendId");
+        public Criteria andDuadIdIn(List<String> values) {
+            addCriterion("duad_id in", values, "duadId");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdNotIn(List<String> values) {
-            addCriterion("extend_id not in", values, "extendId");
+        public Criteria andDuadIdNotIn(List<String> values) {
+            addCriterion("duad_id not in", values, "duadId");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdBetween(String value1, String value2) {
-            addCriterion("extend_id between", value1, value2, "extendId");
+        public Criteria andDuadIdBetween(String value1, String value2) {
+            addCriterion("duad_id between", value1, value2, "duadId");
             return (Criteria) this;
         }
 
-        public Criteria andExtendIdNotBetween(String value1, String value2) {
-            addCriterion("extend_id not between", value1, value2, "extendId");
+        public Criteria andDuadIdNotBetween(String value1, String value2) {
+            addCriterion("duad_id not between", value1, value2, "duadId");
             return (Criteria) this;
         }
 
@@ -344,52 +415,52 @@ public class UsrLanguageCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andReferencePriceEqualTo(Integer value) {
+        public Criteria andReferencePriceEqualTo(BigDecimal value) {
             addCriterion("reference_price =", value, "referencePrice");
             return (Criteria) this;
         }
 
-        public Criteria andReferencePriceNotEqualTo(Integer value) {
+        public Criteria andReferencePriceNotEqualTo(BigDecimal value) {
             addCriterion("reference_price <>", value, "referencePrice");
             return (Criteria) this;
         }
 
-        public Criteria andReferencePriceGreaterThan(Integer value) {
+        public Criteria andReferencePriceGreaterThan(BigDecimal value) {
             addCriterion("reference_price >", value, "referencePrice");
             return (Criteria) this;
         }
 
-        public Criteria andReferencePriceGreaterThanOrEqualTo(Integer value) {
+        public Criteria andReferencePriceGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("reference_price >=", value, "referencePrice");
             return (Criteria) this;
         }
 
-        public Criteria andReferencePriceLessThan(Integer value) {
+        public Criteria andReferencePriceLessThan(BigDecimal value) {
             addCriterion("reference_price <", value, "referencePrice");
             return (Criteria) this;
         }
 
-        public Criteria andReferencePriceLessThanOrEqualTo(Integer value) {
+        public Criteria andReferencePriceLessThanOrEqualTo(BigDecimal value) {
             addCriterion("reference_price <=", value, "referencePrice");
             return (Criteria) this;
         }
 
-        public Criteria andReferencePriceIn(List<Integer> values) {
+        public Criteria andReferencePriceIn(List<BigDecimal> values) {
             addCriterion("reference_price in", values, "referencePrice");
             return (Criteria) this;
         }
 
-        public Criteria andReferencePriceNotIn(List<Integer> values) {
+        public Criteria andReferencePriceNotIn(List<BigDecimal> values) {
             addCriterion("reference_price not in", values, "referencePrice");
             return (Criteria) this;
         }
 
-        public Criteria andReferencePriceBetween(Integer value1, Integer value2) {
+        public Criteria andReferencePriceBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("reference_price between", value1, value2, "referencePrice");
             return (Criteria) this;
         }
 
-        public Criteria andReferencePriceNotBetween(Integer value1, Integer value2) {
+        public Criteria andReferencePriceNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("reference_price not between", value1, value2, "referencePrice");
             return (Criteria) this;
         }

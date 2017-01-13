@@ -89,7 +89,7 @@ public interface IYCTranslatorServiceSV {
 	HBBaseResponse<YCInsertTranslatorResponse> insertTranslator(InsertYCTranslatorRequest insertYCTranslatorParams);
 	
 	/**
-	 * 插入译员信息
+	 * 修改译员信息
 	 * @param 
 	 * @return
 	 * @ApiCode TRANSLATOR_0005
@@ -193,4 +193,16 @@ public interface IYCTranslatorServiceSV {
 	@POST
 	@Path("searchTranslatorExtendsList")
 	HBBaseResponse<YCSearchTranslatorExtendsListResponse> searchTranslatorExtendsList(SearchYCTranslatorExtendsListRequest searchParams);
+	
+	/**
+	 * 通过用户Id修改译员信息
+	 * @param 
+	 * @return
+	 * @ApiCode TRANSLATOR_0009
+     * @RestRelativeURL yctranslatorservice/updateTranslatorByUserId
+	 */
+	@POST
+	@Path("updateTranslatorByUserId")
+	public HBBaseResponse<YCUpdateTranslatorResponse> updateTranslatorByUserId(UpdateYCTranslatorRequest UpdateYCTranslatorParams);
+	
 }

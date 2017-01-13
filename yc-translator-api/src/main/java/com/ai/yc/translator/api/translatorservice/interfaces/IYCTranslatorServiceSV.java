@@ -6,6 +6,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.ai.opt.base.vo.BaseResponse;
 import com.ai.yc.translator.api.translatorservice.param.HBBaseResponse;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
@@ -203,6 +204,6 @@ public interface IYCTranslatorServiceSV {
 	 */
 	@POST
 	@Path("updateTranslatorByUserId")
-	public HBBaseResponse<YCUpdateTranslatorResponse> updateTranslatorByUserId(UpdateYCTranslatorRequest UpdateYCTranslatorParams);
+	public BaseResponse updateTranslatorByUserId(UpdateYCTranslatorRequest UpdateYCTranslatorParams);
 	
 }

@@ -196,8 +196,14 @@ public class YCTranslatorServiceBusiSVImpl  implements IYCTranslatorServiceBusiS
 //		}
 		UsrTranslator newTranslator = new UsrTranslator();
 		BeanUtils.copyProperties(newTranslator, updateYCTranslatorParams);
-		ycUSAtomSV.updateTranslatorInc(newTranslator);
+		try {
+			int updateTranslatorAtomResp = ycUSAtomSV.updateTranslatorInc(newTranslator);
+			response.setUpdateCount(updateTranslatorAtomResp);
+		} catch(Exception e){
+			throw new BusinessException(ExceptCodeConstants.Special.PARAM_TYPE_NOT_RIGHT, e);
+		}
 		response.setTranslatorId(updateYCTranslatorParams.getTranslatorId());
+		response.setUpdateCount(0);
 		return response;
 	}
 

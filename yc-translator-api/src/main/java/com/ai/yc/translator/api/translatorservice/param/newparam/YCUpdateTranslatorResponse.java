@@ -14,6 +14,7 @@ public class YCUpdateTranslatorResponse  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -8854916708086424821L;
+	private int updateCount;
 	private String translatorId;
 
 	public String getTranslatorId() {
@@ -22,5 +23,13 @@ public class YCUpdateTranslatorResponse  implements Serializable {
 
 	public void setTranslatorId(String translatorId) {
 		this.translatorId = translatorId;
+	}
+
+	public int getUpdateCount() {
+		return updateCount;
+	}
+
+	public void setUpdateCount(int updateCount) {
+		this.updateCount = updateCount;
 	}
 }

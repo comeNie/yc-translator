@@ -1,6 +1,7 @@
 package com.ai.yc.translator.api.translatorservice.param;
 
 import com.ai.opt.base.vo.BaseResponse;
+import com.ai.opt.base.vo.ResponseHeader;
 
 /** 
  * 为了兼容我们的系统和译云的系统定制类
@@ -49,6 +50,9 @@ public class HBBaseResponse<T extends Object> extends BaseResponse {
 	}
 	private final void setResult(String result) {
 		this.result = result;
+		if(null == this.getResponseHeader()){
+			this.setResponseHeader(new ResponseHeader());
+		}
 		if(result.equals(APIConstants.RESULTSUCCESS)){
 			this.getResponseHeader().setIsSuccess(true);
 			this.getResponseHeader().setResultCode(APIConstants.SUCCESS);
@@ -62,6 +66,9 @@ public class HBBaseResponse<T extends Object> extends BaseResponse {
 		return message;
 	}
 	private final void setMessage(String message) {
+		if(null == this.getResponseHeader()){
+			this.setResponseHeader(new ResponseHeader());
+		}
 		this.message = message;
 		this.getResponseHeader().setResultMessage(message);
 	}

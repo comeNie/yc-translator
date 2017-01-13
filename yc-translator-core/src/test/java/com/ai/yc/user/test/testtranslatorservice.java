@@ -6,16 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
 import com.ai.yc.translator.api.translatorservice.interfaces.IYCTranslatorServiceSV;
+import com.ai.yc.translator.api.translatorservice.param.HBBaseResponse;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorInfoResponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
 import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
-
+import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.newparam.YCUpdateTranslatorResponse;
 import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 
 /** 
  * @author  作者 “WTF” E-mail: 1031248990@qq.com
@@ -43,8 +45,8 @@ public class testtranslatorservice {
 	@Test
 	public void testSearchSkill() {
 		SearchYCTranslatorSkillListRequest a = new SearchYCTranslatorSkillListRequest();
-//		a.setUserId("4444314");
-		a.setUserId("4444361");
+		a.setUserId("4444314");
+//		a.setUserId("4444361");
 		YCTranslatorSkillListResponse response = usSV.getTranslatorSkillList(a);
 		System.out.println(JSON.toJSONString(response));
 	}
@@ -56,6 +58,17 @@ public class testtranslatorservice {
 		System.out.println(JSON.toJSONString(response));
 	}
 	
-	
+	@Test
+	public void testUpdateTranslator() {
+		Gson g = new Gson();
+		UpdateYCTranslatorRequest a = new UpdateYCTranslatorRequest();
+		a.setTranslatorId("234");
+		a.setUserId("405411");
+		a.setNickname("FUCK-YOU");
+		a.setSex(0);
+		a.setProvince("BJ");
+		HBBaseResponse<YCUpdateTranslatorResponse> response = usSV.updateTranslator(a);
+		System.out.println(g.toJson(response));
+	}
 	
 }

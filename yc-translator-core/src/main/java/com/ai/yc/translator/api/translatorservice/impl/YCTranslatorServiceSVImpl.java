@@ -294,7 +294,7 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	@Override
 	@POST
 	@Path("updateTranslatorByUserId")
-	public BaseResponse updateTranslatorByUserId(UpdateYCTranslatorRequest updateYCTranslatorParams) {
+	public YCUpdateTranslatorResponse updateTranslatorByUserId(UpdateYCTranslatorRequest updateYCTranslatorParams) {
 		LOGGER.debug("updateTranslator input params:", updateYCTranslatorParams);
 		HBBaseResponse<YCUpdateTranslatorResponse> updateTranslatorResp = null;
 		YCUpdateTranslatorResponse result = null;

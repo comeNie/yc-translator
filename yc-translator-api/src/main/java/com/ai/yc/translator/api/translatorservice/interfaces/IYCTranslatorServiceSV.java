@@ -204,6 +204,6 @@ public interface IYCTranslatorServiceSV {
 	 */
 	@POST
 	@Path("updateTranslatorByUserId")
-	public BaseResponse updateTranslatorByUserId(UpdateYCTranslatorRequest UpdateYCTranslatorParams);
+	public YCUpdateTranslatorResponse updateTranslatorByUserId(UpdateYCTranslatorRequest UpdateYCTranslatorParams);
 	
 }

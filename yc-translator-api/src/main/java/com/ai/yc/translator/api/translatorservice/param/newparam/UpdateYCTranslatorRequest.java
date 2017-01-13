@@ -31,6 +31,10 @@ public class UpdateYCTranslatorRequest implements Serializable {
      * 昵称
      */
     private String nickname;
+    
+    private String lastname;
+	
+    private String firstname;
     /**
 	 * ucenter获取的用户名
 	 */
@@ -40,6 +44,7 @@ public class UpdateYCTranslatorRequest implements Serializable {
 
     private Timestamp birthday;
 
+    private String telephone;
     /**
      * 
      */
@@ -249,6 +254,30 @@ public class UpdateYCTranslatorRequest implements Serializable {
 
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
     
     

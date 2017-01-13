@@ -294,17 +294,18 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	@Override
 	@POST
 	@Path("updateTranslatorByUserId")
-	public YCUpdateTranslatorResponse updateTranslatorByUserId(UpdateYCTranslatorRequest updateYCTranslatorParams) {
+	public BaseResponse updateTranslatorByUserId(UpdateYCTranslatorRequest updateYCTranslatorParams) {
 		LOGGER.debug("updateTranslator input params:", updateYCTranslatorParams);
-		HBBaseResponse<YCUpdateTranslatorResponse> updateTranslatorResp = null;
+		BaseResponse response = new BaseResponse();
+		ResponseHeader header = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "更新译员信息成功");
 		YCUpdateTranslatorResponse result = null;
 		try{
 			result = ycUsrServiceBusiSv.updateTranslatorByUserId(updateYCTranslatorParams);
-			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
 			LOGGER.error("更新失败",e);
-			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			header = new ResponseHeader(false, ExceptCodeConstants.FAILD, "更新译员信息失败");
 		}
+		response.setResponseHeader(header);
 		return result;
 	}
 }

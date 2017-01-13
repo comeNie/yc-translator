@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.vo.BaseResponse;
 import com.ai.opt.base.vo.ResponseHeader;
 import com.ai.opt.sdk.util.BeanUtils;
 import com.ai.yc.translator.api.translatorservice.interfaces.IYCTranslatorServiceSV;
@@ -293,7 +294,7 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	@Override
 	@POST
 	@Path("updateTranslatorByUserId")
-	public HBBaseResponse<YCUpdateTranslatorResponse> updateTranslatorByUserId(UpdateYCTranslatorRequest updateYCTranslatorParams) {
+	public BaseResponse updateTranslatorByUserId(UpdateYCTranslatorRequest updateYCTranslatorParams) {
 		LOGGER.debug("updateTranslator input params:", updateYCTranslatorParams);
 		HBBaseResponse<YCUpdateTranslatorResponse> updateTranslatorResp = null;
 		YCUpdateTranslatorResponse result = null;
@@ -304,6 +305,6 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			LOGGER.error("更新失败",e);
 			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
-		return updateTranslatorResp;
+		return result;
 	}
 }

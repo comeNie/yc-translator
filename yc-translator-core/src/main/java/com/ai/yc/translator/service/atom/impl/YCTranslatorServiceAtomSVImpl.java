@@ -233,7 +233,7 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 	@Override
 	public int updateTranslatorByUserId(UsrTranslator newTranslator,
 			UsrTranslatorCriteria criteria) {
-		return uTranslatorMapper.updateByExample(newTranslator, criteria);
+		return uTranslatorMapper.updateByExampleSelective(newTranslator, criteria);
 	}
 
 }

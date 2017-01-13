@@ -298,14 +298,13 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 		LOGGER.debug("updateTranslator input params:", updateYCTranslatorParams);
 		BaseResponse response = new BaseResponse();
 		ResponseHeader header = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "更新译员信息成功");
-		YCUpdateTranslatorResponse result = null;
 		try{
-			result = ycUsrServiceBusiSv.updateTranslatorByUserId(updateYCTranslatorParams);
+			 ycUsrServiceBusiSv.updateTranslatorByUserId(updateYCTranslatorParams);
 		}catch(BusinessException e){
 			LOGGER.error("更新失败",e);
 			header = new ResponseHeader(false, ExceptCodeConstants.FAILD, "更新译员信息失败");
 		}
 		response.setResponseHeader(header);
-		return result;
+		return response;
 	}
 }

@@ -1,6 +1,9 @@
 package com.ai.yc.translator.api.translatorservice.impl;
 
 
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -284,5 +287,23 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 			searchExtendResp = new HBBaseResponse<YCSearchTranslatorExtendsListResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
 		return searchExtendResp;
+	}
+
+
+	@Override
+	@POST
+	@Path("updateTranslatorByUserId")
+	public HBBaseResponse<YCUpdateTranslatorResponse> updateTranslatorByUserId(UpdateYCTranslatorRequest updateYCTranslatorParams) {
+		LOGGER.debug("updateTranslator input params:", updateYCTranslatorParams);
+		HBBaseResponse<YCUpdateTranslatorResponse> updateTranslatorResp = null;
+		YCUpdateTranslatorResponse result = null;
+		try{
+			result = ycUsrServiceBusiSv.updateTranslatorByUserId(updateYCTranslatorParams);
+			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(true,ExceptCodeConstants.SUCCESS,result);
+		}catch(BusinessException e){
+			LOGGER.error("更新失败",e);
+			updateTranslatorResp = new HBBaseResponse<YCUpdateTranslatorResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
+		}
+		return updateTranslatorResp;
 	}
 }

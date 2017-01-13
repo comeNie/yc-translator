@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.vo.ResponseHeader;
 import com.ai.opt.sdk.components.sequence.util.SeqUtil;
 import com.ai.opt.sdk.constants.ExceptCodeConstants;
 import com.ai.opt.sdk.util.BeanUtils;
@@ -55,11 +56,13 @@ import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
 import com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrLspRelation;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
+import com.ai.yc.translator.dao.mapper.bo.UsrTranslatorCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrWork;
 import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
 import com.ai.yc.translator.service.business.interfaces.IYCTranslatorServiceBusiSV;
 import com.ai.yc.translator.util.GsonSingleton;
 import com.google.gson.reflect.TypeToken;
+import com.sun.mail.iap.ResponseHandler;
 
 @Service
 @Transactional
@@ -379,5 +382,27 @@ public class YCTranslatorServiceBusiSVImpl  implements IYCTranslatorServiceBusiS
 		Type type = new TypeToken<List<UsrWorkMessage>>() {
 		}.getType();
 		return g.getGson().fromJson(g.getGson().toJson(usrWorkList), type);
+	}
+
+	@Override
+	public YCUpdateTranslatorResponse updateTranslatorByUserId(
+			UpdateYCTranslatorRequest updateYCTranslatorParams)
+			throws BusinessException {
+		ResponseHeader header = new ResponseHeader(true,ExceptCodeConstants.Special.SUCCESS,"修改成功");
+		YCUpdateTranslatorResponse response = new YCUpdateTranslatorResponse();
+		UsrTranslator newTranslator = new UsrTranslator();
+		BeanUtils.copyProperties(newTranslator, updateYCTranslatorParams);
+		try {
+			UsrTranslatorCriteria example = new UsrTranslatorCriteria();
+			UsrTranslatorCriteria.Criteria criteria = example.createCriteria();
+			criteria.andUserIdEqualTo(updateYCTranslatorParams.getUserId());
+			int updateTranslatorAtomResp = ycUSAtomSV.updateTranslatorByUserId(newTranslator,example);
+			response.setUpdateCount(updateTranslatorAtomResp);
+		} catch(Exception e){
+			header = new ResponseHeader(false,ExceptCodeConstants.Special.SYSTEM_ERROR,"修改失败");
+			throw new BusinessException(ExceptCodeConstants.Special.PARAM_TYPE_NOT_RIGHT, e);
+		}
+		response.setResponseHeader(header);
+		return response;
 	}
 }

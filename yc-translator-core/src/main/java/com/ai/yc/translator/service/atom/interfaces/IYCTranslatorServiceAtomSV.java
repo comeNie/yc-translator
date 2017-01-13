@@ -10,6 +10,7 @@ import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
 import com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrLspRelation;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
+import com.ai.yc.translator.dao.mapper.bo.UsrTranslatorCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrWork;
 
 
@@ -59,4 +60,5 @@ public interface IYCTranslatorServiceAtomSV {
 
 	public List<UsrExtend> searchExtendByTranslatorId(String translatorId);
 	
+	public int updateTranslatorByUserId(UsrTranslator newTranslator,UsrTranslatorCriteria criteria);
 }

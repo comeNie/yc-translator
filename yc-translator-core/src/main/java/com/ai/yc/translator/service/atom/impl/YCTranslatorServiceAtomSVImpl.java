@@ -185,26 +185,6 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 		List<UsrWork> list = uWorkMapper.selectByExample(example);
 		return list;
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	@Override
 	public int deleteCertificateByTranslatorId(String translatorId) {
@@ -248,6 +228,12 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 		criteria.andTranslatorIdEqualTo(translatorId);
 		List<UsrExtend> list = uExtendMapper.selectByExample(example);
 		return list;
+	}
+
+	@Override
+	public int updateTranslatorByUserId(UsrTranslator newTranslator,
+			UsrTranslatorCriteria criteria) {
+		return uTranslatorMapper.updateByExample(newTranslator, criteria);
 	}
 
 }

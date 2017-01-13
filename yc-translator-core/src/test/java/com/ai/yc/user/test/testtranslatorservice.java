@@ -62,12 +62,13 @@ public class testtranslatorservice {
 	public void testUpdateTranslator() {
 		Gson g = new Gson();
 		UpdateYCTranslatorRequest a = new UpdateYCTranslatorRequest();
-		a.setTranslatorId("234");
-		a.setUserId("405411");
+		a.setUserId("526013");
 		a.setNickname("FUCK-YOU");
+		a.setFirstname("aaa");
+		a.setLastname("bbb");
 		a.setSex(0);
 		a.setProvince("BJ");
-		HBBaseResponse<YCUpdateTranslatorResponse> response = usSV.updateTranslator(a);
+		HBBaseResponse<YCUpdateTranslatorResponse> response = usSV.updateTranslatorByUserId(a);
 		System.out.println(g.toJson(response));
 	}
 	

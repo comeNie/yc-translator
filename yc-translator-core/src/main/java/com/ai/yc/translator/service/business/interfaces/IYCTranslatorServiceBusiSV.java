@@ -62,5 +62,7 @@ public interface IYCTranslatorServiceBusiSV {
 
 	public YCSearchTranslatorExtendsListResponse searchExtendBusiness(
 			SearchYCTranslatorExtendsListRequest searchParams);
+	
+	public YCUpdateTranslatorResponse updateTranslatorByUserId(UpdateYCTranslatorRequest updateYCTranslatorParams) throws BusinessException;
 
 }

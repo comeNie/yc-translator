@@ -147,6 +147,8 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 				if (null == usrLsp) {
 					return yclspRep;
 				}
+				usrLsp.setLspId(usrLsp.getLspId());
+				usrLsp.setLspName(usrLsp.getLspName());
 				usrLspList.add(usrLsp);
 				yclspRep.setUsrLspList(changUsrLspToUsrLspMessage(usrLspList));
 			}

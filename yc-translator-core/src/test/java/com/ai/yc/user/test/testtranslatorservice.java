@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ai.opt.base.vo.BaseResponse;
 import com.ai.yc.translator.api.translatorservice.interfaces.IYCTranslatorServiceSV;
-import com.ai.yc.translator.api.translatorservice.param.HBBaseResponse;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
@@ -15,7 +15,6 @@ import com.ai.yc.translator.api.translatorservice.param.YCTranslatorInfoResponse
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
 import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCTranslatorRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCUpdateTranslatorResponse;
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 
@@ -53,7 +52,7 @@ public class testtranslatorservice {
 	@Test
 	public void testSearchLsp() {
 		searchYCLSPInfoRequest a = new searchYCLSPInfoRequest();
-		a.setLspId("1");
+		a.setLspId("9");
 		YCLSPInfoReponse response = usSV.searchLSPInfo(a);
 		System.out.println(JSON.toJSONString(response));
 	}
@@ -61,6 +60,7 @@ public class testtranslatorservice {
 	@Test
 	public void testUpdateTranslator() {
 		Gson g = new Gson();
+		
 		UpdateYCTranslatorRequest a = new UpdateYCTranslatorRequest();
 		a.setUserId("526013");
 		a.setNickname("FUCK-YOU");
@@ -68,7 +68,7 @@ public class testtranslatorservice {
 		a.setLastname("bbb");
 		a.setSex(0);
 		a.setProvince("BJ");
-		HBBaseResponse<YCUpdateTranslatorResponse> response = usSV.updateTranslatorByUserId(a);
+		BaseResponse response = usSV.updateTranslatorByUserId(a);
 		System.out.println(g.toJson(response));
 	}
 	

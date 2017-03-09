@@ -2074,6 +2074,66 @@ public class UsrTranslatorCriteria {
             addCriterion("single_lock not between", value1, value2, "singleLock");
             return (Criteria) this;
         }
+
+        public Criteria andContributionValueIsNull() {
+            addCriterion("contribution_value is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContributionValueIsNotNull() {
+            addCriterion("contribution_value is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContributionValueEqualTo(Integer value) {
+            addCriterion("contribution_value =", value, "contributionValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andContributionValueNotEqualTo(Integer value) {
+            addCriterion("contribution_value <>", value, "contributionValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andContributionValueGreaterThan(Integer value) {
+            addCriterion("contribution_value >", value, "contributionValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andContributionValueGreaterThanOrEqualTo(Integer value) {
+            addCriterion("contribution_value >=", value, "contributionValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andContributionValueLessThan(Integer value) {
+            addCriterion("contribution_value <", value, "contributionValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andContributionValueLessThanOrEqualTo(Integer value) {
+            addCriterion("contribution_value <=", value, "contributionValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andContributionValueIn(List<Integer> values) {
+            addCriterion("contribution_value in", values, "contributionValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andContributionValueNotIn(List<Integer> values) {
+            addCriterion("contribution_value not in", values, "contributionValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andContributionValueBetween(Integer value1, Integer value2) {
+            addCriterion("contribution_value between", value1, value2, "contributionValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andContributionValueNotBetween(Integer value1, Integer value2) {
+            addCriterion("contribution_value not between", value1, value2, "contributionValue");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

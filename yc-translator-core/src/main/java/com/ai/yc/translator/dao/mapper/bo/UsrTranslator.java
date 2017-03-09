@@ -61,6 +61,8 @@ public class UsrTranslator {
 
     private String singleLock;
 
+    private Integer contributionValue;
+
     public String getTranslatorId() {
         return translatorId;
     }
@@ -291,5 +293,13 @@ public class UsrTranslator {
 
     public void setSingleLock(String singleLock) {
         this.singleLock = singleLock == null ? null : singleLock.trim();
+    }
+
+    public Integer getContributionValue() {
+        return contributionValue;
+    }
+
+    public void setContributionValue(Integer contributionValue) {
+        this.contributionValue = contributionValue;
     }
 }

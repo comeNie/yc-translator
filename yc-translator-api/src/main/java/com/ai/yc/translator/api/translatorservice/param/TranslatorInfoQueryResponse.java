@@ -9,18 +9,11 @@ import com.ai.opt.base.vo.PageInfo;
  */
 public class TranslatorInfoQueryResponse extends BaseResponse {
 	private static final long serialVersionUID = 1L;
-
-
-    PageInfo<TranslatorInfoResponse> pageInfo;
-
-
-	public PageInfo<TranslatorInfoResponse> getPageInfo() {
+    PageInfo<TranslatorInfo> pageInfo;
+	public PageInfo<TranslatorInfo> getPageInfo() {
 		return pageInfo;
 	}
-
-
-	public void setPageInfo(PageInfo<TranslatorInfoResponse> pageInfo) {
+	public void setPageInfo(PageInfo<TranslatorInfo> pageInfo) {
 		this.pageInfo = pageInfo;
-	}
-    
+	}    
 }

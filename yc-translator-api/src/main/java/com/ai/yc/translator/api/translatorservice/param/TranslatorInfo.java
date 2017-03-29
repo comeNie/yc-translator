@@ -1,10 +1,6 @@
 package com.ai.yc.translator.api.translatorservice.param;
 
-import java.io.Serializable;
-import java.sql.Timestamp;
-import com.ai.opt.base.vo.BaseResponse;
-
-public class TranslatorInfoResponse extends BaseResponse {
+public class TranslatorInfo {
 	/**
 	 * 
 	 */
@@ -61,7 +57,6 @@ public class TranslatorInfoResponse extends BaseResponse {
      * 申请来源
      */
     private String usersource;
-    
 	public String getTranslatorId() {
 		return translatorId;
 	}
@@ -136,26 +131,5 @@ public class TranslatorInfoResponse extends BaseResponse {
 	}
     
     
-
-
-
-
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 }

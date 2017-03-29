@@ -1,7 +1,8 @@
 package com.ai.yc.translator.service.business.interfaces;
 
 import com.ai.opt.base.vo.PageInfo;
-import com.ai.yc.translator.api.translatorservice.param.TranslatorInfoQueryRequest;
+import com.ai.yc.translator.api.translatorservice.param.UsrTranslatorPageInfoRequest;
+import com.ai.yc.translator.api.translatorservice.param.TranslatorInfoQueryResponse;
 import com.ai.yc.translator.api.translatorservice.param.TranslatorInfoResponse;
 
 public interface ITranslatorInfoServiceBusiSV {
@@ -10,5 +11,6 @@ public interface ITranslatorInfoServiceBusiSV {
     * @param translatorInfoQueryRequest
     * @return
     */
-	public PageInfo<TranslatorInfoResponse> translatorInfoQuery(TranslatorInfoQueryRequest translatorInfoQueryRequest);
+	public TranslatorInfoQueryResponse queryPageInfoTranslatorInfo(UsrTranslatorPageInfoRequest translatorInfoQueryRequest);
+	
 }

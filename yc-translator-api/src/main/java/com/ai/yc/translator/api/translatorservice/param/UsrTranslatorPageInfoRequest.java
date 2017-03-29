@@ -2,6 +2,7 @@ package com.ai.yc.translator.api.translatorservice.param;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+
 import com.ai.opt.base.vo.PageInfo;
 
 /**
@@ -9,7 +10,7 @@ import com.ai.opt.base.vo.PageInfo;
  * @author hexf3
  *
  */
-public class TranslatorInfoQueryRequest implements Serializable {
+public class UsrTranslatorPageInfoRequest implements Serializable {
 
 	/**
 	 * 
@@ -48,9 +49,27 @@ public class TranslatorInfoQueryRequest implements Serializable {
     String langire;
     
     /**
-     * 分页时必填
+     * 当前第几页,必填
      */
-    PageInfo<TranslatorInfoResponse> pageInfo;
+    private Integer pageNo;
+
+    /**
+     * 每页数据条数,必填
+     */
+    private Integer pageSize;
+    
+    /**
+     * 状态
+     */
+    private Integer state;
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
 
 	public String getNickname() {
 		return nickname;
@@ -108,14 +127,22 @@ public class TranslatorInfoQueryRequest implements Serializable {
 		this.langire = langire;
 	}
 
-	public PageInfo<TranslatorInfoResponse> getPageInfo() {
-		return pageInfo;
+	public Integer getPageNo() {
+		return pageNo;
 	}
 
-	public void setPageInfo(PageInfo<TranslatorInfoResponse> pageInfo) {
-		this.pageInfo = pageInfo;
+	public void setPageNo(Integer pageNo) {
+		this.pageNo = pageNo;
 	}
-    
+
+	public Integer getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(Integer pageSize) {
+		this.pageSize = pageSize;
+	}
+
     
  
 }

@@ -18,8 +18,7 @@ import com.ai.yc.translator.service.atom.interfaces.ITranslatorInfoServiceAtomSV
 import com.ai.yc.translator.service.business.interfaces.ITranslatorInfoServiceBusiSV;
 @Service
 @Transactional
-public class TranslatorInfoServiceBusiSVImpl implements
-		ITranslatorInfoServiceBusiSV  {
+public class TranslatorInfoServiceBusiSVImpl implements ITranslatorInfoServiceBusiSV  {
 	@Autowired
 	private ITranslatorInfoServiceAtomSV ycTranslatorAtomSV;
 	@Override
@@ -35,7 +34,7 @@ public class TranslatorInfoServiceBusiSVImpl implements
 			int pageCount = count / pageInfoRequest.getPageNo() + (count % pageInfoRequest.getPageSize() > 0 ? 1 : 0);
 			translatorInfoList = ycTranslatorAtomSV.queryCompanyInfoList(pageInfoRequest);
 			if(translatorInfoList != null){
-				for(int i=0;i<translatorInfoList.size();i++){
+				for(int i=0;i<translatorInfoList.size();i++){				
 					TranslatorInfo translatorInfo = new TranslatorInfo();
 					UsrTranslatorPageInfo usrTranslator = translatorInfoList.get(i);
 					BeanUtils.copyProperties(translatorInfo, usrTranslator);

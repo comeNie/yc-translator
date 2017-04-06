@@ -10,6 +10,10 @@ public class TranslatorInfo {
     * 翻译员id
     */
 	private String translatorId;
+	/**
+	 * 用户id
+	 */
+	private String userId;
     /**
      * 昵称
      */
@@ -129,7 +133,14 @@ public class TranslatorInfo {
 	public void setUsersource(String usersource) {
 		this.usersource = usersource;
 	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
     
+	
     
     
 }

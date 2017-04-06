@@ -1,5 +1,7 @@
 package com.ai.yc.translator.api.translatorservice.param;
 
+import java.sql.Timestamp;
+
 public class UsrTranslatorPageInfo {
 	/**
 	 * 
@@ -10,6 +12,10 @@ public class UsrTranslatorPageInfo {
     * 翻译员id
     */
 	private String translatorId;
+	/**
+	 * 用户id
+	 */
+	private String userId;
     /**
      * 昵称
      */
@@ -45,10 +51,7 @@ public class UsrTranslatorPageInfo {
     /**
      * 注册时间
      */
-    /**
-     * 领域/用途
-     */
-    private String extendKey;
+    private Timestamp createTime;
     /**
      * 邮箱
      */
@@ -110,13 +113,7 @@ public class UsrTranslatorPageInfo {
 	}
 	public void setState(Integer state) {
 		this.state = state;
-	}
-	public String getExtendKey() {
-		return extendKey;
-	}
-	public void setExtendKey(String extendKey) {
-		this.extendKey = extendKey;
-	}
+	} 
 	public String getEmail() {
 		return email;
 	}
@@ -129,6 +126,20 @@ public class UsrTranslatorPageInfo {
 	public void setUsersource(String usersource) {
 		this.usersource = usersource;
 	}
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
+	
     
     
 }

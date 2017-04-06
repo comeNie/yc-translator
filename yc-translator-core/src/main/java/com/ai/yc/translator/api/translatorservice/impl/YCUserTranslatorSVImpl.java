@@ -21,18 +21,13 @@ import com.alibaba.dubbo.config.annotation.Service;
 public class YCUserTranslatorSVImpl implements IYCUserTranslatorSV {
 	 private static final Logger log = LogManager.getLogger(YCUserTranslatorSVImpl.class);
 	    @Autowired
-	    private ITranslatorInfoServiceBusiSV iTranslatorInfoQuerySV;
-    
+	    private ITranslatorInfoServiceBusiSV iTranslatorInfoQuerySV;    
 	@Override
 	@POST
 	@Path("/queryPageInfoTranslatorInfo")
 	public TranslatorInfoQueryResponse queryPageInfoTranslatorInfo(
 			UsrTranslatorPageInfoRequest param) throws BusinessException,
-			SystemException {
-		
+			SystemException {		
 		return iTranslatorInfoQuerySV.queryPageInfoTranslatorInfo(param);
 	}
-
-
-
 }

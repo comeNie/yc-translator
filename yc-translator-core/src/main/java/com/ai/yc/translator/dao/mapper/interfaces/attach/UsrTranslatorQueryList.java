@@ -6,7 +6,7 @@ public class UsrTranslatorQueryList {
 
 	public String queryUserTranslatorCount(UsrTranslatorPageInfoRequest pageInfoRequest){
 		StringBuffer stringBuffer = new StringBuffer();
-		stringBuffer.append("select count(*) count from usr_translator translator,uc_members members where translator.user_id = members.uid ");
+		stringBuffer.append("select count(*) count from usr_translator translator ");
 		if(pageInfoRequest.getNickname() != null){
 			stringBuffer.append("and translator.nick_name ="+pageInfoRequest.getNickname());
 		}
@@ -24,7 +24,7 @@ public class UsrTranslatorQueryList {
 	
 	public String queryUserTranslator(UsrTranslatorPageInfoRequest pageInfoRequest){
 		StringBuffer stringBuffer = new StringBuffer();
-		stringBuffer.append("select translator.translator_id,members.usersource,translator.nickname,translator.mobile_phone,members.email,translator.lastname,translator.firstname,translator.sex,translator.mother_tongue,translator.working_life,translator.create_time,translator.state from usr_translator translator,uc_members members where translator.user_id = members.uid");
+		stringBuffer.append("select translator.translator_id,translator.user_id,translator.nickname,translator.mobile_phone,translator.lastname,translator.firstname,translator.sex,translator.mother_tongue,translator.working_life,translator.create_time,translator.state from usr_translator translator ");
 		if(pageInfoRequest.getNickname() != null){
 			stringBuffer.append("and translator.nick_name ="+pageInfoRequest.getNickname());
 		}

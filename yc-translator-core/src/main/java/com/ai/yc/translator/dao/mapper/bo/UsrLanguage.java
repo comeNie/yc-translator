@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class UsrLanguage {
     private String languageId;
 
-    private String translatorId;
+    private String userId;
 
     private String duadId;
 
@@ -23,12 +23,12 @@ public class UsrLanguage {
         this.languageId = languageId == null ? null : languageId.trim();
     }
 
-    public String getTranslatorId() {
-        return translatorId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setTranslatorId(String translatorId) {
-        this.translatorId = translatorId == null ? null : translatorId.trim();
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public String getDuadId() {

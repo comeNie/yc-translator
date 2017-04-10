@@ -85,10 +85,10 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 	}
 
 	@Override
-	public List<UsrLanguage> getUsrLanguageList(String translator) {
+	public List<UsrLanguage> getUsrLanguageList(String userId) {
 		UsrLanguageCriteria example = new UsrLanguageCriteria();
 		UsrLanguageCriteria.Criteria criteria = example.createCriteria();
-		criteria.andTranslatorIdEqualTo(translator);
+		criteria.andUserIdEqualTo(userId);
 		return uLanguageMapper.selectByExample(example);
 	}
 
@@ -129,10 +129,10 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 	}
 
 	@Override
-	public int deleteLanguageSkillByTranslator(String translatorId) {
+	public int deleteLanguageSkillByTranslator(String userId) {
 		UsrLanguageCriteria example = new UsrLanguageCriteria();
 		UsrLanguageCriteria.Criteria criteria = example.createCriteria();
-		criteria.andTranslatorIdEqualTo(translatorId);
+		criteria.andUserIdEqualTo(userId);
 		return uLanguageMapper.deleteByExample(example);
 	}
 

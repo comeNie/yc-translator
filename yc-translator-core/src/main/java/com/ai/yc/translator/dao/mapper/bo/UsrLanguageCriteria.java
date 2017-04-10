@@ -195,73 +195,73 @@ public class UsrLanguageCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdIsNull() {
-            addCriterion("translator_id is null");
+        public Criteria andUserIdIsNull() {
+            addCriterion("user_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdIsNotNull() {
-            addCriterion("translator_id is not null");
+        public Criteria andUserIdIsNotNull() {
+            addCriterion("user_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdEqualTo(String value) {
-            addCriterion("translator_id =", value, "translatorId");
+        public Criteria andUserIdEqualTo(String value) {
+            addCriterion("user_id =", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdNotEqualTo(String value) {
-            addCriterion("translator_id <>", value, "translatorId");
+        public Criteria andUserIdNotEqualTo(String value) {
+            addCriterion("user_id <>", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdGreaterThan(String value) {
-            addCriterion("translator_id >", value, "translatorId");
+        public Criteria andUserIdGreaterThan(String value) {
+            addCriterion("user_id >", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdGreaterThanOrEqualTo(String value) {
-            addCriterion("translator_id >=", value, "translatorId");
+        public Criteria andUserIdGreaterThanOrEqualTo(String value) {
+            addCriterion("user_id >=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdLessThan(String value) {
-            addCriterion("translator_id <", value, "translatorId");
+        public Criteria andUserIdLessThan(String value) {
+            addCriterion("user_id <", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdLessThanOrEqualTo(String value) {
-            addCriterion("translator_id <=", value, "translatorId");
+        public Criteria andUserIdLessThanOrEqualTo(String value) {
+            addCriterion("user_id <=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdLike(String value) {
-            addCriterion("translator_id like", value, "translatorId");
+        public Criteria andUserIdLike(String value) {
+            addCriterion("user_id like", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdNotLike(String value) {
-            addCriterion("translator_id not like", value, "translatorId");
+        public Criteria andUserIdNotLike(String value) {
+            addCriterion("user_id not like", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdIn(List<String> values) {
-            addCriterion("translator_id in", values, "translatorId");
+        public Criteria andUserIdIn(List<String> values) {
+            addCriterion("user_id in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdNotIn(List<String> values) {
-            addCriterion("translator_id not in", values, "translatorId");
+        public Criteria andUserIdNotIn(List<String> values) {
+            addCriterion("user_id not in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdBetween(String value1, String value2) {
-            addCriterion("translator_id between", value1, value2, "translatorId");
+        public Criteria andUserIdBetween(String value1, String value2) {
+            addCriterion("user_id between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andTranslatorIdNotBetween(String value1, String value2) {
-            addCriterion("translator_id not between", value1, value2, "translatorId");
+        public Criteria andUserIdNotBetween(String value1, String value2) {
+            addCriterion("user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }
 

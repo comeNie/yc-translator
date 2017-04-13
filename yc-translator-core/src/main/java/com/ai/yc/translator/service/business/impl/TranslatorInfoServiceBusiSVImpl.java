@@ -2,6 +2,11 @@ package com.ai.yc.translator.service.business.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ai.opt.sdk.util.StringUtil;
+import com.ai.yc.translator.api.usrextend.param.UsrExtendInfo;
+import com.ai.yc.translator.dao.mapper.bo.UsrExtend;
+import com.ai.yc.translator.dao.mapper.bo.UsrExtendCriteria;
+import com.ai.yc.translator.service.atom.interfaces.IYCUsrExtendAtomSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +26,8 @@ import com.ai.yc.translator.service.business.interfaces.ITranslatorInfoServiceBu
 public class TranslatorInfoServiceBusiSVImpl implements ITranslatorInfoServiceBusiSV  {
 	@Autowired
 	private ITranslatorInfoServiceAtomSV ycTranslatorAtomSV;
+	@Autowired
+	private IYCUsrExtendAtomSV usrExtendAtomSV;
 	@Override
 	public TranslatorInfoQueryResponse queryPageInfoTranslatorInfo(
 			UsrTranslatorPageInfoRequest pageInfoRequest) {
@@ -28,16 +35,36 @@ public class TranslatorInfoServiceBusiSVImpl implements ITranslatorInfoServiceBu
 		List<UsrTranslatorPageInfo> translatorInfoList = null;
 		PageInfo<TranslatorInfo> translatorInfoPageInfo = new PageInfo<TranslatorInfo>();
 		List<TranslatorInfo> list = new ArrayList<TranslatorInfo>();
+//		List<UsrExtendInfo> returnList = new ArrayList<UsrExtendInfo>();
 		ResponseHeader header = null;
 		try {
 			int count  = ycTranslatorAtomSV.getTranslatorListCount(pageInfoRequest);
 			int pageCount = count / pageInfoRequest.getPageNo() + (count % pageInfoRequest.getPageSize() > 0 ? 1 : 0);
-			translatorInfoList = ycTranslatorAtomSV.queryCompanyInfoList(pageInfoRequest);
+			translatorInfoList = ycTranslatorAtomSV.queryTranslatorInfoList(pageInfoRequest);
 			if(translatorInfoList != null){
-				for(int i=0;i<translatorInfoList.size();i++){				
+				for(int i=0;i<translatorInfoList.size();i++){
+					UsrExtendCriteria example = new UsrExtendCriteria();
+					UsrExtendCriteria.Criteria criteria = example.createCriteria();
+					if(!StringUtil.isBlank(translatorInfoList.get(i).getTranslatorId())){
+						criteria.andTranslatorIdEqualTo(translatorInfoList.get(i).getTranslatorId());
+					}
+					//领域
+					String usrField = "";
+					//用途
+					String usrPurpose = "";
+					List<UsrExtend> usrExtendList = usrExtendAtomSV.queryExtendValue(example);
+					for (UsrExtend usrExtend: usrExtendList) {
+						if ("1".equals(usrExtend.getExtendType())){
+							usrField+=usrExtend.getExtendKey();
+						}else if ("2".equals(usrExtend.getExtendType())){
+							usrPurpose+=usrExtend.getExtendType();
+						}
+					}
 					TranslatorInfo translatorInfo = new TranslatorInfo();
 					UsrTranslatorPageInfo usrTranslator = translatorInfoList.get(i);
 					BeanUtils.copyProperties(translatorInfo, usrTranslator);
+					translatorInfo.setUsrField(usrField);
+					translatorInfo.setUsrPurpose(usrPurpose);
 					list.add(translatorInfo);
 				}
 			}

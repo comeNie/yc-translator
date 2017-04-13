@@ -12,5 +12,5 @@ import com.ai.yc.translator.api.translatorservice.param.TranslatorInfoResponse;
 
 public interface ITranslatorInfoServiceAtomSV {
     public int getTranslatorListCount(UsrTranslatorPageInfoRequest translatorInfoQueryRequest);
-    public List<UsrTranslatorPageInfo> queryCompanyInfoList(UsrTranslatorPageInfoRequest pageInfoRequest);
+    public List<UsrTranslatorPageInfo> queryTranslatorInfoList(UsrTranslatorPageInfoRequest pageInfoRequest);
 }

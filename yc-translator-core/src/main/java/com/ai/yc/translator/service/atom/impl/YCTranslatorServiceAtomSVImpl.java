@@ -104,7 +104,7 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 
 	@Override
 	public int insertTranslatorInc(UsrTranslator newTranslator) {
-		return uTranslatorMapper.insert(newTranslator);
+		return uTranslatorMapper.insertSelective(newTranslator);
 	}
 
 	@Override

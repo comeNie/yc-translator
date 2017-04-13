@@ -21,11 +21,17 @@ public class InsertYCTranslatorRequest implements Serializable {
 	 * uid／userid
 	 */
     private String userId;
+    
+    private String firstName;
+    
+    private String lastName;
     /**
      * 昵称
      * 必填
      */
     private String nickname;
+    
+    
     /**
 	 * ucenter获取的用户名
 	 * 必填
@@ -35,6 +41,8 @@ public class InsertYCTranslatorRequest implements Serializable {
     private Integer sex;
 
     private Timestamp birthday;
+    
+    private String tmpBirthday;
 
     /**
      * 必填
@@ -89,6 +97,8 @@ public class InsertYCTranslatorRequest implements Serializable {
     
     private String introduction;
 
+    private String portraitId;
+    
 	public String getUserId() {
 		return userId;
 	}
@@ -120,13 +130,21 @@ public class InsertYCTranslatorRequest implements Serializable {
 	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
-
+	
 	public Timestamp getBirthday() {
 		return birthday;
 	}
 
 	public void setBirthday(Timestamp birthday) {
 		this.birthday = birthday;
+	}
+
+	public String getTmpBirthday() {
+		return tmpBirthday;
+	}
+
+	public void setTmpBirthday(String tmpBirthday) {
+		this.tmpBirthday = tmpBirthday;
 	}
 
 	public String getMobilePhone() {
@@ -240,6 +258,28 @@ public class InsertYCTranslatorRequest implements Serializable {
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
-    
-    
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getPortraitId() {
+		return portraitId;
+	}
+
+	public void setPortraitId(String portraitId) {
+		this.portraitId = portraitId;
+	}
 }

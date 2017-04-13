@@ -10,12 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.vo.BaseListResponse;
 import com.ai.opt.base.vo.BaseResponse;
 import com.ai.opt.base.vo.ResponseHeader;
 import com.ai.opt.sdk.util.BeanUtils;
 import com.ai.yc.translator.api.translatorservice.interfaces.IYCTranslatorServiceSV;
 import com.ai.yc.translator.api.translatorservice.param.HBBaseResponse;
-import com.ai.yc.translator.api.translatorservice.param.LspTranslatorInfoResponse;
+import com.ai.yc.translator.api.translatorservice.param.LspTranslatorInfo;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
@@ -115,19 +116,20 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 
 
 	@Override
-	public HBBaseResponse<YCInsertTranslatorResponse> insertTranslator(
+	public YCInsertTranslatorResponse insertTranslator(
 			InsertYCTranslatorRequest insertYCTranslatorParams) {
 		LOGGER.debug("insertTranslator input params:", insertYCTranslatorParams);
-		HBBaseResponse<YCInsertTranslatorResponse> insertTranslatorResp = null;
-		YCInsertTranslatorResponse result = null;
+		YCInsertTranslatorResponse  response = new YCInsertTranslatorResponse();
+		ResponseHeader responseHeader = null;
 		try{
-			result = ycUsrServiceBusiSv.insertTranslatorBusiness(insertYCTranslatorParams);
-			insertTranslatorResp = new HBBaseResponse<YCInsertTranslatorResponse>(true,ExceptCodeConstants.SUCCESS,result);
+			response = ycUsrServiceBusiSv.insertTranslatorBusiness(insertYCTranslatorParams);
+			responseHeader = new ResponseHeader(true,ExceptCodeConstants.SUCCESS,"新增译员成功");
 		}catch(BusinessException e){
 			LOGGER.error("查询失败",e);
-			insertTranslatorResp = new HBBaseResponse<YCInsertTranslatorResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			responseHeader = new ResponseHeader(false,ExceptCodeConstants.FAILD,"新增译员失败");
 		}
-		return insertTranslatorResp;
+		response.setResponseHeader(responseHeader);
+		return response;
 	}
 
 
@@ -313,7 +315,7 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	@Override
 	@POST
 	@Path("getTranslatorsByLSPLanguageId")
-	public LspTranslatorInfoResponse getTranslatorsByLSPLanguageId(
+	public BaseListResponse<LspTranslatorInfo> getTranslatorsByLSPLanguageId(
 			SearchYCTranslatorRequest searchTranslatorRequest) {
 		// TODO Auto-generated method stub
 		return null;

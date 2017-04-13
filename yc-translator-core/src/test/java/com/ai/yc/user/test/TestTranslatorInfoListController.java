@@ -25,19 +25,20 @@ public class TestTranslatorInfoListController {
 	private IYCUserTranslatorSV ycUserTranslatorSV;
 	@Test
 	public void queryTranslatorInfoList(){
-		IYCUcMembersSV iYCUcMembersSV = DubboConsumerFactory.getService(IYCUcMembersSV.class);
+//		IYCUcMembersSV iYCUcMembersSV = DubboConsumerFactory.getService(IYCUcMembersSV.class);
 		UsrTranslatorPageInfoRequest pageInfoRequest = new UsrTranslatorPageInfoRequest();
 		pageInfoRequest.setPageNo(1);
 		pageInfoRequest.setPageSize(10);
+		pageInfoRequest.setState(0);
 		TranslatorInfoQueryResponse response = ycUserTranslatorSV.queryPageInfoTranslatorInfo(pageInfoRequest);
 		List<TranslatorInfo> list = new ArrayList<TranslatorInfo>();
-		for(int i=0;i<response.getPageInfo().getResult().size();i++){
-			TranslatorInfo translatorInfo =  response.getPageInfo().getResult().get(i);
-			UcMembersInfo ucMembersInfo = iYCUcMembersSV.queryUcMember(Integer.parseInt(translatorInfo.getUserId()));
-			translatorInfo.setUsersource(ucMembersInfo.getUsersource());
-			translatorInfo.setEmail(ucMembersInfo.getEmail());
-			list.add(translatorInfo);
-		}
+//		for(int i=0;i<response.getPageInfo().getResult().size();i++){
+//			TranslatorInfo translatorInfo =  response.getPageInfo().getResult().get(i);
+//			UcMembersInfo ucMembersInfo = iYCUcMembersSV.queryUcMember(Integer.parseInt(translatorInfo.getUserId()));
+//			translatorInfo.setUsersource(ucMembersInfo.getUsersource());
+//			translatorInfo.setEmail(ucMembersInfo.getEmail());
+//			list.add(translatorInfo);
+//		}
 		response.getPageInfo().setResult(list);		
 		System.out.println(JSON.toJSONString(response));		
 	}

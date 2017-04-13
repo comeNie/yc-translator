@@ -180,7 +180,7 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 	@Override
 	public YCInsertTranslatorResponse insertTranslatorBusiness(InsertYCTranslatorRequest insertYCTranslatorParams)
 			throws BusinessException {
-		if (StringUtil.isBlank(insertYCTranslatorParams.getUserId())
+		/*if (StringUtil.isBlank(insertYCTranslatorParams.getUserId())
 				&& StringUtil.isBlank(insertYCTranslatorParams.getUsername())
 				&& StringUtil.isBlank(insertYCTranslatorParams.getNickname())
 				&& StringUtil.isBlank(insertYCTranslatorParams.getMobilePhone())
@@ -191,7 +191,7 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 				&& StringUtil.isBlank(insertYCTranslatorParams.getAreaOfExperise())
 				&& StringUtil.isBlank(insertYCTranslatorParams.getAreaOfUse())) {
 			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "必填字段不能为空");
-		}
+		}*/
 		YCInsertTranslatorResponse itr = new YCInsertTranslatorResponse();
 
 		UsrTranslator newTranslator = new UsrTranslator();

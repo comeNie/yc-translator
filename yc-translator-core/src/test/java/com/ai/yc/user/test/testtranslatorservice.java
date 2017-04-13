@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ai.opt.base.vo.BaseResponse;
+import com.ai.opt.sdk.util.DateUtil;
 import com.ai.yc.translator.api.translatorservice.interfaces.IYCTranslatorServiceSV;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
@@ -14,6 +15,7 @@ import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorInfoResponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
 import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
+import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCTranslatorRequest;
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
@@ -72,4 +74,16 @@ public class testtranslatorservice {
 		System.out.println(g.toJson(response));
 	}
 	
+	@Test
+	public void insertTralatorTest(){
+		InsertYCTranslatorRequest translatorRequest = new InsertYCTranslatorRequest();
+		translatorRequest.setUserId("12345");
+		translatorRequest.setFirstName("test");
+		translatorRequest.setLastName("test");
+		translatorRequest.setBirthday(DateUtil.getSysDate());
+		translatorRequest.setWorkingLife(12);
+		translatorRequest.setAreaOfExperise("1");
+		translatorRequest.setAreaOfUse("12");
+		usSV.insertTranslator(translatorRequest);
+	}
 }

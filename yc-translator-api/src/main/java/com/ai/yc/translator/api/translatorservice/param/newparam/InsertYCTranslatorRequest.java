@@ -21,11 +21,17 @@ public class InsertYCTranslatorRequest implements Serializable {
 	 * uid／userid
 	 */
     private String userId;
+    
+    private String firstName;
+    
+    private String lastName;
     /**
      * 昵称
      * 必填
      */
     private String nickname;
+    
+    
     /**
 	 * ucenter获取的用户名
 	 * 必填
@@ -239,6 +245,22 @@ public class InsertYCTranslatorRequest implements Serializable {
 
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
     
     

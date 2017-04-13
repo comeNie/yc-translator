@@ -38,7 +38,7 @@ public interface IYCUsrExtendValueSV {
      * @RestRelativeURL usrextendservice/queryExtendValue
 	 */
     @POST
-    @Path("/queryContributionValue")
+    @Path("/queryExtendValue")
     public BaseListResponse<UsrExtendInfo> queryExtendValue(UsrExtendRequest extendRequest) throws BusinessException,SystemException;
     
 }

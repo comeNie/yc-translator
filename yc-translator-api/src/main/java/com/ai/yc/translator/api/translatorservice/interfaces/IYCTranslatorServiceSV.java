@@ -89,7 +89,7 @@ public interface IYCTranslatorServiceSV {
 	 */
 	@POST
 	@Path("/insertTranslator")
-	HBBaseResponse<YCInsertTranslatorResponse> insertTranslator(InsertYCTranslatorRequest insertYCTranslatorParams);
+	YCInsertTranslatorResponse insertTranslator(InsertYCTranslatorRequest insertYCTranslatorParams);
 	
 	/**
 	 * 修改译员信息

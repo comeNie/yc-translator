@@ -10,12 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.vo.BaseListResponse;
 import com.ai.opt.base.vo.BaseResponse;
 import com.ai.opt.base.vo.ResponseHeader;
 import com.ai.opt.sdk.util.BeanUtils;
 import com.ai.yc.translator.api.translatorservice.interfaces.IYCTranslatorServiceSV;
 import com.ai.yc.translator.api.translatorservice.param.HBBaseResponse;
-import com.ai.yc.translator.api.translatorservice.param.LspTranslatorInfoResponse;
+import com.ai.yc.translator.api.translatorservice.param.LspTranslatorInfo;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
@@ -313,7 +314,7 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	@Override
 	@POST
 	@Path("getTranslatorsByLSPLanguageId")
-	public LspTranslatorInfoResponse getTranslatorsByLSPLanguageId(
+	public BaseListResponse<LspTranslatorInfo> getTranslatorsByLSPLanguageId(
 			SearchYCTranslatorRequest searchTranslatorRequest) {
 		// TODO Auto-generated method stub
 		return null;

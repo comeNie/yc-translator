@@ -15,6 +15,7 @@ import com.ai.opt.base.vo.ResponseHeader;
 import com.ai.opt.sdk.util.BeanUtils;
 import com.ai.yc.translator.api.translatorservice.interfaces.IYCTranslatorServiceSV;
 import com.ai.yc.translator.api.translatorservice.param.HBBaseResponse;
+import com.ai.yc.translator.api.translatorservice.param.LspTranslatorInfoResponse;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
@@ -306,5 +307,15 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 		}
 		response.setResponseHeader(header);
 		return response;
+	}
+
+
+	@Override
+	@POST
+	@Path("getTranslatorsByLSPLanguageId")
+	public LspTranslatorInfoResponse getTranslatorsByLSPLanguageId(
+			SearchYCTranslatorRequest searchTranslatorRequest) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

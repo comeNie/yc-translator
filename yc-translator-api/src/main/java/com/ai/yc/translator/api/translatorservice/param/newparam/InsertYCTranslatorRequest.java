@@ -40,7 +40,9 @@ public class InsertYCTranslatorRequest implements Serializable {
 	
     private Integer sex;
 
-    private String birthday;
+    private Timestamp birthday;
+    
+    private String tmpBirthday;
 
     /**
      * 必填
@@ -128,15 +130,21 @@ public class InsertYCTranslatorRequest implements Serializable {
 	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
-
 	
-
-	public String getBirthday() {
+	public Timestamp getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Timestamp birthday) {
 		this.birthday = birthday;
+	}
+
+	public String getTmpBirthday() {
+		return tmpBirthday;
+	}
+
+	public void setTmpBirthday(String tmpBirthday) {
+		this.tmpBirthday = tmpBirthday;
 	}
 
 	public String getMobilePhone() {

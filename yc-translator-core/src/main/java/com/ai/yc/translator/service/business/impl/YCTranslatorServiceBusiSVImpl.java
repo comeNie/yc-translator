@@ -116,7 +116,7 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 				return translatorSkillList;
 			}
 			// 获取LSP信息
-			UsrLspRelation ulr = ycUSAtomSV.getUsrLspRelationByTranslatorId(utr.getTranslatorId());
+			UsrLspRelation ulr = ycUSAtomSV.getUsrLspRelationByTranslatorId(userId);
 			if (null != ulr) {
 				translatorSkillList.setLspId(ulr.getLspId());
 				translatorSkillList.setLspRole(ulr.getTranslatorRole());

@@ -95,6 +95,8 @@ public class InsertYCTranslatorRequest implements Serializable {
     
     private String introduction;
 
+    private String portraitId;
+    
 	public String getUserId() {
 		return userId;
 	}
@@ -262,6 +264,12 @@ public class InsertYCTranslatorRequest implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-    
-    
+
+	public String getPortraitId() {
+		return portraitId;
+	}
+
+	public void setPortraitId(String portraitId) {
+		this.portraitId = portraitId;
+	}
 }

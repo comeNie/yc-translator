@@ -80,7 +80,6 @@ public class testtranslatorservice {
 		translatorRequest.setUserId("12345");
 		translatorRequest.setFirstName("test");
 		translatorRequest.setLastName("test");
-		translatorRequest.setBirthday("");
 		translatorRequest.setWorkingLife(12);
 		translatorRequest.setAreaOfExperise("1");
 		translatorRequest.setAreaOfUse("12");

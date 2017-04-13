@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.ai.opt.base.vo.BaseResponse;
 import com.ai.yc.translator.api.translatorservice.param.HBBaseResponse;
+import com.ai.yc.translator.api.translatorservice.param.LspTranslatorInfoResponse;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
@@ -206,4 +207,15 @@ public interface IYCTranslatorServiceSV {
 	@Path("updateTranslatorByUserId")
 	public BaseResponse updateTranslatorByUserId(UpdateYCTranslatorRequest UpdateYCTranslatorParams);
 	
+	
+	/**
+	 * 通过LSPId和语言对ID获取译员信息
+	 * @param 
+	 * @return
+	 * @ApiCode TRANSLATOR_00010
+     * @RestRelativeURL yctranslatorservice/getTranslatorInfoByLSPLanguageId
+	 */
+	@POST
+	@Path("getTranslatorsByLSPLanguageId")
+	public LspTranslatorInfoResponse getTranslatorsByLSPLanguageId(SearchYCTranslatorRequest searchTranslatorRequest);
 }

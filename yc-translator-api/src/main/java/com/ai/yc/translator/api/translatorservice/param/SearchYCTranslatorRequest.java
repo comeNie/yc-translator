@@ -3,7 +3,6 @@ package com.ai.yc.translator.api.translatorservice.param;
 
 import java.io.Serializable;
 
-import com.ai.opt.base.vo.BaseInfo;
 
 /** 
  * @author  作者 “WTF” E-mail: 1031248990@qq.com
@@ -12,24 +11,31 @@ import com.ai.opt.base.vo.BaseInfo;
  * @since  
  */
 public class SearchYCTranslatorRequest  implements Serializable{
+	
+	private static final long serialVersionUID = -1445662539360692130L;
+	
 	/**
-	 * 租户Id，必填
+	 * 租户Id
 	 */
 	private String tenantId;
-	public String getTenantId() {
-		return tenantId;
-	}
-
-	public void setTenantId(String tenantId) {
-		this.tenantId = tenantId;
-	}
+	
 	/**
-	 * 
+	 * 用户ID
 	 */
-	private static final long serialVersionUID = -1445662539360692130L;
 	private String userId;
+	/**
+	 * 译员ID
+	 */
 	private String translatorId;
-
+	/**
+	 * lspID
+	 */
+	private String lspId;
+	/**
+	 * 语言对Id
+	 */
+	private String languagePairId;
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -44,5 +50,28 @@ public class SearchYCTranslatorRequest  implements Serializable{
 
 	public void setTranslatorId(String translatorId) {
 		this.translatorId = translatorId;
+	}
+
+	public String getLspId() {
+		return lspId;
+	}
+
+	public void setLspId(String lspId) {
+		this.lspId = lspId;
+	}
+
+	public String getLanguagePairId() {
+		return languagePairId;
+	}
+
+	public void setLanguagePairId(String languagePairId) {
+		this.languagePairId = languagePairId;
+	}
+	public String getTenantId() {
+		return tenantId;
+	}
+
+	public void setTenantId(String tenantId) {
+		this.tenantId = tenantId;
 	}
 }

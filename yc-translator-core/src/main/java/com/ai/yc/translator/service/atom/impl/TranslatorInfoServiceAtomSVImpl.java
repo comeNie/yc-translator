@@ -25,7 +25,7 @@ public class TranslatorInfoServiceAtomSVImpl implements ITranslatorInfoServiceAt
 	}
 
 	@Override
-	public List<UsrTranslatorPageInfo> queryCompanyInfoList(
+	public List<UsrTranslatorPageInfo> queryTranslatorInfoList(
 			UsrTranslatorPageInfoRequest pageInfoRequest) {
 		return UsrTranslatorAttachMapper.getTranslatorInfoList(pageInfoRequest);
 	}

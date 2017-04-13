@@ -1,5 +1,10 @@
 package com.ai.yc.translator.api.translatorservice.param;
 
+import com.ai.yc.translator.api.usrextend.param.UsrExtendInfo;
+
+import java.sql.Timestamp;
+import java.util.List;
+
 public class TranslatorInfo {
 	/**
 	 * 
@@ -49,10 +54,8 @@ public class TranslatorInfo {
     /**
      * 注册时间
      */
-    /**
-     * 领域/用途
-     */
-    private String extendKey;
+	private Timestamp createTime;
+
     /**
      * 邮箱
      */
@@ -61,6 +64,32 @@ public class TranslatorInfo {
      * 申请来源
      */
     private String usersource;
+	/**
+	 * 领域
+	 */
+	private String usrField;
+
+	/**
+	 * 用途
+	 */
+	private String usrPurpose;
+
+	public String getUsrField() {
+		return usrField;
+	}
+
+	public void setUsrField(String usrField) {
+		this.usrField = usrField;
+	}
+
+	public String getUsrPurpose() {
+		return usrPurpose;
+	}
+
+	public void setUsrPurpose(String usrPurpose) {
+		this.usrPurpose = usrPurpose;
+	}
+
 	public String getTranslatorId() {
 		return translatorId;
 	}
@@ -115,12 +144,6 @@ public class TranslatorInfo {
 	public void setState(Integer state) {
 		this.state = state;
 	}
-	public String getExtendKey() {
-		return extendKey;
-	}
-	public void setExtendKey(String extendKey) {
-		this.extendKey = extendKey;
-	}
 	public String getEmail() {
 		return email;
 	}
@@ -139,8 +162,12 @@ public class TranslatorInfo {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-    
-	
-    
-    
+
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
 }

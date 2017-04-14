@@ -6,6 +6,8 @@ import com.ai.opt.sdk.util.StringUtil;
 import com.ai.yc.translator.api.usrextend.param.UsrExtendInfo;
 import com.ai.yc.translator.dao.mapper.bo.UsrExtend;
 import com.ai.yc.translator.dao.mapper.bo.UsrExtendCriteria;
+import com.ai.yc.translator.dao.mapper.bo.UsrLanguage;
+import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
 import com.ai.yc.translator.service.atom.interfaces.IYCUsrExtendAtomSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,8 @@ public class TranslatorInfoServiceBusiSVImpl implements ITranslatorInfoServiceBu
 	private ITranslatorInfoServiceAtomSV ycTranslatorAtomSV;
 	@Autowired
 	private IYCUsrExtendAtomSV usrExtendAtomSV;
+	@Autowired
+	private IYCTranslatorServiceAtomSV ycUSAtomSV;
 	@Override
 	public TranslatorInfoQueryResponse queryPageInfoTranslatorInfo(
 			UsrTranslatorPageInfoRequest pageInfoRequest) {
@@ -52,6 +56,10 @@ public class TranslatorInfoServiceBusiSVImpl implements ITranslatorInfoServiceBu
 					String usrField = "";
 					//用途
 					String usrPurpose = "";
+
+					List<UsrLanguage> usrLanguageLists = ycUSAtomSV.getUsrLanguageList(translatorInfoList.get(i).getUserId());
+					//语言方向
+					String usrLanguageList = StringUtil.join(usrLanguageLists.toArray(new String[usrLanguageLists.size()]), ",");
 					List<UsrExtend> usrExtendList = usrExtendAtomSV.queryExtendValue(example);
 					for (UsrExtend usrExtend: usrExtendList) {
 						if ("1".equals(usrExtend.getExtendType())){
@@ -64,6 +72,7 @@ public class TranslatorInfoServiceBusiSVImpl implements ITranslatorInfoServiceBu
 					UsrTranslatorPageInfo usrTranslator = translatorInfoList.get(i);
 					BeanUtils.copyProperties(translatorInfo, usrTranslator);
 					translatorInfo.setUsrField(usrField);
+					translatorInfo.setUsrLanguages(usrLanguageList);
 					translatorInfo.setUsrPurpose(usrPurpose);
 					list.add(translatorInfo);
 				}

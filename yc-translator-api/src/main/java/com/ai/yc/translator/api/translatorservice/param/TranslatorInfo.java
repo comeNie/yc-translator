@@ -74,6 +74,19 @@ public class TranslatorInfo {
 	 */
 	private String usrPurpose;
 
+	/**
+	 * 语言方向
+	 */
+	private String usrLanguages;
+
+	public String getUsrLanguages() {
+		return usrLanguages;
+	}
+
+	public void setUsrLanguages(String usrLanguages) {
+		this.usrLanguages = usrLanguages;
+	}
+
 	public String getUsrField() {
 		return usrField;
 	}

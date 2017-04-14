@@ -2,6 +2,7 @@ package com.ai.yc.translator.service.business.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ai.opt.sdk.util.CollectionUtil;
 import com.ai.opt.sdk.util.StringUtil;
 import com.ai.yc.translator.api.usrextend.param.UsrExtendInfo;
 import com.ai.yc.translator.dao.mapper.bo.UsrExtend;
@@ -56,10 +57,15 @@ public class TranslatorInfoServiceBusiSVImpl implements ITranslatorInfoServiceBu
 					String usrField = "";
 					//用途
 					String usrPurpose = "";
-
+					//语言方向ID
 					List<UsrLanguage> usrLanguageLists = ycUSAtomSV.getUsrLanguageList(translatorInfoList.get(i).getUserId());
-					//语言方向
-					String usrLanguageList = StringUtil.join(usrLanguageLists.toArray(new String[usrLanguageLists.size()]), ",");
+					List<String> usrLanguageIDLists = new ArrayList<>();
+					if (CollectionUtil.isEmpty(usrLanguageLists)){
+						for (UsrLanguage usrLanguage: usrLanguageLists){
+							usrLanguageIDLists.add(usrLanguage.getDuadId());
+						}
+					}
+//					String usrLanguageList = StringUtil.join(usrLanguageLists.toArray(new String[usrLanguageLists.size()]), ",");
 					List<UsrExtend> usrExtendList = usrExtendAtomSV.queryExtendValue(example);
 					for (UsrExtend usrExtend: usrExtendList) {
 						if ("1".equals(usrExtend.getExtendType())){
@@ -72,7 +78,8 @@ public class TranslatorInfoServiceBusiSVImpl implements ITranslatorInfoServiceBu
 					UsrTranslatorPageInfo usrTranslator = translatorInfoList.get(i);
 					BeanUtils.copyProperties(translatorInfo, usrTranslator);
 					translatorInfo.setUsrField(usrField);
-					translatorInfo.setUsrLanguages(usrLanguageList);
+					translatorInfo.setUsrLanguagelist(usrLanguageIDLists);
+//					translatorInfo.setUsrLanguages(usrLanguageList);
 					translatorInfo.setUsrPurpose(usrPurpose);
 					list.add(translatorInfo);
 				}

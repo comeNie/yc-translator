@@ -452,6 +452,7 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 		ResponseHeader header = null;
 		try{
 			ycUSAtomSV.deleteTranslatorInfo(translatorId);
+			ycUSAtomSV.deleteExtendByTranslatorId(translatorId);
 			header = new ResponseHeader(true, ExceptCodeConstants.Special.SUCCESS,"删除成功");
 		}catch(Exception e){
 			e.printStackTrace();

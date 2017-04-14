@@ -15,7 +15,11 @@ public class InsertYCTranslatorRequest implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4076022900230531357L;
-
+	/**
+	 * 译员Id
+	 */
+	private String translatorId;
+	
 	/**
 	 * 必填 
 	 * uid／userid
@@ -282,4 +286,13 @@ public class InsertYCTranslatorRequest implements Serializable {
 	public void setPortraitId(String portraitId) {
 		this.portraitId = portraitId;
 	}
+
+	public String getTranslatorId() {
+		return translatorId;
+	}
+
+	public void setTranslatorId(String translatorId) {
+		this.translatorId = translatorId;
+	}
+	
 }

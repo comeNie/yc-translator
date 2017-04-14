@@ -60,7 +60,7 @@ public class TranslatorInfoServiceBusiSVImpl implements ITranslatorInfoServiceBu
 					//语言方向ID
 					List<UsrLanguage> usrLanguageLists = ycUSAtomSV.getUsrLanguageList(translatorInfoList.get(i).getUserId());
 					List<String> usrLanguageIDLists = new ArrayList<>();
-					if (CollectionUtil.isEmpty(usrLanguageLists)){
+					if (!CollectionUtil.isEmpty(usrLanguageLists)){
 						for (UsrLanguage usrLanguage: usrLanguageLists){
 							usrLanguageIDLists.add(usrLanguage.getDuadId());
 						}

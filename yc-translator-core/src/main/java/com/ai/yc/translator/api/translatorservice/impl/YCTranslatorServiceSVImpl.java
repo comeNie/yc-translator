@@ -320,4 +320,13 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	@Override
+	@POST
+	@Path("deleteTranslatorInfo")
+	public BaseResponse deleteTranslatorInfo(String translatorId) {
+		// TODO Auto-generated method stub
+		return ycUsrServiceBusiSv.deleteTranslator(translatorId);
+	}
 }

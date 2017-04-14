@@ -61,4 +61,6 @@ public interface IYCTranslatorServiceAtomSV {
 	public List<UsrExtend> searchExtendByTranslatorId(String translatorId);
 	
 	public int updateTranslatorByUserId(UsrTranslator newTranslator,UsrTranslatorCriteria criteria);
+	
+	public int deleteTranslatorInfo(String translatorId);
 }

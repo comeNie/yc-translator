@@ -219,4 +219,15 @@ public interface IYCTranslatorServiceSV {
 	@POST
 	@Path("getTranslatorsByLSPLanguageId")
 	public BaseListResponse<LspTranslatorInfo> getTranslatorsByLSPLanguageId(SearchYCTranslatorRequest searchTranslatorRequest);
+	
+	/**
+	 * 删除译员信息
+	 * @param 
+	 * @return
+	 * @ApiCode TRANSLATOR_00010
+     * @RestRelativeURL yctranslatorservice/deleteTranslatorInfo
+	 */
+	@POST
+	@Path("deleteTranslatorInfo")
+	public BaseResponse deleteTranslatorInfo(String translatorId);
 }

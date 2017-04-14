@@ -236,4 +236,10 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 		return uTranslatorMapper.updateByExampleSelective(newTranslator, criteria);
 	}
 
+	@Override
+	public int deleteTranslatorInfo(String translatorId) {
+		// TODO Auto-generated method stub
+		return uTranslatorMapper.deleteByPrimaryKey(translatorId);
+	}
+
 }

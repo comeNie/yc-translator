@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.vo.BaseResponse;
 import com.ai.opt.base.vo.ResponseHeader;
 import com.ai.opt.sdk.components.sequence.util.SeqUtil;
 import com.ai.opt.sdk.constants.ExceptCodeConstants;
@@ -440,6 +441,21 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 		} catch (Exception e) {
 			header = new ResponseHeader(false, ExceptCodeConstants.Special.SYSTEM_ERROR, "修改失败");
 			throw new BusinessException(ExceptCodeConstants.Special.PARAM_TYPE_NOT_RIGHT, e);
+		}
+		response.setResponseHeader(header);
+		return response;
+	}
+
+	@Override
+	public BaseResponse deleteTranslator(String translatorId) {
+		BaseResponse response = new BaseResponse();
+		ResponseHeader header = null;
+		try{
+			ycUSAtomSV.deleteTranslatorInfo(translatorId);
+			header = new ResponseHeader(true, ExceptCodeConstants.Special.SUCCESS,"删除成功");
+		}catch(Exception e){
+			e.printStackTrace();
+			header = new ResponseHeader(true, ExceptCodeConstants.Special.SUCCESS,"删除成功");
 		}
 		response.setResponseHeader(header);
 		return response;

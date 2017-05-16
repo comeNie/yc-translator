@@ -1,15 +1,12 @@
 package com.ai.yc.translator.api.translatorservice.param.newparam;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
-import com.ai.opt.base.vo.BaseResponse;
 
-public class UsrEducationMessage extends BaseResponse{
+public class UsrEducationMessage{
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 
 	private String educationId;
 

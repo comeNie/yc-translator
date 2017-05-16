@@ -1,9 +1,15 @@
 package com.ai.yc.translator.api.translatorservice.param.newparam;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class UsrEducationMessage {
-    private String educationId;
+public class UsrEducationMessage implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private String educationId;
 
     private String translatorId;
 

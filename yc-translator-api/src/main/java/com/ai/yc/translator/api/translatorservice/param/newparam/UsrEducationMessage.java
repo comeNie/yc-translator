@@ -3,7 +3,9 @@ package com.ai.yc.translator.api.translatorservice.param.newparam;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class UsrEducationMessage implements Serializable{
+import com.ai.opt.base.vo.BaseResponse;
+
+public class UsrEducationMessage extends BaseResponse{
     /**
 	 * 
 	 */

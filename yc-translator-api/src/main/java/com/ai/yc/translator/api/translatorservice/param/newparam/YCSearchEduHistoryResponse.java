@@ -3,13 +3,15 @@ package com.ai.yc.translator.api.translatorservice.param.newparam;
 import java.io.Serializable;
 import java.util.List;
 
+import com.ai.opt.base.vo.BaseResponse;
+
 /** 
  * @author  作者 “WTF” E-mail: 1031248990@qq.com
  * @date 创建时间：2016年12月2日 下午3:55:15 
  * @version 
  * @since  
  */
-public class YCSearchEduHistoryResponse implements Serializable {
+public class YCSearchEduHistoryResponse extends BaseResponse {
 
 
     /**

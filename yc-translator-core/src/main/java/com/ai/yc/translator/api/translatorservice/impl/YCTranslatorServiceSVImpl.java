@@ -182,18 +182,15 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	}
 
 	@Override
-	public HBBaseResponse<YCSearchEduHistoryResponse> searchEduHistory(SearchYCEduHistoryRequest searchParams) {
+	public YCSearchEduHistoryResponse searchEduHistory(SearchYCEduHistoryRequest searchParams) {
 		LOGGER.debug("searchEduHistory input params:", searchParams);
-		HBBaseResponse<YCSearchEduHistoryResponse> searchEduHistoryResp = null;
 		YCSearchEduHistoryResponse result = null;
 		try{
 			result = ycUsrServiceBusiSv.searchEduHistoryBusiness(searchParams);
-			searchEduHistoryResp = new HBBaseResponse<YCSearchEduHistoryResponse>(true,ExceptCodeConstants.SUCCESS,result);
 		}catch(BusinessException e){
 			LOGGER.error("查询失败",e);
-			searchEduHistoryResp = new HBBaseResponse<YCSearchEduHistoryResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
 		}
-		return searchEduHistoryResp;
+		return result;
 	}
 
 	@Override

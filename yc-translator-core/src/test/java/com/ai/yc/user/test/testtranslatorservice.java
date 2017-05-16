@@ -16,7 +16,9 @@ import com.ai.yc.translator.api.translatorservice.param.YCTranslatorInfoResponse
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
 import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCEduHistoryRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchEduHistoryResponse;
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 
@@ -84,5 +86,13 @@ public class testtranslatorservice {
 		translatorRequest.setAreaOfExperise("1");
 		translatorRequest.setAreaOfUse("12");
 		usSV.insertTranslator(translatorRequest);
+	}
+	
+	@Test
+	public void testEducationQuery(){
+		SearchYCEduHistoryRequest searchParams = new SearchYCEduHistoryRequest();
+		searchParams.setTranslatorId("2");
+		YCSearchEduHistoryResponse response = usSV.searchEduHistory(searchParams);
+		System.out.println(JSON.toJSONString(response));
 	}
 }

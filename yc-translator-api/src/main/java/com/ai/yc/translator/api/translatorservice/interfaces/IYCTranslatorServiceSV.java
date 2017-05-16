@@ -133,7 +133,7 @@ public interface IYCTranslatorServiceSV {
 	 */
 	@POST
 	@Path("searchEduHistory")
-	HBBaseResponse<YCSearchEduHistoryResponse> searchEduHistory(SearchYCEduHistoryRequest searchParams);
+	YCSearchEduHistoryResponse searchEduHistory(SearchYCEduHistoryRequest searchParams);
 	
 	/**
 	 * 修改译员工作经历

@@ -12,7 +12,7 @@ import com.ai.opt.base.vo.BaseResponse;
  * @version 
  * @since  
  */
-public class SearchYCEduHistoryRequest extends BaseResponse {
+public class SearchYCEduHistoryRequest{
 
 	/**
 	 * 

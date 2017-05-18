@@ -1,9 +1,13 @@
 package com.ai.yc.translator.service.business.interfaces;
 
-import com.ai.opt.base.vo.PageInfo;
+
+
 import com.ai.yc.translator.api.translatorservice.param.UsrTranslatorPageInfoRequest;
 import com.ai.yc.translator.api.translatorservice.param.TranslatorInfoQueryResponse;
-import com.ai.yc.translator.api.translatorservice.param.TranslatorInfoResponse;
+import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
+
+import java.util.List;
+
 
 public interface ITranslatorInfoServiceBusiSV {
    /**
@@ -12,5 +16,11 @@ public interface ITranslatorInfoServiceBusiSV {
     * @return
     */
 	public TranslatorInfoQueryResponse queryPageInfoTranslatorInfo(UsrTranslatorPageInfoRequest translatorInfoQueryRequest);
+
+    /**
+     * 查询lsp帐户信息
+     *
+     */
+    public List<UsrLsp> queryLspAccountInfo(String param);
 	
 }

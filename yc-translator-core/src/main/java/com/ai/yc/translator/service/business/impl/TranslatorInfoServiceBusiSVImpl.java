@@ -8,8 +8,10 @@ import com.ai.yc.translator.api.usrextend.param.UsrExtendInfo;
 import com.ai.yc.translator.dao.mapper.bo.UsrExtend;
 import com.ai.yc.translator.dao.mapper.bo.UsrExtendCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrLanguage;
+import com.ai.yc.translator.dao.mapper.bo.UsrLsp;
 import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
 import com.ai.yc.translator.service.atom.interfaces.IYCUsrExtendAtomSV;
+import com.ai.yc.translator.service.atom.interfaces.IYCUsrLspAtomSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +35,8 @@ public class TranslatorInfoServiceBusiSVImpl implements ITranslatorInfoServiceBu
 	private IYCUsrExtendAtomSV usrExtendAtomSV;
 	@Autowired
 	private IYCTranslatorServiceAtomSV ycUSAtomSV;
+	@Autowired
+	private IYCUsrLspAtomSV usrLspAtomSV;
 	@Override
 	public TranslatorInfoQueryResponse queryPageInfoTranslatorInfo(
 			UsrTranslatorPageInfoRequest pageInfoRequest) {
@@ -99,4 +103,8 @@ public class TranslatorInfoServiceBusiSVImpl implements ITranslatorInfoServiceBu
 		return response;
 	}
 
+	@Override
+	public List<UsrLsp> queryLspAccountInfo(String param) {
+		return usrLspAtomSV.queryLspAccountInfo(param);
+	}
 }

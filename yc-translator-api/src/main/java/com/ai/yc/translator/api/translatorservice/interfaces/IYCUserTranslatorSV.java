@@ -7,6 +7,8 @@ import javax.ws.rs.core.MediaType;
 
 import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.base.exception.SystemException;
+import com.ai.yc.translator.api.translatorservice.param.LspTranslatorInfo;
+import com.ai.yc.translator.api.translatorservice.param.UsrLspMessageResponse;
 import com.ai.yc.translator.api.translatorservice.param.UsrTranslatorPageInfoRequest;
 import com.ai.yc.translator.api.translatorservice.param.TranslatorInfoQueryResponse;
 
@@ -21,5 +23,12 @@ public interface IYCUserTranslatorSV {
 	@POST
 	@Path("/queryPageInfoTranslatorInfo")
 	TranslatorInfoQueryResponse queryPageInfoTranslatorInfo(UsrTranslatorPageInfoRequest param) throws BusinessException,SystemException;
-	
+	/**
+	 * 查询lsp帐户信息
+	 *
+	 */
+	@POST
+	@Path("/queryLspAccountInfo")
+	UsrLspMessageResponse queryLspAccountInfo(LspTranslatorInfo param) throws BusinessException,SystemException;
+
 }

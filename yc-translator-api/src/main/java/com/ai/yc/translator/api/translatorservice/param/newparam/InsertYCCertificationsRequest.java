@@ -19,7 +19,6 @@ public class InsertYCCertificationsRequest implements Serializable {
 	/**
 	 * 译员ID 必填
 	 */
-	@NotBlank(message = "译员id不能为空")
 	private String translatorId;
 	
 	private List<UsrCertificateMessage> certificateList;

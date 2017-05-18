@@ -16,6 +16,7 @@
     <result column="mobile_phone" property="mobilePhone" jdbcType="VARCHAR" />
     <result column="lsp_role" property="lspRole" jdbcType="VARCHAR" />
     <result column="translator_id" property="translatorId" jdbcType="VARCHAR" />
+    <result column="account_id" property="accountId" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -78,7 +79,7 @@
   <sql id="Base_Column_List" >
     lsp_id, lsp_name, contact, company_address, company_introduction, company_logo_id, 
     email, billing_cycle, statement_date, create_time, telephone, mobile_phone, lsp_role, 
-    translator_id
+    translator_id, account_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLspCriteria" >
     select
@@ -119,12 +120,14 @@
       company_address, company_introduction, company_logo_id, 
       email, billing_cycle, statement_date, 
       create_time, telephone, mobile_phone, 
-      lsp_role, translator_id)
+      lsp_role, translator_id, account_id
+      )
     values (#{lspId,jdbcType=VARCHAR}, #{lspName,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
       #{companyAddress,jdbcType=VARCHAR}, #{companyIntroduction,jdbcType=VARCHAR}, #{companyLogoId,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{billingCycle,jdbcType=INTEGER}, #{statementDate,jdbcType=DATE}, 
       #{createTime,jdbcType=TIMESTAMP}, #{telephone,jdbcType=VARCHAR}, #{mobilePhone,jdbcType=VARCHAR}, 
-      #{lspRole,jdbcType=VARCHAR}, #{translatorId,jdbcType=VARCHAR})
+      #{lspRole,jdbcType=VARCHAR}, #{translatorId,jdbcType=VARCHAR}, #{accountId,jdbcType=BIGINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrLsp" >
     insert into usr_lsp
@@ -171,6 +174,9 @@
       <if test="translatorId != null" >
         translator_id,
       </if>
+      <if test="accountId != null" >
+        account_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="lspId != null" >
@@ -214,6 +220,9 @@
       </if>
       <if test="translatorId != null" >
         #{translatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null" >
+        #{accountId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -268,6 +277,9 @@
       <if test="record.translatorId != null" >
         translator_id = #{record.translatorId,jdbcType=VARCHAR},
       </if>
+      <if test="record.accountId != null" >
+        account_id = #{record.accountId,jdbcType=BIGINT},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -288,7 +300,8 @@
       telephone = #{record.telephone,jdbcType=VARCHAR},
       mobile_phone = #{record.mobilePhone,jdbcType=VARCHAR},
       lsp_role = #{record.lspRole,jdbcType=VARCHAR},
-      translator_id = #{record.translatorId,jdbcType=VARCHAR}
+      translator_id = #{record.translatorId,jdbcType=VARCHAR},
+      account_id = #{record.accountId,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -335,6 +348,9 @@
       <if test="translatorId != null" >
         translator_id = #{translatorId,jdbcType=VARCHAR},
       </if>
+      <if test="accountId != null" >
+        account_id = #{accountId,jdbcType=BIGINT},
+      </if>
     </set>
     where lsp_id = #{lspId,jdbcType=VARCHAR}
   </update>
@@ -352,7 +368,8 @@
       telephone = #{telephone,jdbcType=VARCHAR},
       mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
       lsp_role = #{lspRole,jdbcType=VARCHAR},
-      translator_id = #{translatorId,jdbcType=VARCHAR}
+      translator_id = #{translatorId,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=BIGINT}
     where lsp_id = #{lspId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -31,6 +31,8 @@ public class UsrLsp {
 
     private String translatorId;
 
+    private Long accountId;
+
     public String getLspId() {
         return lspId;
     }
@@ -141,5 +143,13 @@ public class UsrLsp {
 
     public void setTranslatorId(String translatorId) {
         this.translatorId = translatorId == null ? null : translatorId.trim();
+    }
+
+    public Long getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 }

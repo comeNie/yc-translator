@@ -18,12 +18,10 @@ import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCEduHist
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCTranslatorExtendsListRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCWorkExprienceRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCTranslatorRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertCertificationsResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertEduHistoryResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertLanguageSkillResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorExtendsListResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertWorkExprienceResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchCertificationsResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchEduHistoryResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchTranslatorExtendsListResponse;
@@ -46,15 +44,15 @@ public interface IYCTranslatorServiceBusiSV {
 
 	public YCInsertLanguageSkillResponse insertLanguageSkillBusiness(InsertYCLanguageSkillRequest insertParams);
 
-	public YCInsertEduHistoryResponse insertEduHistoryBusiness(InsertYCEduHistoryRequest insertParams);
+	public BaseResponse insertEduHistoryBusiness(InsertYCEduHistoryRequest insertParams);
 
 	public YCSearchEduHistoryResponse searchEduHistoryBusiness(SearchYCEduHistoryRequest searchParams);
 
-	public YCInsertWorkExprienceResponse insertWorkExprienceBusiness(InsertYCWorkExprienceRequest insertParams);
+	public BaseResponse insertWorkExprienceBusiness(InsertYCWorkExprienceRequest insertParams);
 
 	public YCSearchWorkExprienceResponse searchWorkExperenceBusiness(SearchYCWorkExprienceRequest searchParams);
 
-	public YCInsertCertificationsResponse insertCertificateBusiness(InsertYCCertificationsRequest insertParams);
+	public BaseResponse insertCertificateBusiness(InsertYCCertificationsRequest insertParams);
 
 	public YCInsertTranslatorExtendsListResponse insertExtendResponseBusiness(
 			InsertYCTranslatorExtendsListRequest insertParams);

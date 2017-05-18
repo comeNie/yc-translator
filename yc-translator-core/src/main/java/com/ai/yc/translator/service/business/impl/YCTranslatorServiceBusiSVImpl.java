@@ -38,12 +38,10 @@ import com.ai.yc.translator.api.translatorservice.param.newparam.UsrCertificateM
 import com.ai.yc.translator.api.translatorservice.param.newparam.UsrEducationMessage;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UsrExtendMessage;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UsrWorkMessage;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertCertificationsResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertEduHistoryResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertLanguageSkillResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorExtendsListResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertWorkExprienceResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchCertificationsResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchEduHistoryResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchTranslatorExtendsListResponse;
@@ -251,20 +249,20 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 	}
 
 	@Override
-	public YCInsertEduHistoryResponse insertEduHistoryBusiness(InsertYCEduHistoryRequest insertParams) {
-		YCInsertEduHistoryResponse response = new YCInsertEduHistoryResponse();
-		// List<String> listValidator = beanValidator(insertParams);
-		// if (listValidator != null && !listValidator.isEmpty()) {
-		// throw new
-		// BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL,
-		// listValidator + "");
-		// }
-		// delete all translator
-		ycUSAtomSV.deleteEducationByTranslatorId(insertParams.getTranslatorId());
-		for (UsrEducationMessage ulm : insertParams.getEducationList()) {
-			ycUSAtomSV.insertEducation(g.getGson().fromJson(g.getGson().toJson(ulm), UsrEducation.class));
+	public BaseResponse insertEduHistoryBusiness(InsertYCEduHistoryRequest insertParams) {
+		BaseResponse response = new BaseResponse();
+		ResponseHeader header = null;
+		try{
+			ycUSAtomSV.deleteEducationByTranslatorId(insertParams.getTranslatorId());
+			for (UsrEducationMessage ulm : insertParams.getEducationList()) {
+				ycUSAtomSV.insertEducation(g.getGson().fromJson(g.getGson().toJson(ulm), UsrEducation.class));
+			}
+			header = new ResponseHeader(true, ExceptCodeConstants.Special.SUCCESS, "插入成功");
+		}catch(Exception e){
+			e.printStackTrace();
+			header = new ResponseHeader(false, ExceptCodeConstants.Special.SYSTEM_ERROR, "插入失败");
 		}
-
+		response.setResponseHeader(header);
 		return response;
 	}
 
@@ -285,15 +283,9 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 	}
 
 	@Override
-	public YCInsertWorkExprienceResponse insertWorkExprienceBusiness(InsertYCWorkExprienceRequest insertParams) {
-		YCInsertWorkExprienceResponse response = new YCInsertWorkExprienceResponse();
-		// List<String> listValidator = beanValidator(insertParams);
-		// if (listValidator != null && !listValidator.isEmpty()) {
-		// throw new
-		// BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL,
-		// listValidator + "");
-		// }
-		// delete all translator
+	public BaseResponse insertWorkExprienceBusiness(InsertYCWorkExprienceRequest insertParams) {
+		BaseResponse response = new BaseResponse();
+		
 		ycUSAtomSV.deleteWorkExprienceByTranslatorId(insertParams.getTranslatorId());
 		for (UsrWorkMessage ulm : insertParams.getTranslatorWork()) {
 			ycUSAtomSV.insertWorkExprience(g.getGson().fromJson(g.getGson().toJson(ulm), UsrWork.class));
@@ -319,15 +311,8 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 	}
 
 	@Override
-	public YCInsertCertificationsResponse insertCertificateBusiness(InsertYCCertificationsRequest insertParams) {
-		YCInsertCertificationsResponse response = new YCInsertCertificationsResponse();
-		// List<String> listValidator = beanValidator(insertParams);
-		// if (listValidator != null && !listValidator.isEmpty()) {
-		// throw new
-		// BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL,
-		// listValidator + "");
-		// }
-		// delete all translator
+	public BaseResponse insertCertificateBusiness(InsertYCCertificationsRequest insertParams) {
+		BaseResponse response = new BaseResponse();
 		ycUSAtomSV.deleteCertificateByTranslatorId(insertParams.getTranslatorId());
 		for (UsrCertificateMessage ulm : insertParams.getCertificateList()) {
 			ycUSAtomSV.insertTranslatorCertificate(g.getGson().fromJson(g.getGson().toJson(ulm), UsrCertificate.class));

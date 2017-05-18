@@ -34,12 +34,9 @@ import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCEduHist
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCTranslatorExtendsListRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCWorkExprienceRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCTranslatorRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertCertificationsResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertEduHistoryResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertLanguageSkillResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorExtendsListResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertWorkExprienceResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchCertificationsResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchEduHistoryResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchTranslatorExtendsListResponse;
@@ -167,18 +164,9 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	}
 
 	@Override
-	public HBBaseResponse<YCInsertEduHistoryResponse> insertEduHistory(InsertYCEduHistoryRequest insertParams) {
+	public BaseResponse insertEduHistory(InsertYCEduHistoryRequest insertParams) {
 		LOGGER.debug("insertEduHistory input params:", insertParams);
-		HBBaseResponse<YCInsertEduHistoryResponse> insertEduHistoryResponse = null;
-		YCInsertEduHistoryResponse result = null;
-		try{
-			result = ycUsrServiceBusiSv.insertEduHistoryBusiness(insertParams);
-			insertEduHistoryResponse = new HBBaseResponse<YCInsertEduHistoryResponse>(false,ExceptCodeConstants.SUCCESS,result);
-		}catch(BusinessException e){
-			LOGGER.error("查询失败",e);
-			insertEduHistoryResponse = new HBBaseResponse<YCInsertEduHistoryResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
-		}
-		return insertEduHistoryResponse;
+		return ycUsrServiceBusiSv.insertEduHistoryBusiness(insertParams);
 	}
 
 	@Override
@@ -194,51 +182,53 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	}
 
 	@Override
-	public HBBaseResponse<YCInsertWorkExprienceResponse> insertWorkExprience(
+	public BaseResponse insertWorkExprience(
 			InsertYCWorkExprienceRequest insertParams) {
 		LOGGER.debug("insertWorkExprience input params:", insertParams);
-		HBBaseResponse<YCInsertWorkExprienceResponse> insertWorkExprienceResponse = null;
-		YCInsertWorkExprienceResponse result = null;
+		BaseResponse response = null;
+		ResponseHeader header = null;
 		try{
-			result = ycUsrServiceBusiSv.insertWorkExprienceBusiness(insertParams);
-			insertWorkExprienceResponse = new HBBaseResponse<YCInsertWorkExprienceResponse>(true,ExceptCodeConstants.SUCCESS,result);
+			response = ycUsrServiceBusiSv.insertWorkExprienceBusiness(insertParams);
+			header = new ResponseHeader(true,ExceptCodeConstants.SUCCESS,"插入成功");
 		}catch(BusinessException e){
 			LOGGER.error("查询失败",e);
-			insertWorkExprienceResponse = new HBBaseResponse<YCInsertWorkExprienceResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			header = new ResponseHeader(false,ExceptCodeConstants.FAILD,"插入成功");
 		}
-		return insertWorkExprienceResponse;
+		response.setResponseHeader(header);
+		return response;
 	}
 
 	@Override
-	public HBBaseResponse<YCSearchWorkExprienceResponse> searchWorkExprience(
+	public YCSearchWorkExprienceResponse searchWorkExprience(
 			SearchYCWorkExprienceRequest searchParams) {
 		LOGGER.debug("searchWorkExprience input params:", searchParams);
-		HBBaseResponse<YCSearchWorkExprienceResponse> searchEduHistoryResp = null;
-		YCSearchWorkExprienceResponse result = null;
+		YCSearchWorkExprienceResponse response = null;
+		ResponseHeader header = null;
 		try{
-			result = ycUsrServiceBusiSv.searchWorkExperenceBusiness(searchParams);
-			searchEduHistoryResp = new HBBaseResponse<YCSearchWorkExprienceResponse>(true,ExceptCodeConstants.SUCCESS,result);
+			response = ycUsrServiceBusiSv.searchWorkExperenceBusiness(searchParams);
+			header = new ResponseHeader(true,ExceptCodeConstants.SUCCESS,"查询成功");
 		}catch(BusinessException e){
 			LOGGER.error("查询失败",e);
-			searchEduHistoryResp = new HBBaseResponse<YCSearchWorkExprienceResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			header = new ResponseHeader(true,ExceptCodeConstants.FAILD,"查询失败");
 		}
-		return searchEduHistoryResp;
+		response.setResponseHeader(header);
+		return response;
 	}
 
 	@Override
-	public HBBaseResponse<YCInsertCertificationsResponse> insertCertifications(
+	public BaseResponse insertCertifications(
 			InsertYCCertificationsRequest insertParams) {
 		LOGGER.debug("insertCertifications input params:", insertParams);
-		HBBaseResponse<YCInsertCertificationsResponse> insertCertificateResponse = null;
-		YCInsertCertificationsResponse result = null;
+		BaseResponse response = new BaseResponse();
+		ResponseHeader header = null;
 		try{
-			result = ycUsrServiceBusiSv.insertCertificateBusiness(insertParams);
-			insertCertificateResponse = new HBBaseResponse<YCInsertCertificationsResponse>(true,ExceptCodeConstants.SUCCESS,result);
+			response = ycUsrServiceBusiSv.insertCertificateBusiness(insertParams);
+			header = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "插入成功");
 		}catch(BusinessException e){
 			LOGGER.error("查询失败",e);
-			insertCertificateResponse = new HBBaseResponse<YCInsertCertificationsResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			header = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "插入失败");
 		}
-		return insertCertificateResponse;
+		return response;
 	}
 
 	@Override

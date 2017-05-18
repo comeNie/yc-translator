@@ -27,12 +27,10 @@ import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCEduHist
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCTranslatorExtendsListRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCWorkExprienceRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCTranslatorRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertCertificationsResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertEduHistoryResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertLanguageSkillResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorExtendsListResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorResponse;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertWorkExprienceResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchCertificationsResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchEduHistoryResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchTranslatorExtendsListResponse;
@@ -115,7 +113,7 @@ public interface IYCTranslatorServiceSV {
 	HBBaseResponse<YCInsertLanguageSkillResponse> insertLanguageSkill(InsertYCLanguageSkillRequest insertParams);
 	
 	/**
-	 * 修改译员教育信息
+	 * 插入教育信息
 	 * @param 
 	 * @return
 	 * @ApiCode TRANSLATOR_0010
@@ -123,7 +121,7 @@ public interface IYCTranslatorServiceSV {
 	 */
 	@POST
 	@Path("insertEduHistory")
-	HBBaseResponse<YCInsertEduHistoryResponse> insertEduHistory(InsertYCEduHistoryRequest insertParams);
+	BaseResponse insertEduHistory(InsertYCEduHistoryRequest insertParams);
 	/**
 	 * 查询译员教育信息
 	 * @param 
@@ -136,7 +134,7 @@ public interface IYCTranslatorServiceSV {
 	YCSearchEduHistoryResponse searchEduHistory(SearchYCEduHistoryRequest searchParams);
 	
 	/**
-	 * 修改译员工作经历
+	 * 插入译员工作经历
 	 * @param 
 	 * @return
 	 * @ApiCode TRANSLATOR_0014
@@ -144,7 +142,7 @@ public interface IYCTranslatorServiceSV {
 	 */
 	@POST
 	@Path("insertWorkExprience")
-	HBBaseResponse<YCInsertWorkExprienceResponse> insertWorkExprience(InsertYCWorkExprienceRequest insertParams);
+	BaseResponse insertWorkExprience(InsertYCWorkExprienceRequest insertParams);
 	/**
 	 * 查询译员工作经历
 	 * @param 
@@ -154,10 +152,10 @@ public interface IYCTranslatorServiceSV {
 	 */
 	@POST
 	@Path("searchWorkExprience")
-	HBBaseResponse<YCSearchWorkExprienceResponse> searchWorkExprience(SearchYCWorkExprienceRequest searchParams);
+	YCSearchWorkExprienceResponse searchWorkExprience(SearchYCWorkExprienceRequest searchParams);
 	
 	/**
-	 * 修改译员证书信息
+	 * 插入译员证书信息
 	 * @param 
 	 * @return
 	 * @ApiCode TRANSLATOR_0018
@@ -165,7 +163,7 @@ public interface IYCTranslatorServiceSV {
 	 */
 	@POST
 	@Path("insertCertifications")
-	HBBaseResponse<YCInsertCertificationsResponse> insertCertifications(InsertYCCertificationsRequest insertParams);
+	BaseResponse insertCertifications(InsertYCCertificationsRequest insertParams);
 	/**
 	 * 查询译员证书信息
 	 * @param 

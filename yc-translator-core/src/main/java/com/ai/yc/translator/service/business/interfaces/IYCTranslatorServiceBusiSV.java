@@ -4,6 +4,7 @@ package com.ai.yc.translator.service.business.interfaces;
 import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.base.vo.BaseResponse;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.TraslatorCertificateInfoRequest;
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
 import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
@@ -65,4 +66,6 @@ public interface IYCTranslatorServiceBusiSV {
 	public YCUpdateTranslatorResponse updateTranslatorByUserId(UpdateYCTranslatorRequest updateYCTranslatorParams) throws BusinessException;
 
 	public BaseResponse deleteTranslator(String translatorId);
+	
+	public BaseResponse insertCertificateInfo(TraslatorCertificateInfoRequest request);
 }

@@ -19,6 +19,7 @@ import com.ai.yc.translator.api.translatorservice.param.HBBaseResponse;
 import com.ai.yc.translator.api.translatorservice.param.LspTranslatorInfo;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
+import com.ai.yc.translator.api.translatorservice.param.TraslatorCertificateInfoRequest;
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorInfoResponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
@@ -315,5 +316,15 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	public BaseResponse deleteTranslatorInfo(String translatorId) {
 		// TODO Auto-generated method stub
 		return ycUsrServiceBusiSv.deleteTranslator(translatorId);
+	}
+
+
+	@Override
+	@POST
+	@Path("insertCertificateInfo")
+	public BaseResponse insertCertificateInfo(TraslatorCertificateInfoRequest request) {
+		InsertYCCertificationsRequest certificationRequest = new InsertYCCertificationsRequest();
+		certificationRequest.setCertificateList(request.getCardResultList());
+		return ycUsrServiceBusiSv.insertCertificateInfo(request);
 	}
 }

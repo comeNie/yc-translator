@@ -18,6 +18,7 @@ import com.ai.opt.sdk.constants.ExceptCodeConstants;
 import com.ai.opt.sdk.util.BeanUtils;
 import com.ai.opt.sdk.util.StringUtil;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.TraslatorCertificateInfoRequest;
 import com.ai.yc.translator.api.translatorservice.param.UsrLanguageMessage;
 import com.ai.yc.translator.api.translatorservice.param.UsrLspMessage;
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
@@ -313,10 +314,18 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 	@Override
 	public BaseResponse insertCertificateBusiness(InsertYCCertificationsRequest insertParams) {
 		BaseResponse response = new BaseResponse();
-		ycUSAtomSV.deleteCertificateByTranslatorId(insertParams.getTranslatorId());
-		for (UsrCertificateMessage ulm : insertParams.getCertificateList()) {
-			ycUSAtomSV.insertTranslatorCertificate(g.getGson().fromJson(g.getGson().toJson(ulm), UsrCertificate.class));
+		ResponseHeader header = null;
+		try{
+			ycUSAtomSV.deleteCertificateByTranslatorId(insertParams.getTranslatorId());
+			for (UsrCertificateMessage ulm : insertParams.getCertificateList()) {
+				ycUSAtomSV.insertTranslatorCertificate(g.getGson().fromJson(g.getGson().toJson(ulm), UsrCertificate.class));
+			}
+			header = new ResponseHeader(true,ExceptCodeConstants.Special.SUCCESS,"插入成功");
+		}catch(Exception e){
+			e.printStackTrace();
+			header = new ResponseHeader(true,ExceptCodeConstants.Special.SUCCESS,"插入失败");
 		}
+		response.setResponseHeader(header);
 
 		return response;
 	}
@@ -442,6 +451,50 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 		}catch(Exception e){
 			e.printStackTrace();
 			header = new ResponseHeader(true, ExceptCodeConstants.Special.SUCCESS,"删除成功");
+		}
+		response.setResponseHeader(header);
+		return response;
+	}
+
+	@Override
+	public BaseResponse insertCertificateInfo(TraslatorCertificateInfoRequest request) {
+		BaseResponse response = new BaseResponse();
+		ResponseHeader header = null;
+		try{
+			/**
+			 * 教育资质
+			 */
+			List<UsrCertificateMessage> cmessage = request.getCardResultList();
+			for(int i =0;i<cmessage.size();i++){
+				UsrCertificateMessage catem = cmessage.get(i);
+				UsrCertificate usrCertificate = new UsrCertificate();
+				BeanUtils.copyProperties(usrCertificate, catem);
+				ycUSAtomSV.insertTranslatorCertificate(usrCertificate);
+			}
+			/**
+			 * 教育
+			 */
+			List<UsrEducationMessage> eduList = request.getEduResultList();
+			for(int i =0;i<eduList.size();i++){
+				UsrEducationMessage education = eduList.get(i);
+				UsrEducation usrEducation = new UsrEducation();
+				BeanUtils.copyProperties(education, usrEducation);
+				ycUSAtomSV.insertEducation(usrEducation);
+			}
+			/**
+			 * 资质
+			 */
+			List<InsertYCWorkExprienceRequest> workList = request.getWorkResultList();
+			for(int i =0;i<workList.size();i++){
+				InsertYCWorkExprienceRequest work = workList.get(i);
+				UsrWork usrWork = new UsrWork();
+				BeanUtils.copyProperties(work, usrWork);
+				ycUSAtomSV.insertWorkExprience(usrWork);
+			}
+			header = new ResponseHeader(true, ExceptCodeConstants.Special.SUCCESS,"添加成功");
+		}catch(Exception e){
+			e.printStackTrace();
+			header = new ResponseHeader(false, ExceptCodeConstants.Special.SUCCESS,"删除失败");
 		}
 		response.setResponseHeader(header);
 		return response;

@@ -12,6 +12,7 @@ import com.ai.yc.translator.api.translatorservice.param.HBBaseResponse;
 import com.ai.yc.translator.api.translatorservice.param.LspTranslatorInfo;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
+import com.ai.yc.translator.api.translatorservice.param.TraslatorCertificateInfoRequest;
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorInfoResponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
@@ -27,7 +28,6 @@ import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCEduHist
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCTranslatorExtendsListRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCWorkExprienceRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCTranslatorRequest;
-import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertEduHistoryResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertLanguageSkillResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorExtendsListResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCInsertTranslatorResponse;
@@ -228,4 +228,15 @@ public interface IYCTranslatorServiceSV {
 	@POST
 	@Path("deleteTranslatorInfo")
 	public BaseResponse deleteTranslatorInfo(String translatorId);
+	
+	/**
+	 * 插入译员认证信息
+	 * @param 
+	 * @return
+	 * @ApiCode TRANSLATOR_00010
+     * @RestRelativeURL yctranslatorservice/insertCertificateInfo
+	 */
+	@POST
+	@Path("insertCertificateInfo")
+	public BaseResponse insertCertificateInfo(TraslatorCertificateInfoRequest request);
 }

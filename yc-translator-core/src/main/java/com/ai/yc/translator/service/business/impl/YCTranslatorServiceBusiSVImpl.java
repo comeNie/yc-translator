@@ -462,13 +462,15 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 		ResponseHeader header = null;
 		try{
 			/**
-			 * 教育资质
+			 * 资质
 			 */
 			List<UsrCertificateMessage> cmessage = request.getCardResultList();
 			for(int i =0;i<cmessage.size();i++){
 				UsrCertificateMessage catem = cmessage.get(i);
 				UsrCertificate usrCertificate = new UsrCertificate();
+				String cer = SeqUtil.getNewId("YC_CER_ID$SEQ", 8);
 				BeanUtils.copyProperties(usrCertificate, catem);
+				usrCertificate.setCertificationId(cer);
 				ycUSAtomSV.insertTranslatorCertificate(usrCertificate);
 			}
 			/**
@@ -479,16 +481,20 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 				UsrEducationMessage education = eduList.get(i);
 				UsrEducation usrEducation = new UsrEducation();
 				BeanUtils.copyProperties(education, usrEducation);
+				String eduId = SeqUtil.getNewId("YC_EDU_ID$SEQ", 8);
+				usrEducation.setEducationId(eduId);
 				ycUSAtomSV.insertEducation(usrEducation);
 			}
 			/**
-			 * 资质
+			 * 工作经验
 			 */
 			List<InsertYCWorkExprienceRequest> workList = request.getWorkResultList();
 			for(int i =0;i<workList.size();i++){
 				InsertYCWorkExprienceRequest work = workList.get(i);
 				UsrWork usrWork = new UsrWork();
 				BeanUtils.copyProperties(work, usrWork);
+				String workId = SeqUtil.getNewId("YC_WORK_ID$SEQ", 8);
+				usrWork.setWorkId(workId);
 				ycUSAtomSV.insertWorkExprience(usrWork);
 			}
 			header = new ResponseHeader(true, ExceptCodeConstants.Special.SUCCESS,"添加成功");

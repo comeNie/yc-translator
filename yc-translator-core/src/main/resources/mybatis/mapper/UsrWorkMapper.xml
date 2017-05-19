@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ai.yc.translator.dao.mapper.interfaces.UsrWorkMapper" >
   <resultMap id="BaseResultMap" type="com.ai.yc.translator.dao.mapper.bo.UsrWork" >
-    <id column="work_id" property="workId" jdbcType="BIGINT" />
+    <id column="work_id" property="workId" jdbcType="VARCHAR" />
     <result column="translator_id" property="translatorId" jdbcType="VARCHAR" />
     <result column="company" property="company" jdbcType="VARCHAR" />
     <result column="position" property="position" jdbcType="VARCHAR" />
@@ -91,15 +91,15 @@
       limit #{limitStart} , #{limitEnd}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Long" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from usr_work
-    where work_id = #{workId,jdbcType=BIGINT}
+    where work_id = #{workId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from usr_work
-    where work_id = #{workId,jdbcType=BIGINT}
+    where work_id = #{workId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrWorkCriteria" >
     delete from usr_work
@@ -111,7 +111,7 @@
     insert into usr_work (work_id, translator_id, company, 
       position, work_start_time, work_end_time, 
       work_summaize, create_time)
-    values (#{workId,jdbcType=BIGINT}, #{translatorId,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
+    values (#{workId,jdbcType=VARCHAR}, #{translatorId,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
       #{position,jdbcType=VARCHAR}, #{workStartTime,jdbcType=VARCHAR}, #{workEndTime,jdbcType=VARCHAR}, 
       #{workSummaize,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
@@ -145,7 +145,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="workId != null" >
-        #{workId,jdbcType=BIGINT},
+        #{workId,jdbcType=VARCHAR},
       </if>
       <if test="translatorId != null" >
         #{translatorId,jdbcType=VARCHAR},
@@ -180,7 +180,7 @@
     update usr_work
     <set >
       <if test="record.workId != null" >
-        work_id = #{record.workId,jdbcType=BIGINT},
+        work_id = #{record.workId,jdbcType=VARCHAR},
       </if>
       <if test="record.translatorId != null" >
         translator_id = #{record.translatorId,jdbcType=VARCHAR},
@@ -210,7 +210,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update usr_work
-    set work_id = #{record.workId,jdbcType=BIGINT},
+    set work_id = #{record.workId,jdbcType=VARCHAR},
       translator_id = #{record.translatorId,jdbcType=VARCHAR},
       company = #{record.company,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=VARCHAR},
@@ -247,7 +247,7 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where work_id = #{workId,jdbcType=BIGINT}
+    where work_id = #{workId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ai.yc.translator.dao.mapper.bo.UsrWork" >
     update usr_work
@@ -258,6 +258,6 @@
       work_end_time = #{workEndTime,jdbcType=VARCHAR},
       work_summaize = #{workSummaize,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
-    where work_id = #{workId,jdbcType=BIGINT}
+    where work_id = #{workId,jdbcType=VARCHAR}
   </update>
 </mapper>

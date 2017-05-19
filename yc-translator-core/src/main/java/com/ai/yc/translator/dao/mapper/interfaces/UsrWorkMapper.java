@@ -10,7 +10,7 @@ public interface UsrWorkMapper {
 
     int deleteByExample(UsrWorkCriteria example);
 
-    int deleteByPrimaryKey(Long workId);
+    int deleteByPrimaryKey(String workId);
 
     int insert(UsrWork record);
 
@@ -18,7 +18,7 @@ public interface UsrWorkMapper {
 
     List<UsrWork> selectByExample(UsrWorkCriteria example);
 
-    UsrWork selectByPrimaryKey(Long workId);
+    UsrWork selectByPrimaryKey(String workId);
 
     int updateByExampleSelective(@Param("record") UsrWork record, @Param("example") UsrWorkCriteria example);
 

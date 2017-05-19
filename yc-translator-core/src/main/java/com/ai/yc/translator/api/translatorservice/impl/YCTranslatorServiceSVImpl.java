@@ -233,19 +233,20 @@ public class YCTranslatorServiceSVImpl implements IYCTranslatorServiceSV {
 	}
 
 	@Override
-	public HBBaseResponse<YCSearchCertificationsResponse> searchCertifications(
+	public YCSearchCertificationsResponse searchCertifications(
 			SearchYCCertificationsRequest searchParams) {
 		LOGGER.debug("searchCertifications input params:", searchParams);
-		HBBaseResponse<YCSearchCertificationsResponse> searchCertificateResp = null;
-		YCSearchCertificationsResponse result = null;
+		YCSearchCertificationsResponse respose = null;
+		ResponseHeader header = null;
 		try{
-			result = ycUsrServiceBusiSv.searchCertificateBusiness(searchParams);
-			searchCertificateResp = new HBBaseResponse<YCSearchCertificationsResponse>(true,ExceptCodeConstants.SUCCESS,result);
+			respose = ycUsrServiceBusiSv.searchCertificateBusiness(searchParams);
+			header = new ResponseHeader(true, ExceptCodeConstants.SUCCESS, "查询成功");
 		}catch(BusinessException e){
 			LOGGER.error("查询失败",e);
-			searchCertificateResp = new HBBaseResponse<YCSearchCertificationsResponse>(false,ExceptCodeConstants.FAILD,e.getErrorMessage());
+			header = new ResponseHeader(false, ExceptCodeConstants.FAILD, "查询失败");
 		}
-		return searchCertificateResp;
+		respose.setResponseHeader(header);
+		return respose;
 	}
 
 	@Override

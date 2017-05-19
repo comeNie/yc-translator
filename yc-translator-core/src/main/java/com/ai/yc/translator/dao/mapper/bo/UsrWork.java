@@ -3,7 +3,7 @@ package com.ai.yc.translator.dao.mapper.bo;
 import java.sql.Timestamp;
 
 public class UsrWork {
-    private Long workId;
+    private String workId;
 
     private String translatorId;
 
@@ -19,12 +19,12 @@ public class UsrWork {
 
     private Timestamp createTime;
 
-    public Long getWorkId() {
+    public String getWorkId() {
         return workId;
     }
 
-    public void setWorkId(Long workId) {
-        this.workId = workId;
+    public void setWorkId(String workId) {
+        this.workId = workId == null ? null : workId.trim();
     }
 
     public String getTranslatorId() {

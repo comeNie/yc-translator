@@ -173,7 +173,7 @@ public interface IYCTranslatorServiceSV {
 	 */
 	@POST
 	@Path("searchCertifications")
-	HBBaseResponse<YCSearchCertificationsResponse> searchCertifications(SearchYCCertificationsRequest searchParams);
+	YCSearchCertificationsResponse searchCertifications(SearchYCCertificationsRequest searchParams);
 	/**
 	 * 修改译员扩展信息
 	 * @param 

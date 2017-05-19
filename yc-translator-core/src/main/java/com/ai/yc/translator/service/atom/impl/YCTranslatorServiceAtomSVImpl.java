@@ -151,7 +151,7 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 
 	@Override
 	public int insertEducation(UsrEducation translatorEducation) {
-		return uEduMapper.insert(translatorEducation);
+		return uEduMapper.insertSelective(translatorEducation);
 	}
 
 	@Override
@@ -174,7 +174,7 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 	@Override
 	public int insertWorkExprience(UsrWork work) {
 		// TODO Auto-generated method stub
-		return uWorkMapper.insert(work);
+		return uWorkMapper.insertSelective(work);
 	}
 
 	@Override
@@ -196,7 +196,7 @@ public class YCTranslatorServiceAtomSVImpl implements IYCTranslatorServiceAtomSV
 
 	@Override
 	public int insertTranslatorCertificate(UsrCertificate certificate) {
-		return uCertificateMapper.insert(certificate);
+		return uCertificateMapper.insertSelective(certificate);
 	}
 
 	@Override

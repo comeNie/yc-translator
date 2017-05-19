@@ -135,52 +135,62 @@ public class UsrWorkCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andWorkIdEqualTo(Long value) {
+        public Criteria andWorkIdEqualTo(String value) {
             addCriterion("work_id =", value, "workId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkIdNotEqualTo(Long value) {
+        public Criteria andWorkIdNotEqualTo(String value) {
             addCriterion("work_id <>", value, "workId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkIdGreaterThan(Long value) {
+        public Criteria andWorkIdGreaterThan(String value) {
             addCriterion("work_id >", value, "workId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andWorkIdGreaterThanOrEqualTo(String value) {
             addCriterion("work_id >=", value, "workId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkIdLessThan(Long value) {
+        public Criteria andWorkIdLessThan(String value) {
             addCriterion("work_id <", value, "workId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkIdLessThanOrEqualTo(Long value) {
+        public Criteria andWorkIdLessThanOrEqualTo(String value) {
             addCriterion("work_id <=", value, "workId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkIdIn(List<Long> values) {
+        public Criteria andWorkIdLike(String value) {
+            addCriterion("work_id like", value, "workId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkIdNotLike(String value) {
+            addCriterion("work_id not like", value, "workId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkIdIn(List<String> values) {
             addCriterion("work_id in", values, "workId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkIdNotIn(List<Long> values) {
+        public Criteria andWorkIdNotIn(List<String> values) {
             addCriterion("work_id not in", values, "workId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkIdBetween(Long value1, Long value2) {
+        public Criteria andWorkIdBetween(String value1, String value2) {
             addCriterion("work_id between", value1, value2, "workId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkIdNotBetween(Long value1, Long value2) {
+        public Criteria andWorkIdNotBetween(String value1, String value2) {
             addCriterion("work_id not between", value1, value2, "workId");
             return (Criteria) this;
         }

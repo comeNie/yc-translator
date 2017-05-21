@@ -1,5 +1,8 @@
 package com.ai.yc.user.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +14,18 @@ import com.ai.opt.sdk.util.DateUtil;
 import com.ai.yc.translator.api.translatorservice.interfaces.IYCTranslatorServiceSV;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorSkillListRequest;
+import com.ai.yc.translator.api.translatorservice.param.TraslatorCertificateInfoRequest;
 import com.ai.yc.translator.api.translatorservice.param.YCLSPInfoReponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorInfoResponse;
 import com.ai.yc.translator.api.translatorservice.param.YCTranslatorSkillListResponse;
 import com.ai.yc.translator.api.translatorservice.param.searchYCLSPInfoRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCWorkExprienceRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.SearchYCEduHistoryRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UpdateYCTranslatorRequest;
+import com.ai.yc.translator.api.translatorservice.param.newparam.UsrCertificateMessage;
+import com.ai.yc.translator.api.translatorservice.param.newparam.UsrEducationMessage;
+import com.ai.yc.translator.api.translatorservice.param.newparam.UsrWorkMessage;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchEduHistoryResponse;
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
@@ -86,6 +94,43 @@ public class testtranslatorservice {
 		translatorRequest.setAreaOfExperise("1");
 		translatorRequest.setAreaOfUse("12");
 		usSV.insertTranslator(translatorRequest);
+	}
+	
+	@Test
+	public void insertCerInfo(){
+		
+		List<UsrEducationMessage> eduResultList = new ArrayList<UsrEducationMessage>();
+		UsrEducationMessage edu = new UsrEducationMessage();
+		edu.setEduAddr("aa");
+		edu.setEduBackground("本科");
+		edu.setEducationId("2");
+		edu.setSchool("师范");
+		edu.setTranslatorId("525335");
+		eduResultList.add(edu);
+		
+		List<UsrWorkMessage> workResultList = new ArrayList<UsrWorkMessage>();
+		UsrWorkMessage work = new UsrWorkMessage();
+		work.setCompany("亚信");
+		work.setTranslatorId("525335");
+		work.setPosition("专业");
+		work.setWorkId("3434");
+		workResultList.add(work);
+		
+		List<UsrCertificateMessage> cardResultList = new ArrayList<UsrCertificateMessage>();
+		UsrCertificateMessage certifi = new UsrCertificateMessage();
+		certifi.setCertificateName("sefe");
+		certifi.setCertificateLevel("1");
+		certifi.setCertificationId("1212");
+		certifi.setTranslatorId("525335");
+		cardResultList.add(certifi);
+		
+		TraslatorCertificateInfoRequest request = new TraslatorCertificateInfoRequest();
+		request.setCardResultList(cardResultList);
+		request.setEduResultList(eduResultList);
+		request.setWorkResultList(workResultList);
+		request.setUserId("525335");
+		
+		usSV.insertCertificateInfo(request);
 	}
 	
 	@Test

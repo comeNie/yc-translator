@@ -7,6 +7,7 @@ import com.ai.yc.translator.api.translatorservice.param.newparam.UsrCertificateM
 import com.ai.yc.translator.api.translatorservice.param.newparam.UsrEducationMessage;
 
 public class TraslatorCertificateInfoRequest {
+	String userId;
 	List<UsrEducationMessage> eduResultList;
 	List<InsertYCWorkExprienceRequest> workResultList;
 	List<UsrCertificateMessage> cardResultList;
@@ -28,5 +29,10 @@ public class TraslatorCertificateInfoRequest {
 	public void setCardResultList(List<UsrCertificateMessage> cardResultList) {
 		this.cardResultList = cardResultList;
 	}
-	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 }

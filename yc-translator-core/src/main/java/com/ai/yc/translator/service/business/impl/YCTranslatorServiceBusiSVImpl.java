@@ -465,6 +465,7 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 			 * 资质
 			 */
 			List<UsrCertificateMessage> cmessage = request.getCardResultList();
+			ycUSAtomSV.deleteCertificateByTranslatorId(request.getUserId());
 			for(int i =0;i<cmessage.size();i++){
 				UsrCertificateMessage catem = cmessage.get(i);
 				UsrCertificate usrCertificate = new UsrCertificate();
@@ -476,6 +477,7 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 			/**
 			 * 教育
 			 */
+			ycUSAtomSV.deleteEducationByTranslatorId(request.getUserId());
 			List<UsrEducationMessage> eduList = request.getEduResultList();
 			for(int i =0;i<eduList.size();i++){
 				UsrEducationMessage education = eduList.get(i);
@@ -488,6 +490,7 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 			/**
 			 * 工作经验
 			 */
+			ycUSAtomSV.deleteWorkExprienceByTranslatorId(request.getUserId());
 			List<InsertYCWorkExprienceRequest> workList = request.getWorkResultList();
 			for(int i =0;i<workList.size();i++){
 				InsertYCWorkExprienceRequest work = workList.get(i);

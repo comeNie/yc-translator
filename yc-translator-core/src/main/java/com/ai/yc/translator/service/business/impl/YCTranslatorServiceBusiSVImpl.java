@@ -482,7 +482,7 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 			for(int i =0;i<eduList.size();i++){
 				UsrEducationMessage education = eduList.get(i);
 				UsrEducation usrEducation = new UsrEducation();
-				BeanUtils.copyProperties(education, usrEducation);
+				BeanUtils.copyProperties(usrEducation,education);
 				String eduId = SeqUtil.getNewId("YC_EDU_ID$SEQ", 8);
 				usrEducation.setEducationId(eduId);
 				ycUSAtomSV.insertEducation(usrEducation);
@@ -491,11 +491,11 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 			 * 工作经验
 			 */
 			ycUSAtomSV.deleteWorkExprienceByTranslatorId(request.getUserId());
-			List<InsertYCWorkExprienceRequest> workList = request.getWorkResultList();
+			List<UsrWorkMessage> workList = request.getWorkResultList();
 			for(int i =0;i<workList.size();i++){
-				InsertYCWorkExprienceRequest work = workList.get(i);
+				UsrWorkMessage work = workList.get(i);
 				UsrWork usrWork = new UsrWork();
-				BeanUtils.copyProperties(work, usrWork);
+				BeanUtils.copyProperties(usrWork,work);
 				String workId = SeqUtil.getNewId("YC_WORK_ID$SEQ", 8);
 				usrWork.setWorkId(workId);
 				ycUSAtomSV.insertWorkExprience(usrWork);

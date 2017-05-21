@@ -3,7 +3,7 @@ package com.ai.yc.translator.api.translatorservice.param.newparam;
 import java.sql.Timestamp;
 
 public class UsrWorkMessage {
-    private Long workId;
+    private String workId;
 
     private String translatorId;
 
@@ -19,15 +19,15 @@ public class UsrWorkMessage {
 
     private Timestamp createTime;
 
-    public Long getWorkId() {
-        return workId;
-    }
+    public String getWorkId() {
+		return workId;
+	}
 
-    public void setWorkId(Long workId) {
-        this.workId = workId;
-    }
+	public void setWorkId(String workId) {
+		this.workId = workId;
+	}
 
-    public String getTranslatorId() {
+	public String getTranslatorId() {
         return translatorId;
     }
 

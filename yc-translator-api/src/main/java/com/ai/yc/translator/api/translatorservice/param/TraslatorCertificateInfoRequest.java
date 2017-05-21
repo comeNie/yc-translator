@@ -5,11 +5,12 @@ import java.util.List;
 import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCWorkExprienceRequest;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UsrCertificateMessage;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UsrEducationMessage;
+import com.ai.yc.translator.api.translatorservice.param.newparam.UsrWorkMessage;
 
 public class TraslatorCertificateInfoRequest {
 	String userId;
 	List<UsrEducationMessage> eduResultList;
-	List<InsertYCWorkExprienceRequest> workResultList;
+	List<UsrWorkMessage> workResultList;
 	List<UsrCertificateMessage> cardResultList;
 	public List<UsrEducationMessage> getEduResultList() {
 		return eduResultList;
@@ -17,10 +18,10 @@ public class TraslatorCertificateInfoRequest {
 	public void setEduResultList(List<UsrEducationMessage> eduResultList) {
 		this.eduResultList = eduResultList;
 	}
-	public List<InsertYCWorkExprienceRequest> getWorkResultList() {
+	public List<UsrWorkMessage> getWorkResultList() {
 		return workResultList;
 	}
-	public void setWorkResultList(List<InsertYCWorkExprienceRequest> workResultList) {
+	public void setWorkResultList(List<UsrWorkMessage> workResultList) {
 		this.workResultList = workResultList;
 	}
 	public List<UsrCertificateMessage> getCardResultList() {

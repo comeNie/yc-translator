@@ -103,9 +103,11 @@ public class testtranslatorservice {
 		UsrEducationMessage edu = new UsrEducationMessage();
 		edu.setEduAddr("aa");
 		edu.setEduBackground("本科");
-		edu.setEducationId("2");
 		edu.setSchool("师范");
 		edu.setTranslatorId("525335");
+		edu.setStudyStartTime("2016");
+		edu.setStudyEndTime("2017");
+		edu.setEduBackground("sfefe");
 		eduResultList.add(edu);
 		
 		List<UsrWorkMessage> workResultList = new ArrayList<UsrWorkMessage>();
@@ -113,14 +115,12 @@ public class testtranslatorservice {
 		work.setCompany("亚信");
 		work.setTranslatorId("525335");
 		work.setPosition("专业");
-		work.setWorkId("3434");
 		workResultList.add(work);
 		
 		List<UsrCertificateMessage> cardResultList = new ArrayList<UsrCertificateMessage>();
 		UsrCertificateMessage certifi = new UsrCertificateMessage();
 		certifi.setCertificateName("sefe");
 		certifi.setCertificateLevel("1");
-		certifi.setCertificationId("1212");
 		certifi.setTranslatorId("525335");
 		cardResultList.add(certifi);
 		

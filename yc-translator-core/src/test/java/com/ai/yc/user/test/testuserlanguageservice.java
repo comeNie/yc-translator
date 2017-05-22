@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ai.yc.translator.api.userlanguage.interfaces.IYCUserLanguageSV;
 import com.ai.yc.translator.api.userlanguage.param.UsrLanguageRequest;
+import com.alibaba.fastjson.JSON;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "/context/core-context.xml" })
@@ -25,5 +26,9 @@ public class testuserlanguageservice {
 		languageRequest.setUserId("525335");
 		languageRequest.setState("0");
 		userLanguageSV.insertLanguageInfo(languageRequest);
+	}
+	@Test
+	public void testQueryLanguage(){
+		System.out.println(JSON.toJSON(userLanguageSV.queryLanguageInfo("525335")));
 	}
 }

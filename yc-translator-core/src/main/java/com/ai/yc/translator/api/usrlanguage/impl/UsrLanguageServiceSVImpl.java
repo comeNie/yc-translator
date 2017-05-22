@@ -36,7 +36,7 @@ public class UsrLanguageServiceSVImpl implements IYCUserLanguageSV{
 	public UsrLanguageResponse queryLanguageInfo(String userId)
 			throws BusinessException, SystemException {
 		
-		return null;
+		return languageServiceBusiSv.queryUserLanguage(userId);
 	}
 
 }

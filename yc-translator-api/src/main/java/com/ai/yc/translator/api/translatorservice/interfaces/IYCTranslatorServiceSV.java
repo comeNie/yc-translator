@@ -247,6 +247,7 @@ public interface IYCTranslatorServiceSV {
 	 * @return
 	 * @author zhanglh
 	 * @ApiCode
+	 * @RestRelativeURL yctranslatorservice/queryAlloTranslator
 	 */
 	@POST
 	@Path("queryAlloTranslator")

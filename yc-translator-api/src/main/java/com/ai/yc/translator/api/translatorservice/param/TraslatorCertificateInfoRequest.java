@@ -6,9 +6,12 @@ import com.ai.yc.translator.api.translatorservice.param.newparam.InsertYCWorkExp
 import com.ai.yc.translator.api.translatorservice.param.newparam.UsrCertificateMessage;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UsrEducationMessage;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UsrWorkMessage;
+import com.ai.yc.translator.api.userlanguage.param.UsrLanguageInfo;
+import com.ai.yc.translator.api.userlanguage.param.UsrLanguageRequest;
 
 public class TraslatorCertificateInfoRequest {
 	String userId;
+	List<UsrLanguageInfo> languageList;
 	List<UsrEducationMessage> eduResultList;
 	List<UsrWorkMessage> workResultList;
 	List<UsrCertificateMessage> cardResultList;
@@ -36,4 +39,11 @@ public class TraslatorCertificateInfoRequest {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	public List<UsrLanguageInfo> getLanguageList() {
+		return languageList;
+	}
+	public void setLanguageList(List<UsrLanguageInfo> languageList) {
+		this.languageList = languageList;
+	}
+	
 }

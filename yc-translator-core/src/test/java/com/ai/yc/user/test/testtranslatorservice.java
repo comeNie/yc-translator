@@ -1,5 +1,6 @@
 package com.ai.yc.user.test;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ import com.ai.yc.translator.api.translatorservice.param.newparam.UsrCertificateM
 import com.ai.yc.translator.api.translatorservice.param.newparam.UsrEducationMessage;
 import com.ai.yc.translator.api.translatorservice.param.newparam.UsrWorkMessage;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchEduHistoryResponse;
+import com.ai.yc.translator.api.userlanguage.param.UsrLanguageInfo;
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 
@@ -99,6 +101,16 @@ public class testtranslatorservice {
 	@Test
 	public void insertCerInfo(){
 		
+		List<UsrLanguageInfo> language = new ArrayList<UsrLanguageInfo>();
+		UsrLanguageInfo usrLanguage = new UsrLanguageInfo();
+		usrLanguage.setDuadId("121");
+		usrLanguage.setLanguageId("120");
+		usrLanguage.setTranslationType("2");
+		usrLanguage.setUserId("525335");
+		usrLanguage.setState("2");
+		usrLanguage.setReferencePrice(new BigDecimal(200));
+		language.add(usrLanguage);
+		
 		List<UsrEducationMessage> eduResultList = new ArrayList<UsrEducationMessage>();
 		UsrEducationMessage edu = new UsrEducationMessage();
 		edu.setEduAddr("aa");
@@ -125,10 +137,12 @@ public class testtranslatorservice {
 		cardResultList.add(certifi);
 		
 		TraslatorCertificateInfoRequest request = new TraslatorCertificateInfoRequest();
+		request.setLanguageList(language);
 		request.setCardResultList(cardResultList);
 		request.setEduResultList(eduResultList);
 		request.setWorkResultList(workResultList);
 		request.setUserId("525335");
+		
 		
 		usSV.insertCertificateInfo(request);
 	}

@@ -48,6 +48,7 @@ import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchEduHist
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchTranslatorExtendsListResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCSearchWorkExprienceResponse;
 import com.ai.yc.translator.api.translatorservice.param.newparam.YCUpdateTranslatorResponse;
+import com.ai.yc.translator.api.userlanguage.param.UsrLanguageInfo;
 import com.ai.yc.translator.dao.mapper.bo.UsrCertificate;
 import com.ai.yc.translator.dao.mapper.bo.UsrEducation;
 import com.ai.yc.translator.dao.mapper.bo.UsrExtend;
@@ -59,6 +60,7 @@ import com.ai.yc.translator.dao.mapper.bo.UsrTranslator;
 import com.ai.yc.translator.dao.mapper.bo.UsrTranslatorCriteria;
 import com.ai.yc.translator.dao.mapper.bo.UsrWork;
 import com.ai.yc.translator.service.atom.interfaces.IYCTranslatorServiceAtomSV;
+import com.ai.yc.translator.service.atom.interfaces.IYCUserLanguageAtomSV;
 import com.ai.yc.translator.service.business.interfaces.IYCTranslatorServiceBusiSV;
 import com.ai.yc.translator.util.GsonSingleton;
 import com.google.gson.reflect.TypeToken;
@@ -76,6 +78,9 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 
 	@Autowired
 	private IYCTranslatorServiceAtomSV ycUSAtomSV;
+	
+	@Autowired
+	private IYCUserLanguageAtomSV languageAtomSV;
 
 	@Override
 	public UsrTranslator searchYCUsrTranslatorInfo(SearchYCTranslatorRequest searchReq) throws BusinessException {
@@ -460,7 +465,22 @@ public class YCTranslatorServiceBusiSVImpl implements IYCTranslatorServiceBusiSV
 	public BaseResponse insertCertificateInfo(TraslatorCertificateInfoRequest request) {
 		BaseResponse response = new BaseResponse();
 		ResponseHeader header = null;
+		
 		try{
+			
+			/**
+			 * 语言对
+			 */
+			List<UsrLanguageInfo> languageList = request.getLanguageList();
+			ycUSAtomSV.deleteLanguageSkillByTranslator(request.getUserId());
+			for(int i=0;i<languageList.size();i++){
+				UsrLanguageInfo language = languageList.get(i);
+				UsrLanguage usrLanguage = new UsrLanguage();
+				BeanUtils.copyProperties(usrLanguage, language);
+				String languageId = SeqUtil.getNewId("YC_LANGUAGE_ID$SEQ", 8);
+				usrLanguage.setLanguageId(languageId);
+				languageAtomSV.insertUserLanguageInfo(usrLanguage);
+			}
 			/**
 			 * 资质
 			 */

@@ -12,6 +12,14 @@ public class UsrLanguageInfo {
 	 */
     private String userId;
     /**
+     * 语言对英文名称
+     */
+    private String languageNameEn;
+    /**
+     * 语言对中文名称
+     */
+    private String languageNameZh;
+    /**
      * 语言对Id
      */
     private String duadId;
@@ -77,4 +85,21 @@ public class UsrLanguageInfo {
     public void setState(String state) {
         this.state = state == null ? null : state.trim();
     }
+
+	public String getLanguageNameEn() {
+		return languageNameEn;
+	}
+
+	public void setLanguageNameEn(String languageNameEn) {
+		this.languageNameEn = languageNameEn;
+	}
+
+	public String getLanguageNameZh() {
+		return languageNameZh;
+	}
+
+	public void setLanguageNameZh(String languageNameZh) {
+		this.languageNameZh = languageNameZh;
+	}
+    
 }

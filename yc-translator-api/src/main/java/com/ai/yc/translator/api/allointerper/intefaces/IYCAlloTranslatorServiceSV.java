@@ -6,8 +6,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.ai.yc.translator.api.translatorservice.param.AlloTranslatorRequest;
-import com.ai.yc.translator.api.translatorservice.param.AlloTranslatorResponse;
+import com.ai.yc.translator.api.allointerper.param.AlloTranslatorRequest;
+import com.ai.yc.translator.api.allointerper.param.AlloTranslatorResponse;
 
 
 @Path("/allotranslatorservice")

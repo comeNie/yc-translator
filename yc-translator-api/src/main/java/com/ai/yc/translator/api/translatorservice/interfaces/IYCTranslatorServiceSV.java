@@ -8,8 +8,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.ai.opt.base.vo.BaseListResponse;
 import com.ai.opt.base.vo.BaseResponse;
-import com.ai.yc.translator.api.translatorservice.param.AlloTranslatorRequest;
-import com.ai.yc.translator.api.translatorservice.param.AlloTranslatorResponse;
 import com.ai.yc.translator.api.translatorservice.param.HBBaseResponse;
 import com.ai.yc.translator.api.translatorservice.param.LspTranslatorInfo;
 import com.ai.yc.translator.api.translatorservice.param.SearchYCTranslatorRequest;

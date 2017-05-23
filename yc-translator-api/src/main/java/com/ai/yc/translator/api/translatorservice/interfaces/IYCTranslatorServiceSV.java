@@ -241,15 +241,4 @@ public interface IYCTranslatorServiceSV {
 	@POST
 	@Path("insertCertificateInfo")
 	public BaseResponse insertCertificateInfo(TraslatorCertificateInfoRequest request);
-	/**
-	 * 查询lsp下的译员信息
-	 * @param request
-	 * @return
-	 * @author zhanglh
-	 * @ApiCode
-	 * @RestRelativeURL yctranslatorservice/queryAlloTranslator
-	 */
-	@POST
-	@Path("queryAlloTranslator")
-	public AlloTranslatorResponse queryAlloTranslator(AlloTranslatorRequest request);
 }
